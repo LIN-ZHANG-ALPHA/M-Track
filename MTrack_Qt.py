@@ -1,11 +1,17 @@
 #  MTrack_Qt.py
 #  This software is designed to capture the location of mice and their feet from video for data analysis.
-#  Created by Sheldon Reeves on 6/24/15.
 
+#  First version Created by Sheldon Reeves on 6/24/15.
+#  Using Python 3 and Pyqt5
 #  Email: sheldonreeves316@gmail.com
+
+# Latest version Created By Lin Zhang since 06/10/2016
+
 #  Language: Python 2.7
 #  OpenCV Version: 3.0.0
 #  PyQt Version 4.8
+
+
 #  Required Files in same directory:
 #       - MTrack.py
 #       - DisplayLabel.py
