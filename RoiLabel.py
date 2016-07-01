@@ -1,0 +1,213 @@
+#  RoiLabel.py
+#  This file is part of the mTrack program
+#  Created by Sheldon Reeves on 6/24/15.
+#  Email: sheldonreeves316@gmail.com
+#  Language: Python 3.4
+#  OpenCV Version: 3.0.0
+import cv2
+from PyQt4 import QtCore, QtGui
+from PyQt4.QtGui import QWidget, QLabel
+from DisplayLabel import DisplayLabel
+
+#   Class RoiLabel:
+#       Purpose: Redefine QLabel class for main display and roi drawing
+#       Created by Sheldon Reeves on 6/24/15.
+#       Language: Python 3.4
+#
+#       Dictionary of Variables:
+#           - QtInstance: Reference to the main MTrack_Qt instance
+#           - crop_list: Buffer containing cropped mouse bounding boxes
+#           - current_img: the most recently displayed image
+#           - foot: which foot
+#           - left_click: boolean for left click
+#           - mTrack: Reference to MTrack class instance
+#           - mouse_count: Number of mice to be tracked
+#           - roi_buffer: Storage buffer for roi vertices
+#           - roi_hist_buffer: Storage buffer for roi histograms
+#           - roi_window_buffer: Storage buffer for roi tracking windows
+#           - zoom: zoom value
+
+class RoiLabel(QLabel):
+
+    # Inline Private Member Method: __init__
+    # Method to initialize variables
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
+    def __init__(self, mouse_count, crop_list, mouseTracker, zoom, QtInstance, foot):
+        super(RoiLabel, self).__init__()
+        self.mouse_count = int(mouse_count)
+        self.crop_list = crop_list
+        self.mTrack = mouseTracker
+        self.zoom = zoom
+        self.QtInstance = QtInstance
+        self.foot = foot
+        self.setup()
+
+    # Inline Member Method: setup
+    # Method to setup variables for drawing
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
+    def setup(self):
+        self.left_click = False
+        self.roi_count = 0
+        self.list_complete = False
+        self.roi_buffer = [[] for x in range(10)]
+        self.roi_hist_buffer = []
+        self.roi_window_buffer = []
+        self.display_image(self.crop_list[self.roi_count], self.zoom)
+
+    # Overridden Inline Member Method: mousePressEvent
+    # Method that defines actions for mouse presses
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
+    def mousePressEvent(self, eventQMouseEvent):
+        if self.list_complete is False:
+            # Disable Zoom
+            self.QtInstance.Zoom_ScrollBar.setEnabled(False)
+            self.QtInstance.Zoom_ScrollBar.setDisabled(True)
+
+            self.roi_buffer[self.roi_count].append(
+                (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)))
+            self.left_click = True
+        QWidget.mousePressEvent(self, eventQMouseEvent)
+
+    # Overridden Inline Member Method: mouseMoveEvent
+    # Method that defines actions for mouse movement
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
+    def mouseMoveEvent(self, eventQMouseEvent):
+        if self.list_complete is False:
+            if self.left_click is True:
+                copy = self.crop_list[self.roi_count].copy()
+                cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
+                              (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                              (255, 255, 255), 2)
+                self.display_image(copy, self.zoom)
+            QWidget.mouseMoveEvent(self, eventQMouseEvent)
+
+    # Overridden Inline Member Method: mouseReleaseEvent
+    # Method that defines actions for mouse releases
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
+    def mouseReleaseEvent(self, eventQMouseEvent):
+        if self.list_complete is False:
+            if self.left_click is True:
+                self.roi_buffer[self.roi_count].append(
+                    (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)))
+                cv2.rectangle(self.crop_list[self.roi_count], self.roi_buffer[self.roi_count][0],
+                              (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                              (255, 255, 255), 2)
+
+
+                # Compensate for zoom
+                for i in self.roi_buffer[self.roi_count]:
+                    i = list(i)
+                    i[0] = int(i[0] * self.zoom)
+                    i[1] = int(i[1] * self.zoom)
+                    i = tuple(i)
+
+                # Enable Zoom
+                self.QtInstance.Zoom_ScrollBar.setEnabled(True)
+                self.QtInstance.Zoom_ScrollBar.setDisabled(False)
+
+                # Calculate histograms
+                if self.foot == 'left':
+                    roi_hist, track_window = self.mTrack.calcRoiHist(self.crop_list[self.roi_count],
+                                                                           self.roi_buffer[self.roi_count],
+                                                                           self.mTrack.left_foot_color_lower_hue,
+                                                                           self.mTrack.left_foot_color_lower_sat,
+                                                                           self.mTrack.left_foot_color_lower_val,
+                                                                           self.mTrack.left_foot_color_upper_hue,
+                                                                           self.mTrack.left_foot_color_upper_sat,
+                                                                           self.mTrack.left_foot_color_upper_val,
+                                                                           self.mTrack.left_foot_collision_detect,
+                                                                           self.mTrack.left_foot_dilation)
+
+                else:
+                    roi_hist, track_window = self.mTrack.calcRoiHist(self.crop_list[self.roi_count],
+                                                                           self.roi_buffer[self.roi_count],
+                                                                           self.mTrack.right_foot_color_lower_hue,
+                                                                           self.mTrack.right_foot_color_lower_sat,
+                                                                           self.mTrack.right_foot_color_lower_val,
+                                                                           self.mTrack.right_foot_color_upper_hue,
+                                                                           self.mTrack.right_foot_color_upper_sat,
+                                                                           self.mTrack.right_foot_color_upper_val,
+                                                                           self.mTrack.right_foot_collision_detect,
+                                                                           self.mTrack.right_foot_dilation)
+
+                self.roi_hist_buffer.append(roi_hist)
+                self.roi_window_buffer.append(track_window)
+
+                self.left_click = False
+                self.roi_count = self.roi_count + 1
+
+                if self.roi_count < len(self.crop_list):
+                    self.display_image(self.crop_list[self.roi_count], self.zoom)
+
+                if self.roi_count == len(self.crop_list):
+                    self.list_complete = True
+
+                    # Enable Viewing Mode Switcher
+                    self.QtInstance.View_Mode_comboBox.setEnabled(True)
+                    self.QtInstance.View_Mode_comboBox.setDisabled(False)
+
+
+                    # roiLabel will cease to exist so data must be saved to QtInstance
+                    if self.foot == 'left':
+                        self.QtInstance.left_foot_roi_hist_buffer = self.roi_hist_buffer
+                        self.QtInstance.left_foot_roi_window_buffer = self.roi_window_buffer
+                    else:
+                        self.QtInstance.right_foot_roi_hist_buffer = self.roi_hist_buffer
+                        self.QtInstance.right_foot_roi_window_buffer = self.roi_window_buffer
+
+                    # displayLabel object must be initialized and restored to its previous condition in QtInstance
+                    self.QtInstance.displayLabel = DisplayLabel(self.mTrack.first_frame, self.mTrack,
+                                                                self.zoom, self.QtInstance)
+                    self.QtInstance.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+                    self.QtInstance.displayLabel.setText("")
+                    self.QtInstance.displayLabel.setAlignment(
+                        QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+                    self.QtInstance.displayLabel.setObjectName("displayLabel")
+                    self.QtInstance.displayLabel.setMouseTracking(True)
+                    self.QtInstance.displayLabel.cage_vertices = self.QtInstance.cage_vertices
+                    self.QtInstance.displayLabel.cage_wall_vertices = self.QtInstance.cage_wall_vertices
+
+                    # roiLabel instance is destroyed in c++ space
+                    self.QtInstance.Display_scrollArea.setWidget(self.QtInstance.displayLabel)
+                    self.QtInstance.displayImage(self.QtInstance.parent_img, False)
+
+                    # Enable Buttons
+                    self.QtInstance.DrawCage_pushButton.setEnabled(True)
+                    self.QtInstance.Detect_Mice_pushButton.setEnabled(True)
+                    self.QtInstance.Detect_LF_pushButton.setEnabled(True)
+                    self.QtInstance.Detect_RF_pushButton.setEnabled(True)
+                    self.QtInstance.Draw_LF_Roi_pushButton.setEnabled(True)
+                    self.QtInstance.Draw_RF_Roi_pushButton.setEnabled(True)
+                    self.QtInstance.DrawCage_pushButton.setDisabled(False)
+                    self.QtInstance.Detect_Mice_pushButton.setDisabled(False)
+                    self.QtInstance.Detect_LF_pushButton.setDisabled(False)
+                    self.QtInstance.Detect_RF_pushButton.setDisabled(False)
+                    self.QtInstance.Draw_LF_Roi_pushButton.setDisabled(False)
+                    self.QtInstance.Draw_RF_Roi_pushButton.setDisabled(False)
+
+                    if self.foot == 'left':
+                        if len(self.QtInstance.right_foot_roi_hist_buffer) != 0:
+                            self.QtInstance.Execute_pushButton.setEnabled(True)
+                            self.QtInstance.Execute_pushButton.setDisabled(False)
+                    else:
+                        if len(self.QtInstance.left_foot_roi_hist_buffer) != 0:
+                            self.QtInstance.Execute_pushButton.setEnabled(True)
+                            self.QtInstance.Execute_pushButton.setDisabled(False)
+
+    # Inline Member Method: display_image
+    # Method that displays image on Qlabel
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
+    def display_image(self, img, zoom):
+        self.current_img = img
+        img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.resize(img, (0, 0), fx=self.zoom, fy=self.zoom)
+        qimg = QtGui.QImage(img.data, img.shape[1], img.shape[0], img.shape[1] * 3, QtGui.QImage.Format_RGB888)
+        p1 = QtGui.QPixmap.fromImage(qimg)
+        self.setPixmap(p1)
