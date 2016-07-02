@@ -249,6 +249,9 @@ class DisplayLabel(QLabel):
             img = cv2.resize(img, (0,0), fx = self.zoom, fy = self.zoom)
             qimg = QtGui.QImage(img.data,img.shape[1], img.shape[0],img.shape[1]*3, QtGui.QImage.Format_RGB888)
             p1 = QtGui.QPixmap.fromImage(qimg)
+
+
+
         self.setPixmap(p1)
 
     # Inline Member Method: crop_image

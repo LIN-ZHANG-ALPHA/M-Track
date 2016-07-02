@@ -68,7 +68,15 @@ class MTrack:
     def __init__(self, filename):
         # Initial Frame capture
         self.capture = cv2.VideoCapture(filename)
+        # background subtraction
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
+        fgbg = cv2.BackgroundSubtractorMOG()()
+
+
         f, self.first_frame = self.capture.read()
+
+        #self.first_frame = fgbg.apply(self.first_frame)
+
         self.img_height, self.img_width, channels = self.first_frame.shape
 
         self.__initialize_variables()

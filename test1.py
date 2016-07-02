@@ -1,166 +1,97 @@
 import sys
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtCore, QtGui
+from gui import Ui_MainWindow
+import cv2
+import numpy as np
 
-class Window(QtGui.QMainWindow):
-
-    def __init__(self):
-        super(Window, self).__init__()
-        self.setGeometry(50, 50, 500, 300)
-        self.setWindowTitle("PyQT tuts!")
-        self.setWindowIcon(QtGui.QIcon('pythonlogo.png'))
-
-        extractAction = QtGui.QAction("&GET TO THE CHOPPAH!!!", self)
-        extractAction.setShortcut("Ctrl+Q")
-        extractAction.setStatusTip('Leave The App')
-        extractAction.triggered.connect(self.close_application)
-
-        openEditor = QtGui.QAction("&Editor", self)
-        openEditor.setShortcut("Ctrl+E")
-        openEditor.setStatusTip('Open Editor')
-        openEditor.triggered.connect(self.editor)
-
-        openFile = QtGui.QAction("&Open File", self)
-        openFile.setShortcut("Ctrl+O")
-        openFile.setStatusTip('Open File')
-        openFile.triggered.connect(self.file_open)
-
-        saveFile = QtGui.QAction("&Save File", self)
-        saveFile.setShortcut("Ctrl+S")
-        saveFile.setStatusTip('Save File')
-        saveFile.triggered.connect(self.file_save)
-        self.statusBar()
-
-        mainMenu = self.menuBar()
-
-        fileMenu = mainMenu.addMenu('&File')
-        fileMenu.addAction(extractAction)
-        fileMenu.addAction(openFile)
-        fileMenu.addAction(saveFile)
-
-        editorMenu = mainMenu.addMenu("&Editor")
-        editorMenu.addAction(openEditor)
-
-        self.home()
-
-    def home(self):
-        btn = QtGui.QPushButton("Quit", self)
-        btn.clicked.connect(self.close_application)
-        btn.resize(btn.minimumSizeHint())
-        btn.move(0,100)
-
-        extractAction = QtGui.QAction(QtGui.QIcon('todachoppa.png'), 'Flee the Scene', self)
-        extractAction.triggered.connect(self.close_application)
-        self.toolBar = self.addToolBar("Extraction")
-        self.toolBar.addAction(extractAction)
-
-        fontChoice = QtGui.QAction('Font', self)
-        fontChoice.triggered.connect(self.font_choice)
-        #self.toolBar = self.addToolBar("Font")
-        self.toolBar.addAction(fontChoice)
-
-        color = QtGui.QColor(0, 0, 0)
-
-        fontColor = QtGui.QAction('Font bg Color', self)
-        fontColor.triggered.connect(self.color_picker)
-        self.toolBar.addAction(fontColor)
-
-        checkBox = QtGui.QCheckBox('Enlarge Window', self)
-        checkBox.move(300, 25)
-        checkBox.stateChanged.connect(self.enlarge_window)
-
-        self.progress = QtGui.QProgressBar(self)
-        self.progress.setGeometry(200, 80, 250, 20)
-
-        self.btn = QtGui.QPushButton("Download",self)
-        self.btn.move(200,120)
-        self.btn.clicked.connect(self.download)
-
-        #print(self.style().objectName())
-        self.styleChoice = QtGui.QLabel("Windows Vista", self)
-
-        comboBox = QtGui.QComboBox(self)
-        comboBox.addItem("motif")
-        comboBox.addItem("Windows")
-        comboBox.addItem("cde")
-        comboBox.addItem("Plastique")
-        comboBox.addItem("Cleanlooks")
-        comboBox.addItem("windowsvista")
-
-        comboBox.move(50, 250)
-        self.styleChoice.move(50,150)
-        comboBox.activated[str].connect(self.style_choice)
-
-        cal = QtGui.QCalendarWidget(self)
-        cal.move(500,200)
-        cal.resize(200,200)
-        self.show()
-
-    def file_open(self):
-        name = QtGui.QFileDialog.getOpenFileName(self, 'Open File')
-        file = open(name,'r')
-
-        self.editor()
-
-        with file:
-            text = file.read()
-            self.textEdit.setText(text)
-
-    def file_save(self):
-        name = QtGui.QFileDialog.getSaveFileName(self, 'Save File')
-        file = open(name,'w')
-        text = self.toPlainText()
-        file.write(text)
-        file.close()
-
-    def color_picker(self):
-        color = QtGui.QColorDialog.getColor()
-        self.styleChoice.setStyleSheet("QWidget { background-color: %s}" % color.name())
-
-    def editor(self):
-        self.textEdit = QtGui.QTextEdit()
-        self.setCentralWidget(self.textEdit)
+#------------------------------------------------------------------------ Static
 
 
-
-    def font_choice(self):
-        font, valid = QtGui.QFontDialog.getFont()
-        if valid:
-            self.styleChoice.setFont(font)
-
-
-    def style_choice(self, text):
-        self.styleChoice.setText(text)
-        QtGui.QApplication.setStyle(QtGui.QStyleFactory.create(text))
+#--------------------------------------------------------------------- Functions
+def processImage(image,colormin,colormax):
+    hsvImage = cv2.cvtColor(image, cv2.COLOR_BGR2HSV) #Convert to HSV image
+    hsvImage = cv2.medianBlur(hsvImage, 3) #blur image to reduce noise
+    colorThreshed = cv2.inRange(hsvImage,colormin,colormax) #threshold image
+    return colorThreshed
 
 
-    def download(self):
-        self.completed = 0
+#-------------------------------------------------------------------- Form Class
+class MyForm(QtGui.QMainWindow):
+    #Constructor
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        
+        #Create Video Object
+        cv2.namedWindow('Video')
+        device = 0
+        self.video = cv2.VideoCapture(device)     
+        
+        #Set up timer
+        self.ctimer = QtCore.QTimer()
 
-        while self.completed < 100:
-            self.completed += 0.0001
-            self.progress.setValue(self.completed)
+        #Slider Bars signal connectors
+        QtCore.QObject.connect(self.ui.horizontalSlider, QtCore.SIGNAL("sliderMoved(int)"),self.updateLabels)
+        QtCore.QObject.connect(self.ui.horizontalSlider_2, QtCore.SIGNAL("sliderMoved(int)"),self.updateLabels)
+        QtCore.QObject.connect(self.ui.horizontalSlider_3, QtCore.SIGNAL("sliderMoved(int)"),self.updateLabels)
+        QtCore.QObject.connect(self.ui.horizontalSlider_4, QtCore.SIGNAL("sliderMoved(int)"),self.updateLabels)
+        QtCore.QObject.connect(self.ui.horizontalSlider_5, QtCore.SIGNAL("sliderMoved(int)"),self.updateLabels)
+        QtCore.QObject.connect(self.ui.horizontalSlider_6, QtCore.SIGNAL("sliderMoved(int)"),self.updateLabels)
+        
+        #Timer signal
+        QtCore.QObject.connect(self.ctimer,QtCore.SIGNAL("timeout()"),self.tick)
+        
+        #Timer start
+        self.ctimer.start(1)
 
-    def enlarge_window(self, state):
-        if state == QtCore.Qt.Checked:
-            self.setGeometry(50,50, 1000, 600)
+    #Label Updates Signal Callback
+    def updateLabels(self):
+        self.ui.label.setText(str(self.ui.horizontalSlider.value()))
+        self.ui.label_2.setText(str(self.ui.horizontalSlider_2.value()))
+        self.ui.label_3.setText(str(self.ui.horizontalSlider_3.value()))
+        self.ui.label_4.setText(str(self.ui.horizontalSlider_4.value()))
+        self.ui.label_5.setText(str(self.ui.horizontalSlider_5.value()))
+        self.ui.label_6.setText(str(self.ui.horizontalSlider_6.value()))
+        self.updateThresh()
+        
+    def updateThresh(self):
+        colormin,colormax = self.getColors()
+        minStr = "Threshold minimum: " + str(colormin[0]) + ", " + str(colormin[1]) + ", " + str(colormin[2])
+        maxStr = "Threshold maximum: " + str(colormax[0]) + ", " + str(colormax[1]) + ", " + str(colormax[2])
+        self.ui.label_7.setText(minStr)
+        self.ui.label_8.setText(maxStr)
+        
+    #Timer tick
+    def tick(self):
+        self.updateLabels()
+        _,frame = self.video.read()
+        colormin,colormax = self.getColors()
+        checked = self.ui.checkBox.checkState()
+        if not checked:
+            cv2.imshow('Video', frame)
         else:
-            self.setGeometry(50, 50, 500, 300)
-
-    def close_application(self):
-        choice = QtGui.QMessageBox.question(self, 'Extract!',
-                                            "Get into the chopper?",
-                                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if choice == QtGui.QMessageBox.Yes:
-            print("Extracting Naaaaaaoooww!!!!")
-            sys.exit()
-        else:
-            pass
-
-
-def run():
+            image = processImage(frame,colormin,colormax)
+            cv2.imshow('Video', image)
+        
+    #Get Colors from Ui
+    def getColors(self):
+        #Get values from form
+        hmin = np.amax([0,self.ui.horizontalSlider.value()-(self.ui.horizontalSlider_6.value()/2)])
+        hmax = np.amin([360,self.ui.horizontalSlider.value()+(self.ui.horizontalSlider_6.value()/2)])
+        smin = self.ui.horizontalSlider_2.value()
+        smax = self.ui.horizontalSlider_3.value()
+        vmin = self.ui.horizontalSlider_4.value()
+        vmax = self.ui.horizontalSlider_5.value()
+        #Create colors and return them
+        cmin = np.array([hmin,smin,vmin],np.uint8)
+        cmax = np.array([hmax,smax,vmax],np.uint8)
+        return cmin,cmax        
+    
+        
+#-------------------------------------------------------------------------- Main
+if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    GUI = Window()
+    myapp = MyForm()
+    myapp.show()
     sys.exit(app.exec_())
-
-
-run()
