@@ -70,7 +70,7 @@ class MTrack:
         self.capture = cv2.VideoCapture(filename)
         # background subtraction
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
-        fgbg = cv2.BackgroundSubtractorMOG()()
+        #fgbg = cv2.BackgroundSubtractorMOG()()
 
 
         f, self.first_frame = self.capture.read()
