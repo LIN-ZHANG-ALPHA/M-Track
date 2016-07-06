@@ -508,6 +508,7 @@ class MainWindow(QtGui.QMainWindow):
         #   Buttons
         self.Load_pushButton.clicked.connect(self.buttonAction_loadVideo)
         self.Load_pushButton.clicked.connect(self.independent)
+        #self.connect(self.bbuttonAction_loadVideo,QtCore.SIGNAL('triggered()'), self.independent)
 
 
         self.Save_pushButton.clicked.connect(self.buttonAction_savePath)
@@ -690,61 +691,61 @@ class MainWindow(QtGui.QMainWindow):
     def buttonAction_loadVideo(self):
 
         fname = QFileDialog.getOpenFileName()
-        #print 'fname: ', fname
+        print 'fname: ', fname
 
+        self.outputvideoname = str(fname)
 
-        self.Tracker = MTrack(str(fname)) # add str is required
-
-        # size of video
-        # self.cap    = cv2.VideoCapture(str(fname))
-        # self.height = self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
-        # self.width  = self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-
-
-        # Enable DrawCage
-        self.DrawCage_pushButton.setEnabled(True)
-        self.DrawCage_pushButton.setDisabled(False)
-
-        # Initialize displayLabel
-        self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
-                                         self.zoom, QtInstance)
-
-
-        self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
-
-        # print self.img_height
-        # print self.img_width
-
-        self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
-        #self.displayLabel.setFixedSize(self.sizeHint())
-
-        self.displayLabel.setText("")
-        self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
-        self.displayLabel.setObjectName("displayLabel")
-        self.displayLabel.setMouseTracking(True)
-        self.Display_scrollArea.setWidget(self.displayLabel)
-
-        # Display first image
-
-        self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
-
-        # show HSV information
-
-        hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
-        #print 'HHH',hsvImage
-        #print hsvImage[1][1]
-        cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
-        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-
-        self.parent_img = self.Tracker.first_frame
-        #self.displayLabel.resize(self.img_height,self.img_width)
+        # self.Tracker = MTrack(str(fname)) # add str is required
+        #
+        # # Enable DrawCage
+        # self.DrawCage_pushButton.setEnabled(True)
+        # self.DrawCage_pushButton.setDisabled(False)
+        #
+        # # Initialize displayLabel
+        # self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
+        #                                  self.zoom, QtInstance)
+        #
+        # self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
+        #
+        #
+        #
+        # self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+        # #self.displayLabel.setFixedSize(self.sizeHint())
+        #
+        # self.displayLabel.setText("")
+        # self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+        # self.displayLabel.setObjectName("displayLabel")
+        # self.displayLabel.setMouseTracking(True)
+        # #self.Display_scrollArea.setWidget(self.displayLabel)
+        #
+        #
+        # # Display first image
+        # self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
+        #
+        # # show HSV information
+        # hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
+        # #print 'HHH',hsvImage
+        # #print hsvImage[1][1]
+        # cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
+        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+        #
+        # self.parent_img = self.Tracker.first_frame
         return  self.outputvideoname
 
+    # def addWidget(self,name):
+    #     self.setCentralWidget(viewWindow(name))
+    #     #self.scrollLayout.addWidget(viewWindow(name))    # I need change the, use the method in multiwindow.py
+    #
+    #     print name
 
 
     def independent(self):
-         self.indenview = independentView(self.outputvideoname)
+         self.indenview = viewWindow(self.outputvideoname)
          self.indenview.show()
+    #
+    # def independent(self):
+    #      self.indenview = independentView(self.outputvideoname)
+    #      self.indenview.show()
 
     def resizeEvent(self, event):
         scaledSize = self.Tracker.first_frame.shape
@@ -1826,113 +1827,13 @@ class MainWindow(QtGui.QMainWindow):
         self.timer.start()
 
 
-class independentView(QtGui.QMainWindow):
-    def __init__(self, outputvideoname,parent = None):
-        super(independentView, self).__init__(parent)
-
-
-        self.names = outputvideoname # video output name
-        print 'IM in the indepedentview part'
-        print self.names
-
-        self.setupMenus()
-
-        # scroll area widget contents - layout
-        self.scrollLayout = QtGui.QGridLayout()  # I may change this to a new style gridLayout
-        self.scrollLayout.setColumnStretch(1, 2)  # make each row have 2 video
-        self.scrollLayout.setHorizontalSpacing(100)
-        self.scrollLayout.setAlignment(self.scrollLayout, QtCore.Qt.AlignHCenter)
-        #self.scrollLayout.horizontalSpacing()
-
-        # scroll area widget contents
-        self.scrollWidget = QtGui.QWidget()
-        self.scrollWidget.setLayout(self.scrollLayout)
-
-        # scroll area
-        self.scrollArea = QtGui.QScrollArea()
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setWidget(self.scrollWidget)
-
-        # main layout
-        self.mainLayout = QtGui.QVBoxLayout()
-
-        # add all main to the main vLayout
-        self.mainLayout.addWidget(self.scrollArea)
-
-        # central widget
-        self.centralWidget = QtGui.QWidget()
-        self.centralWidget.setLayout(self.mainLayout)
-
-        # set central widget
-        self.setCentralWidget(self.centralWidget)
-        self.resize(400, 400)
-        self.setWindowTitle(self.tr("IndependentViews"))
-        self.show()
-
-    def make_addWidget(self, name):    # add the Video Player
-        def addWidget():
-            self.scrollLayout.addWidget(viewWindow(name))    # I need change the, use the method in multiwindow.py
-            print name
-        return  addWidget
-
-    #     #self.scrollLayout.insertRow(viewWindow())
-
-    # clear the layout&widget
-    def clearLayout(self):
-         while self.scrollLayout.count():
-            child = self.scrollLayout.takeAt(0)
-            if child.widget() is not None:
-                child.widget().deleteLater()
-
-         for i in range(1, 6):
-             self.i.setCheckable(True)
-
-    def stateChanged(self, newState, oldState):
-            if newState == Phonon.ErrorState:
-                if self.mediaObject.errorType() == Phonon.FatalError:
-                    QtGui.QMessageBox.warning(self, self.tr("Fatal Error"),self.mediaObject.errorString())
-                else:
-                    QtGui.QMessageBox.warning(self, self.tr("Error"),self.mediaObject.errorString())
-
-            elif newState == Phonon.PlayingState:
-                self.playAction.setEnabled(False)
-                self.pauseAction.setEnabled(True)
-                self.stopAction.setEnabled(True)
-
-    def closeEvent(self, event):  # make sure the close is the accident
-        reply = QtGui.QMessageBox.question(self, 'Warning',
-            "Are you sure to quit?", QtGui.QMessageBox.Yes |
-            QtGui.QMessageBox.No, QtGui.QMessageBox.No)
-
-        if reply == QtGui.QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
-
-    def setupMenus(self):
-            fileMenu = self.menuBar().addMenu(self.tr("VIEW SELECTION"))
-            self.videonames = self.names
-            #print self.names
-            #print 'Im ready'
-            #print self.videonames
-
-            #self.videonames = ('output0.avi', 'output1.avi', 'output2.avi', 'output3.avi','output4.avi')# for test
-            for i, name in enumerate(self.videonames):  # we can change the "6" into a number that can decide by the real video split results
-                self.i = fileMenu.addAction("VIEW " + str(i), self.scrollLayout.addWidget(name))
-                self.i.setCheckable(True)
-                #print i
-                #print name
-                #self.connect(self.action, QtCore.SIGNAL('triggered()'), self.stateSwap)
-
-            #fileMenu.addAction("ClearScreen", self.clearLayout)
-            fileMenu.addAction("Exit", QtGui.qApp.quit)  # quit the application
-            #fileMenu.addAction(self.saveFilesAction)
-
-
 class viewWindow(QtGui.QWidget):
-    def __init__(self,name):
+    def __init__(self,names):
         QtGui.QWidget.__init__(self)
-        self.name = name  # give the video to show up here
+        self.names = names  # give the video to show up here
+
+        #self.names = outputvideoname # video output name
+        print "Lin",self.names
 
         self.mediaObject = Phonon.MediaObject(self)
         self.mediaObject.stateChanged.connect(self.stateChanged)
@@ -2028,13 +1929,60 @@ class viewWindow(QtGui.QWidget):
             self.screenshot.show()
 
     def addFiles(self):
-            files = self.name
+            files = self.names
+            print "files name" ,files
+
             if not files:
                 return
             self.source = Phonon.MediaSource(files)
 
             if self.source:
                 self.metaInformationResolver.setCurrentSource(self.source)
+
+
+            # ##
+            # self.Tracker = MTrack(str(files))
+            #
+            #     # Enable DrawCage
+            # self.DrawCage_pushButton.setEnabled(True)
+            # self.DrawCage_pushButton.setDisabled(False)
+            #
+            # # Initialize displayLabel
+            # self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
+            #                                  self.zoom, QtInstance)
+            #
+            #
+            # self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
+            #
+            # # print self.img_height
+            # # print self.img_width
+            #
+            # self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+            # #self.displayLabel.setFixedSize(self.sizeHint())
+            #
+            # self.displayLabel.setText("")
+            # self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+            # self.displayLabel.setObjectName("displayLabel")
+            # self.displayLabel.setMouseTracking(True)
+            # self.Display_scrollArea.setWidget(self.displayLabel)
+            #
+            # # Display first image
+            #
+            # self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
+            #
+            # # show HSV information
+            #
+            # hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
+            # #print 'HHH',hsvImage
+            # #print hsvImage[1][1]
+            # cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
+            # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            #
+            # self.parent_img = self.Tracker.first_frame
+            # #self.displayLabel.resize(self.img_height,self.img_width)
+            # 
+
+
 
     def sizeHint(self):
             return QtCore.QSize(600, 450)
