@@ -388,6 +388,12 @@ class MainWindow(QtGui.QMainWindow):
 
         self.verticalLayout_2.addWidget(self.Box_Size_spinBox)
         self.gridLayout.addLayout(self.verticalLayout_2, 7, 4, 1, 1)
+
+        ###############################################################
+        ################################################################
+        # I delete it: 0701, the right size of the GUI
+        ################################################################
+        ################################################################
         # self.Display_scrollArea = QtGui.QScrollArea(self.centralWidget)
         # sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         # sizePolicy.setHorizontalStretch(0)
@@ -396,15 +402,11 @@ class MainWindow(QtGui.QMainWindow):
         # self.Display_scrollArea.setSizePolicy(sizePolicy)
         # self.Display_scrollArea.setAutoFillBackground(True)
         # self.Display_scrollArea.setFrameShadow(QtGui.QFrame.Sunken)
-
-        # I delete it
         #self.Display_scrollArea.setSizeAdjustPolicy(QtGui.QAbstractScrollArea.AdjustIgnored)
-
         # self.Display_scrollArea.setWidgetResizable(True)
         # self.Display_scrollArea.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
-        #
         # self.Display_scrollArea.setObjectName("Display_scrollArea")
-        #
+
         # self.scrollAreaWidgetContents = QtGui.QWidget()
         # self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 458, 673))
         # self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
@@ -508,7 +510,6 @@ class MainWindow(QtGui.QMainWindow):
         #   Buttons
         self.Load_pushButton.clicked.connect(self.buttonAction_loadVideo)
         self.Load_pushButton.clicked.connect(self.independent)
-        #self.connect(self.bbuttonAction_loadVideo,QtCore.SIGNAL('triggered()'), self.independent)
 
 
         self.Save_pushButton.clicked.connect(self.buttonAction_savePath)
@@ -648,45 +649,12 @@ class MainWindow(QtGui.QMainWindow):
         self.mouse_num_selector.setItemText(2, _translate("QtMouseTracker", "2"))
         self.mouse_num_selector.setItemText(3, _translate("QtMouseTracker", "4"))
 
-    # def restart(self):
-    #     # create a signal equivalent to "void someSignal(int, QWidget)"
-    #     self.emit(QtCore.SIGNAL("RESTARTREQUIRED"), True)
-
-        # End pyuic5 generated code
-
-    #def get_output1_statement(self):
-
-    # def refresh(self):
-    #     filename = "user_name_session"
-    #     target = open(filename, "r+")
-    #     name = target.read(10)
-    #     self.cashregisterid.setText(str(name))
-    #
-    #
-
-
-        #self.tableWidget.setItem(0,0,QtGui.QTableWidgetItem("add some data"))
-    # def reloadList(info):
-    #     # info is a list of strings
-    #     listwidget.clear()
-    #     listwidget.addItems(info)
 
     # Inline Member Method: buttonAction_loadVideo
     # Method that allows the user to select a video file
     # Precondition: Video file not selected
     # Postcondition: Video file selected, first frame displayed, Draw cage button enabled
 
-    # def addFiles(self):
-    #         files = QtGui.QFileDialog.getOpenFileNames(self,
-    #                 self.tr("Select video files"),
-    #                 QtGui.QDesktopServices.storageLocation(QtGui.QDesktopServices.MoviesLocation))
-    #         #print files
-    #         if files.isEmpty():
-    #             return
-    #         for string in files:
-    #             self.source = Phonon.MediaSource(string)
-    #             #print string
-    #         self.filename = string
 
     def buttonAction_loadVideo(self):
 
@@ -695,27 +663,27 @@ class MainWindow(QtGui.QMainWindow):
 
         self.outputvideoname = str(fname)
 
-        # self.Tracker = MTrack(str(fname)) # add str is required
+        self.Tracker = MTrack(str(fname)) # add str is required
         #
         # # Enable DrawCage
-        # self.DrawCage_pushButton.setEnabled(True)
-        # self.DrawCage_pushButton.setDisabled(False)
+        self.DrawCage_pushButton.setEnabled(True)
+        self.DrawCage_pushButton.setDisabled(False)
         #
         # # Initialize displayLabel
-        # self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
-        #                                  self.zoom, QtInstance)
-        #
-        # self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
-        #
-        #
-        #
-        # self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
-        # #self.displayLabel.setFixedSize(self.sizeHint())
-        #
-        # self.displayLabel.setText("")
-        # self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
-        # self.displayLabel.setObjectName("displayLabel")
-        # self.displayLabel.setMouseTracking(True)
+        self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
+                                         self.zoom, QtInstance)
+
+        self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
+
+
+
+        self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+        #self.displayLabel.setFixedSize(self.sizeHint())
+
+        self.displayLabel.setText("")
+        self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+        self.displayLabel.setObjectName("displayLabel")
+        self.displayLabel.setMouseTracking(True)
         # #self.Display_scrollArea.setWidget(self.displayLabel)
         #
         #
@@ -730,7 +698,7 @@ class MainWindow(QtGui.QMainWindow):
         # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
         #
         # self.parent_img = self.Tracker.first_frame
-        return  self.outputvideoname
+        return  self.displayLabel
 
     # def addWidget(self,name):
     #     self.setCentralWidget(viewWindow(name))
@@ -738,10 +706,10 @@ class MainWindow(QtGui.QMainWindow):
     #
     #     print name
 
-
-    def independent(self):
-         self.indenview = viewWindow(self.outputvideoname)
-         self.indenview.show()
+    #
+    # def independent(self):
+    #      self.indenview = viewWindow(self.displayLabel)
+    #      self.indenview.show()
     #
     # def independent(self):
     #      self.indenview = independentView(self.outputvideoname)
@@ -1055,7 +1023,11 @@ class MainWindow(QtGui.QMainWindow):
         self.roiLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.roiLabel.setObjectName("roiLabel")
         self.roiLabel.setMouseTracking(True)
+
+
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
+
+        return self.roiLabel
 
     # Inline Member Method: buttonAction_draw_RF_roi
     # Method to allow the user to define the ROI for each right foot
@@ -1113,7 +1085,12 @@ class MainWindow(QtGui.QMainWindow):
         self.roiLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.roiLabel.setObjectName("roiLabel")
         self.roiLabel.setMouseTracking(True)
+
+
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
+
+
+        return self.roiLabel
 
     # Inline Member Method: buttonAction_execute
     # Method to begin tracking execution loop
@@ -1614,8 +1591,6 @@ class MainWindow(QtGui.QMainWindow):
         return mask
 
 
-
-
     def restartGame(self):
         self.clear()
 
@@ -1826,166 +1801,80 @@ class MainWindow(QtGui.QMainWindow):
         self.displayImage(orig_img, False)
         self.timer.start()
 
-
-class viewWindow(QtGui.QWidget):
-    def __init__(self,names):
-        QtGui.QWidget.__init__(self)
-        self.names = names  # give the video to show up here
-
-        #self.names = outputvideoname # video output name
-        print "Lin",self.names
-
-        self.mediaObject = Phonon.MediaObject(self)
-        self.mediaObject.stateChanged.connect(self.stateChanged)
-        self.videoWidget = Phonon.VideoWidget(self)
-        Phonon.createPath(self.mediaObject, self.videoWidget)
-        self.videoWidget.setMinimumSize(80, 80)
-
-        self.metaInformationResolver = Phonon.MediaObject(self)
-        self.mediaObject.setTickInterval(1000)  # send one signal/1000msec(1 sec),then show on the LCD time
-        self.videoWidget.setScaleMode(0)  # control the size of the video(0 is default as the orginal size)
-
-        self.connect(self.mediaObject, QtCore.SIGNAL('tick(qint64)'), self.tick)  #connect the time of media to tick fuction
-        self.connect(self.mediaObject, QtCore.SIGNAL('stateChanged(Phonon::State, Phonon::State)'), self.stateChanged) # stateChange like play, stop,pause...
-        self.connect(self.metaInformationResolver, QtCore.SIGNAL('stateChanged(Phonon::State, Phonon::State)'), self.metaStateChanged)
-        self.connect(self.mediaObject, QtCore.SIGNAL('currentSourceChanged(Phonon::MediaSource)'), self.sourceChanged)
-
-        self.setupActions()  # initial all the actions,
-        self.video_id = self.videoWidget.winId()  # get the frame of video
-
-
-        bar = QtGui.QToolBar()
-        bar.addAction(self.playAction)
-        bar.addAction(self.pauseAction)
-        bar.addAction(self.stopAction)
-        #bar.addAction(self.loadAction)
-        bar.addAction(self.screenshotAction)
-        bar.addAction(self.saveAction)
-        #bar.addAction(self.fullAction)
-        bar.addAction(self.deleteAction)
-
-        self.seekSlider = Phonon.SeekSlider(self)         # build a seekSlider
-        self.seekSlider.setMediaObject(self.mediaObject)  # seekSlider connect to the video
-
-        # define the palette to change color
-        palette = QtGui.QPalette()
-        palette.setBrush(QtGui.QPalette.Light, QtCore.Qt.darkGray)
-
-        #create LCD
-        self.timeLcd = QtGui.QLCDNumber()
-        self.timeLcd.setPalette(palette)
-
-
-        # build seek layer in widget
-        seekerLayout = QtGui.QHBoxLayout()
-        seekerLayout.addWidget(self.seekSlider)
-        seekerLayout.addWidget(self.timeLcd)
-        self.timeLcd.display("00:00")  # initial LCD play
-
-        playbackLayout = QtGui.QHBoxLayout()
-        playbackLayout.addWidget(bar)
-        playbackLayout.addStretch()
-
-        layout = QtGui.QVBoxLayout(self)
-        layout.addWidget(self.videoWidget, 1)
-
-        layout.addLayout(seekerLayout)
-        layout.addLayout(playbackLayout)
-
-        self.addFiles()
-
-        self.shortcutFull = QtGui.QShortcut(self)
-        self.shortcutFull.setKey(QtGui.QKeySequence('Esc'))
-        self.shortcutFull.setContext(QtCore.Qt.ApplicationShortcut)
-        self.shortcutFull.activated.connect(self.handleFullScreen)
-
-    def mouseDoubleClickEvent(self, event):
-        if event.buttons() == Qt.LeftButton:
-            if self.videoWidget.isFullScreen():
-                self.videoWidget.exitFullScreen()
-            else:
-                self.videoWidget.enterFullScreen()
-
-    def handleFullScreen(self):
-         #videoWidget = self.ui.videoPlayer.videoWidget()
-         #self.videoWidget.exitFullScreen()
-
-         if self.videoWidget.isFullScreen():
-             self.videoWidget.exitFullScreen()
-         else:
-             self.videoWidget.enterFullScreen()
-
-
-    def full(self):
-           # videoWidget = self.ui.videoPlayer.videoWidget()
-            if not self.videoWidget.isFullScreen():
-                self.videoWidget.enterFullScreen()
-            else:
-                self.videoWidget.exitFullScreen()
-
-    def screenshot(self):
-            #self.video_id = self.videoWidget.winId()
-            self.screenshot = Screenshot(self.video_id)
-            self.screenshot.show()
-
-    def addFiles(self):
-            files = self.names
-            print "files name" ,files
-
-            if not files:
-                return
-            self.source = Phonon.MediaSource(files)
-
-            if self.source:
-                self.metaInformationResolver.setCurrentSource(self.source)
-
-
-            # ##
-            # self.Tracker = MTrack(str(files))
-            #
-            #     # Enable DrawCage
-            # self.DrawCage_pushButton.setEnabled(True)
-            # self.DrawCage_pushButton.setDisabled(False)
-            #
-            # # Initialize displayLabel
-            # self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
-            #                                  self.zoom, QtInstance)
-            #
-            #
-            # self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
-            #
-            # # print self.img_height
-            # # print self.img_width
-            #
-            # self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
-            # #self.displayLabel.setFixedSize(self.sizeHint())
-            #
-            # self.displayLabel.setText("")
-            # self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
-            # self.displayLabel.setObjectName("displayLabel")
-            # self.displayLabel.setMouseTracking(True)
-            # self.Display_scrollArea.setWidget(self.displayLabel)
-            #
-            # # Display first image
-            #
-            # self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
-            #
-            # # show HSV information
-            #
-            # hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
-            # #print 'HHH',hsvImage
-            # #print hsvImage[1][1]
-            # cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
-            # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-            #
-            # self.parent_img = self.Tracker.first_frame
-            # #self.displayLabel.resize(self.img_height,self.img_width)
-            # 
+    def independent(self):
+         self.indenview = independentView(self.outputvideoname,self.displayLabel,self.Tracker,self.zoom)
+         self.indenview.show()
 
 
 
-    def sizeHint(self):
-            return QtCore.QSize(600, 450)
+
+class independentView(QtGui.QMainWindow):
+    def __init__(self,outputvideoname, displayLabel,Tracker,zoom, parent = None):
+        super(independentView, self).__init__(parent)
+
+        self.displayLabel = displayLabel
+        self.Tracker = Tracker
+        self.names   = outputvideoname # video output name
+        self.zoom    = zoom
+        #self.roiLabel = roiLabel
+        print 'IM in the indepedentview part'
+        print self.names
+
+        #self.setupMenus()
+
+        # scroll area widget contents - layout
+        self.scrollLayout = QtGui.QGridLayout()  # I may change this to a new style gridLayout
+        self.scrollLayout.setColumnStretch(1, 1)  # make each row have 1 video
+        self.scrollLayout.setHorizontalSpacing(100)
+        self.scrollLayout.setAlignment(self.scrollLayout, QtCore.Qt.AlignHCenter)
+        #self.scrollLayout.horizontalSpacing()
+
+        # scroll area widget contents
+        self.scrollWidget = QtGui.QWidget()
+        self.scrollWidget.setLayout(self.scrollLayout)
+
+        # scroll area
+        self.scrollArea = QtGui.QScrollArea()
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setWidget(self.displayLabel)
+        #self.scrollArea.setWidget(self.roiLabel)
+
+
+
+
+
+
+
+        # Display first image
+        self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
+        self.parent_img = self.Tracker.first_frame
+
+        # main layout
+        self.mainLayout = QtGui.QVBoxLayout()
+
+        # add all main to the main vLayout
+        self.mainLayout.addWidget(self.scrollArea)
+
+        # central widget
+        self.centralWidget = QtGui.QWidget()
+        self.centralWidget.setLayout(self.mainLayout)
+
+        # set central widget
+        self.setCentralWidget(self.centralWidget)
+        self.resize(900, 800)
+        self.setWindowTitle(self.tr("IndependentViews"))
+        self.show()
+
+    def make_addWidget(self, name):    # add the Video Player
+        def addWidget():
+            self.scrollLayout.addWidget(viewWindow(name))    # I need change the, use the method in multiwindow.py
+
+            print name
+        return  addWidget
+        self.scrollLayout.insertRow(viewWindow())
+
+    # clear the layout&widget
+
 
     def stateChanged(self, newState, oldState):
             if newState == Phonon.ErrorState:
@@ -1999,112 +1888,18 @@ class viewWindow(QtGui.QWidget):
                 self.pauseAction.setEnabled(True)
                 self.stopAction.setEnabled(True)
 
-            elif newState == Phonon.StoppedState:
-                self.stopAction.setEnabled(False)
-                self.playAction.setEnabled(True)
-                self.pauseAction.setEnabled(False)
-                self.timeLcd.display("00:00")
+    def closeEvent(self, event):  # make sure the close is the accident
+        reply = QtGui.QMessageBox.question(self, 'Warning',
+            "Are you sure to quit?", QtGui.QMessageBox.Yes |
+            QtGui.QMessageBox.No, QtGui.QMessageBox.No)
 
-            elif newState == Phonon.PausedState:
-                self.pauseAction.setEnabled(False)
-                self.stopAction.setEnabled(True)
-                self.playAction.setEnabled(True)
-
-    def tick(self, time):
-            displayTime = QtCore.QTime(0, (time / 60000) % 60, (time / 1000) % 60)
-            self.timeLcd.display(displayTime.toString('mm:ss'))
-
-    def sourceChanged(self, source):
-            self.timeLcd.display("00:00")
-
-    def metaStateChanged(self, newState, oldState):
-            if newState == Phonon.ErrorState:
-                QtGui.QMessageBox.warning(self, self.tr("Error opening files"),
-                        self.metaInformationResolver.errorString())
-
-            self.mediaObject.setCurrentSource(self.metaInformationResolver.currentSource())
-
-            source = self.metaInformationResolver.currentSource()
-
-    def handleButton(self):
-        if self.mediaObject.state() == Phonon.PlayingState:
-            self.mediaObject.stop()
+        if reply == QtGui.QMessageBox.Yes:
+            event.accept()
         else:
-            path = QtGui.QFileDialog.getOpenFileName(self)
-            if path:
-                self.mediaObject.setCurrentSource(Phonon.MediaSource(path))
-                self.mediaObject.play()
-
-    def saveFiles(self):
-            format = QtCore.QString("avi")
-
-            initialPath = QtCore.QDir.currentPath() + self.tr("/untitled.") + format
-
-            fileName = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save As"),
-                                   initialPath,
-                                   self.tr("%1 Files (*.%2);; .mp4 ;; .wmv;; .mkv;; .flv;; All Files (*)") # save as multiple format
-                                       .arg(format.toUpper())
-                                       .arg(format))
-            #ffmpeg.convert(self.name,fileName)
-            if not fileName.isEmpty():
-                self.originalPixmap.save(fileName, str(format))
+            event.ignore()
 
 
 
-    def handleStateChanged(self, newstate, oldstate):
-        if newstate == Phonon.PlayingState:
-            self.button.setText('Stop')
-        elif (newstate != Phonon.LoadingState and
-              newstate != Phonon.BufferingState):
-            self.button.setText('Choose File')
-            if newstate == Phonon.ErrorState:
-                source = self.mediaObject.currentSource().fileName()
-                print ('ERROR: could not play:', source.toLocal8Bit().data())
-                print ('  %s' % self.mediaObject.errorString().toLocal8Bit().data())
-
-
-    def setupActions(self):
-
-            self.playAction = QtGui.QAction(QtGui.QIcon("play.jpg"), self.tr("Play"), self)
-            #self.playAction.setShortcut(self.tr("Crl+P"))
-            self.playAction.setDisabled(True)
-
-            self.pauseAction = QtGui.QAction(QtGui.QIcon("pause.jpg"), self.tr("Pause"), self)
-            self.pauseAction.setShortcut(self.tr("space"))
-            self.pauseAction.setDisabled(True)
-
-            self.stopAction = QtGui.QAction(QtGui.QIcon("stop.jpg"), self.tr("Stop"), self)
-            #self.stopAction.setShortcut(self.tr("Ctrl+S"))
-            self.stopAction.setDisabled(True)
-
-            self.loadAction = QtGui.QAction(QtGui.QIcon("load.jpg"), self.tr("Load"), self)
-            #self.loadAction.setShortcut(self.tr("Ctrl+L"))
-            self.loadAction.setDisabled(False)
-
-            self.deleteAction = QtGui.QAction(QtGui.QIcon("delete.jpg"), self.tr("Delete"), self)
-            #self.loadAction.setShortcut(self.tr("Ctrl+L"))
-            self.loadAction.setDisabled(False)
-
-            self.screenshotAction = QtGui.QAction(QtGui.QIcon("screenshot.jpg"), self.tr("screenshot"), self)
-            #self.loadAction.setShortcut(self.tr("Ctrl+L"))
-            self.screenshotAction.setDisabled(False)
-
-            self.saveAction = QtGui.QAction(QtGui.QIcon("save.png"), self.tr("save"), self)
-            #self.loadAction.setShortcut(self.tr("Ctrl+L"))
-            self.saveAction.setDisabled(False)
-
-            self.fullAction = QtGui.QAction(QtGui.QIcon("fullscreen.jpg"),self.tr("Full screen"), self)
-            self.saveAction.setDisabled(False)
-            self.fullAction.setShortcut(self.tr("Ctrl+F11"))
-
-            self.connect(self.playAction, QtCore.SIGNAL('triggered()'),self.mediaObject, QtCore.SLOT('play()'))
-            self.connect(self.pauseAction, QtCore.SIGNAL('triggered()'),self.mediaObject, QtCore.SLOT('pause()'))
-            self.connect(self.stopAction, QtCore.SIGNAL('triggered()'),self.mediaObject, QtCore.SLOT('stop()'))
-            self.connect(self.loadAction, QtCore.SIGNAL('triggered()'), self.handleButton)
-            self.connect(self.deleteAction, QtCore.SIGNAL('triggered()'), self.deleteLater)
-            self.connect(self.screenshotAction, QtCore.SIGNAL('triggered()'), self.screenshot)
-            self.connect(self.saveAction, QtCore.SIGNAL('triggered()'), self.saveFiles)
-            self.connect(self.fullAction, QtCore.SIGNAL('triggered()'), self.full)
 
 
 if __name__ == "__main__":

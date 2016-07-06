@@ -362,6 +362,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Box_Size_spinBox.setObjectName("Box_Size_spinBox")
         self.verticalLayout_2.addWidget(self.Box_Size_spinBox)
         self.gridLayout.addLayout(self.verticalLayout_2, 7, 4, 1, 1)
+
         self.Display_scrollArea = QtGui.QScrollArea(self.centralWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -370,6 +371,8 @@ class MainWindow(QtGui.QMainWindow):
         self.Display_scrollArea.setSizePolicy(sizePolicy)
         self.Display_scrollArea.setAutoFillBackground(True)
         self.Display_scrollArea.setFrameShadow(QtGui.QFrame.Sunken)
+
+        #self.Display_scrollArea.setSizePolicy(QtGui.QSizePolicy.Ignored,QtGui.QSizePolicy.Ignored)
 
         #self.Display_scrollArea.setSizeAdjustPolicy(QtGui.QAbstractScrollArea.AdjustIgnored)
 
@@ -713,7 +716,7 @@ class MainWindow(QtGui.QMainWindow):
 
 
     def closeEvent(self, event):  # make sure the close is the accident
-        reply
+
         reply = QtGui.QMessageBox.question(self, 'Warning',
             "Are you sure to quit?", QtGui.QMessageBox.Yes |
             QtGui.QMessageBox.No, QtGui.QMessageBox.No)
