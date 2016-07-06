@@ -23,55 +23,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MTracker.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MTracker.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MTracker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5833333" vertical-offset="17725" max-vertical-offset="19020">
-              <caret line="1863" column="21" selection-start-line="1863" selection-start-column="21" selection-end-line="1863" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="15797" max-vertical-offset="17025">
+              <caret line="1837" column="0" selection-start-line="1837" selection-start-column="0" selection-end-line="1837" selection-end-column="0" />
               <folding>
                 <element signature="e#558#568#0" expanded="true" />
-                <element signature="e#36736#37162#0" expanded="false" />
-                <element signature="e#37245#37531#0" expanded="false" />
-                <element signature="e#37975#38475#0" expanded="false" />
-                <element signature="e#38777#39614#0" expanded="false" />
-                <element signature="e#40067#41613#0" expanded="false" />
-                <element signature="e#41948#42737#0" expanded="false" />
-                <element signature="e#43094#44766#0" expanded="false" />
-                <element signature="e#45128#46805#0" expanded="false" />
-                <element signature="e#52385#52524#0" expanded="false" />
-                <element signature="e#53726#54176#0" expanded="false" />
-                <element signature="e#55451#56757#0" expanded="false" />
-                <element signature="e#57074#57645#0" expanded="false" />
-                <element signature="e#57972#58449#0" expanded="false" />
-                <element signature="e#58782#59259#0" expanded="false" />
-                <element signature="e#59592#60069#0" expanded="false" />
-                <element signature="e#60402#60879#0" expanded="false" />
-                <element signature="e#61212#61689#0" expanded="false" />
-                <element signature="e#62022#62499#0" expanded="false" />
-                <element signature="e#62808#63238#0" expanded="false" />
-                <element signature="e#63542#63978#0" expanded="false" />
-                <element signature="e#64299#64424#0" expanded="false" />
-                <element signature="e#64721#66301#0" expanded="false" />
-                <element signature="e#66644#68457#0" expanded="false" />
-                <element signature="e#68752#69185#0" expanded="false" />
-                <element signature="e#69493#71824#0" expanded="false" />
-                <element signature="e#72031#73526#0" expanded="false" />
-                <element signature="e#73564#73643#0" expanded="false" />
-                <element signature="e#73835#74753#0" expanded="false" />
-                <element signature="e#75163#83109#0" expanded="false" />
+                <element signature="e#36786#37212#0" expanded="false" />
+                <element signature="e#37295#37581#0" expanded="false" />
+                <element signature="e#38025#38525#0" expanded="false" />
+                <element signature="e#38827#39664#0" expanded="false" />
+                <element signature="e#40117#41663#0" expanded="false" />
+                <element signature="e#41998#42787#0" expanded="false" />
+                <element signature="e#43144#44816#0" expanded="false" />
+                <element signature="e#45178#46855#0" expanded="false" />
+                <element signature="e#47199#49452#0" expanded="false" />
+                <element signature="e#49799#52054#0" expanded="false" />
+                <element signature="e#52435#52574#0" expanded="false" />
+                <element signature="e#53776#54226#0" expanded="false" />
+                <element signature="e#55501#56807#0" expanded="false" />
+                <element signature="e#57124#57695#0" expanded="false" />
+                <element signature="e#58022#58499#0" expanded="false" />
+                <element signature="e#58832#59309#0" expanded="false" />
+                <element signature="e#59642#60119#0" expanded="false" />
+                <element signature="e#60452#60929#0" expanded="false" />
+                <element signature="e#61262#61739#0" expanded="false" />
+                <element signature="e#62072#62549#0" expanded="false" />
+                <element signature="e#62858#63288#0" expanded="false" />
+                <element signature="e#63592#64028#0" expanded="false" />
+                <element signature="e#64349#64474#0" expanded="false" />
+                <element signature="e#64771#66351#0" expanded="false" />
+                <element signature="e#66694#68507#0" expanded="false" />
+                <element signature="e#68802#69235#0" expanded="false" />
+                <element signature="e#69543#71874#0" expanded="false" />
+                <element signature="e#72081#73576#0" expanded="false" />
+                <element signature="e#73614#73693#0" expanded="false" />
+                <element signature="e#73885#74803#0" expanded="false" />
+                <element signature="e#75213#83159#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MTrack_Qt.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MTrack_Qt.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.730769" vertical-offset="14128" max-vertical-offset="26385">
-              <caret line="1016" column="32" selection-start-line="1016" selection-start-column="32" selection-end-line="1016" selection-end-column="56" />
-              <folding>
-                <element signature="e#34437#36222#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.4203233" vertical-offset="10108" max-vertical-offset="27135">
+              <caret line="695" column="0" selection-start-line="695" selection-start-column="0" selection-end-line="695" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,8 +93,8 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/DisplayLabel.py" />
         <option value="$PROJECT_DIR$/MTrack.py" />
-        <option value="$PROJECT_DIR$/test1.py" />
         <option value="$PROJECT_DIR$/MTrack_Qt.py" />
+        <option value="$PROJECT_DIR$/test1.py" />
         <option value="$PROJECT_DIR$/MTracker.py" />
       </list>
     </option>
@@ -131,7 +131,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -152,6 +151,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -173,7 +173,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.MTracker">
+  <component name="RunManager" selected="Python.MTrack_Qt">
     <configuration default="false" name="MTrack_Qt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -396,8 +396,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.MTracker" />
-        <item index="1" class="java.lang.String" itemvalue="Python.MTrack_Qt" />
+        <item index="0" class="java.lang.String" itemvalue="Python.MTrack_Qt" />
+        <item index="1" class="java.lang.String" itemvalue="Python.MTracker" />
         <item index="2" class="java.lang.String" itemvalue="Python.test1" />
         <item index="3" class="java.lang.String" itemvalue="Python.testresize" />
         <item index="4" class="java.lang.String" itemvalue="Python.InfoDialog" />
@@ -461,6 +461,55 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/MTracker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15889" max-vertical-offset="17400">
+          <caret line="1843" column="0" selection-start-line="1843" selection-start-column="0" selection-end-line="1843" selection-end-column="0" />
+          <folding>
+            <element signature="e#558#568#0" expanded="true" />
+            <element signature="e#36786#37212#0" expanded="false" />
+            <element signature="e#37295#37581#0" expanded="false" />
+            <element signature="e#38025#38525#0" expanded="false" />
+            <element signature="e#38827#39664#0" expanded="false" />
+            <element signature="e#40117#41663#0" expanded="false" />
+            <element signature="e#41998#42787#0" expanded="false" />
+            <element signature="e#43144#44816#0" expanded="false" />
+            <element signature="e#45178#46855#0" expanded="false" />
+            <element signature="e#47199#49452#0" expanded="false" />
+            <element signature="e#49799#52054#0" expanded="false" />
+            <element signature="e#52435#52574#0" expanded="false" />
+            <element signature="e#53776#54226#0" expanded="false" />
+            <element signature="e#55501#56807#0" expanded="false" />
+            <element signature="e#57124#57695#0" expanded="false" />
+            <element signature="e#58022#58499#0" expanded="false" />
+            <element signature="e#58832#59309#0" expanded="false" />
+            <element signature="e#59642#60119#0" expanded="false" />
+            <element signature="e#60452#60929#0" expanded="false" />
+            <element signature="e#61262#61739#0" expanded="false" />
+            <element signature="e#62072#62549#0" expanded="false" />
+            <element signature="e#62858#63288#0" expanded="false" />
+            <element signature="e#63592#64028#0" expanded="false" />
+            <element signature="e#64349#64474#0" expanded="false" />
+            <element signature="e#64771#66351#0" expanded="false" />
+            <element signature="e#66694#68507#0" expanded="false" />
+            <element signature="e#68802#69235#0" expanded="false" />
+            <element signature="e#69543#71874#0" expanded="false" />
+            <element signature="e#72081#73576#0" expanded="false" />
+            <element signature="e#73614#73693#0" expanded="false" />
+            <element signature="e#73885#74803#0" expanded="false" />
+            <element signature="e#75213#83159#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3420" max-vertical-offset="3510">
+          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="2580">
@@ -521,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6810" max-vertical-offset="24480">
-          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11010">
@@ -540,13 +582,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="23771" max-vertical-offset="24735">
           <caret line="1595" column="0" selection-start-line="1595" selection-start-column="0" selection-end-line="1595" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6810" max-vertical-offset="24480">
-          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -565,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6810" max-vertical-offset="24480">
-          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11010">
@@ -587,13 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6810" max-vertical-offset="24480">
-          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11010">
@@ -609,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6810" max-vertical-offset="24480">
-          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11010">
@@ -628,13 +642,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="24735">
           <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6810" max-vertical-offset="24480">
-          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -653,13 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6495" max-vertical-offset="24480">
-          <caret line="450" column="20" selection-start-line="450" selection-start-column="20" selection-end-line="450" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11010">
@@ -675,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6495" max-vertical-offset="24480">
-          <caret line="450" column="20" selection-start-line="450" selection-start-column="20" selection-end-line="450" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11010">
@@ -694,13 +687,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="23736" max-vertical-offset="24720">
           <caret line="1594" column="60" selection-start-line="1594" selection-start-column="41" selection-end-line="1594" selection-end-column="60" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6495" max-vertical-offset="24480">
-          <caret line="450" column="20" selection-start-line="450" selection-start-column="20" selection-end-line="450" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -769,20 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testresize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29273084" vertical-offset="106" max-vertical-offset="825">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyqtresizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.978389" vertical-offset="1516" max-vertical-offset="2115">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ColorLabel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
@@ -790,25 +762,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2100">
-          <caret line="134" column="132" selection-start-line="134" selection-start-column="132" selection-end-line="134" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4364896" vertical-offset="951" max-vertical-offset="11115">
           <caret line="77" column="19" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4457275" vertical-offset="16052" max-vertical-offset="24390">
-          <caret line="1089" column="26" selection-start-line="1089" selection-start-column="26" selection-end-line="1089" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -821,52 +778,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
+    <entry file="file://$PROJECT_DIR$/test1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.730769" vertical-offset="14128" max-vertical-offset="26385">
-          <caret line="1016" column="32" selection-start-line="1016" selection-start-column="32" selection-end-line="1016" selection-end-column="56" />
-          <folding>
-            <element signature="e#34437#36222#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3510">
+          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MTracker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5833333" vertical-offset="17725" max-vertical-offset="19020">
-          <caret line="1863" column="21" selection-start-line="1863" selection-start-column="21" selection-end-line="1863" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="15632" max-vertical-offset="17025">
+          <caret line="1837" column="0" selection-start-line="1837" selection-start-column="0" selection-end-line="1837" selection-end-column="0" />
           <folding>
             <element signature="e#558#568#0" expanded="true" />
-            <element signature="e#36736#37162#0" expanded="false" />
-            <element signature="e#37245#37531#0" expanded="false" />
-            <element signature="e#37975#38475#0" expanded="false" />
-            <element signature="e#38777#39614#0" expanded="false" />
-            <element signature="e#40067#41613#0" expanded="false" />
-            <element signature="e#41948#42737#0" expanded="false" />
-            <element signature="e#43094#44766#0" expanded="false" />
-            <element signature="e#45128#46805#0" expanded="false" />
-            <element signature="e#52385#52524#0" expanded="false" />
-            <element signature="e#53726#54176#0" expanded="false" />
-            <element signature="e#55451#56757#0" expanded="false" />
-            <element signature="e#57074#57645#0" expanded="false" />
-            <element signature="e#57972#58449#0" expanded="false" />
-            <element signature="e#58782#59259#0" expanded="false" />
-            <element signature="e#59592#60069#0" expanded="false" />
-            <element signature="e#60402#60879#0" expanded="false" />
-            <element signature="e#61212#61689#0" expanded="false" />
-            <element signature="e#62022#62499#0" expanded="false" />
-            <element signature="e#62808#63238#0" expanded="false" />
-            <element signature="e#63542#63978#0" expanded="false" />
-            <element signature="e#64299#64424#0" expanded="false" />
-            <element signature="e#64721#66301#0" expanded="false" />
-            <element signature="e#66644#68457#0" expanded="false" />
-            <element signature="e#68752#69185#0" expanded="false" />
-            <element signature="e#69493#71824#0" expanded="false" />
-            <element signature="e#72031#73526#0" expanded="false" />
-            <element signature="e#73564#73643#0" expanded="false" />
-            <element signature="e#73835#74753#0" expanded="false" />
-            <element signature="e#75163#83109#0" expanded="false" />
+            <element signature="e#36786#37212#0" expanded="false" />
+            <element signature="e#37295#37581#0" expanded="false" />
+            <element signature="e#38025#38525#0" expanded="false" />
+            <element signature="e#38827#39664#0" expanded="false" />
+            <element signature="e#40117#41663#0" expanded="false" />
+            <element signature="e#41998#42787#0" expanded="false" />
+            <element signature="e#43144#44816#0" expanded="false" />
+            <element signature="e#45178#46855#0" expanded="false" />
+            <element signature="e#47199#49452#0" expanded="false" />
+            <element signature="e#49799#52054#0" expanded="false" />
+            <element signature="e#52435#52574#0" expanded="false" />
+            <element signature="e#53776#54226#0" expanded="false" />
+            <element signature="e#55501#56807#0" expanded="false" />
+            <element signature="e#57124#57695#0" expanded="false" />
+            <element signature="e#58022#58499#0" expanded="false" />
+            <element signature="e#58832#59309#0" expanded="false" />
+            <element signature="e#59642#60119#0" expanded="false" />
+            <element signature="e#60452#60929#0" expanded="false" />
+            <element signature="e#61262#61739#0" expanded="false" />
+            <element signature="e#62072#62549#0" expanded="false" />
+            <element signature="e#62858#63288#0" expanded="false" />
+            <element signature="e#63592#64028#0" expanded="false" />
+            <element signature="e#64349#64474#0" expanded="false" />
+            <element signature="e#64771#66351#0" expanded="false" />
+            <element signature="e#66694#68507#0" expanded="false" />
+            <element signature="e#68802#69235#0" expanded="false" />
+            <element signature="e#69543#71874#0" expanded="false" />
+            <element signature="e#72081#73576#0" expanded="false" />
+            <element signature="e#73614#73693#0" expanded="false" />
+            <element signature="e#73885#74803#0" expanded="false" />
+            <element signature="e#75213#83159#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4203233" vertical-offset="10108" max-vertical-offset="27135">
+          <caret line="695" column="0" selection-start-line="695" selection-start-column="0" selection-end-line="695" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

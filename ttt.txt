@@ -1,1 +1,0 @@
-FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle
