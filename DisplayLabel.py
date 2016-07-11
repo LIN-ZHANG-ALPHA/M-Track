@@ -240,18 +240,17 @@ class DisplayLabel(QLabel):
             img = self.crop_image(img)
             self.current_img = img # Define current image
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            img = cv2.resize(img, (0,0), fx = self.zoom, fy = self.zoom)
+
+            img = cv2.resize(img, None, fx = self.zoom*1, fy = self.zoom*1,interpolation=cv2.INTER_CUBIC)
             qimg = QtGui.QImage(img.data , img.shape[1], img.shape[0], img.shape[1]*3, QtGui.QImage.Format_RGB888)
             p1 = QtGui.QPixmap.fromImage(qimg)
         else:
             self.current_img = img
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            img = cv2.resize(img, (0,0), fx = self.zoom, fy = self.zoom)
+            #img = cv2.resize(img, (0,0), fx = self.zoom, fy = self.zoom)
+            img = cv2.resize(img, None, fx = self.zoom*1, fy = self.zoom*1,interpolation=cv2.INTER_CUBIC)
             qimg = QtGui.QImage(img.data,img.shape[1], img.shape[0],img.shape[1]*3, QtGui.QImage.Format_RGB888)
             p1 = QtGui.QPixmap.fromImage(qimg)
-
-
-
         self.setPixmap(p1)
 
     # Inline Member Method: crop_image
@@ -274,3 +273,14 @@ class DisplayLabel(QLabel):
             rotated = cv2.warpAffine(img, rot_M, (self.img_width, self.img_height))
             img = cv2.getRectSubPix(rotated, (int(cage_width), int(cage_height)),(cage_midx, cage_midy))
             return img
+
+    # resclae image
+    def scaleImage(self, factor):
+        self.scaleFactor *= factor
+        self.imageLabel.resize(self.scaleFactor * self.imageLabel.pixmap().size())
+
+        self.adjustScrollBar(self.scrollArea.horizontalScrollBar(), factor)
+        self.adjustScrollBar(self.scrollArea.verticalScrollBar(), factor)
+
+        self.zoomInAct.setEnabled(self.scaleFactor < 3.0)
+        self.zoomOutAct.setEnabled(self.scaleFactor > 0.333)

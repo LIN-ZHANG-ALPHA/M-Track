@@ -92,20 +92,14 @@ class MainWindow(QtGui.QMainWindow):
 
         self.centralWidget = QtGui.QWidget(QtMouseTracker)
         self.centralWidget.setObjectName("centralWidget")
-        self.centralWidget.setMinimumSize(900,800)
+        self.centralWidget.setMinimumSize(900,600)
 
-
-
-        #self.centralWidget.setMaximumWidth(self.centralWidget.sizeHint())
-        #self.centralWidget.setFixedSize(self.centralWidget.sizeHint())
-        #self.centralWidget.set
-        #self.sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding,     QtGui.QSizePolicy.Expanding)
-
-
+        self.scaleFactor = 0.0
 
 
         self.gridLayout = QtGui.QGridLayout(self.centralWidget)
         self.gridLayout.setContentsMargins(11, 11, 11, 11)
+
         self.gridLayout.setSpacing(6)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtGui.QVBoxLayout()
@@ -214,18 +208,24 @@ class MainWindow(QtGui.QMainWindow):
         self.label_7 = QtGui.QLabel(self.centralWidget)
         self.label_7.setObjectName("label_7")
         self.verticalLayout_3.addWidget(self.label_7)
+
         self.label_8 = QtGui.QLabel(self.centralWidget)
         self.label_8.setObjectName("label_8")
         self.verticalLayout_3.addWidget(self.label_8)
         self.gridLayout.addLayout(self.verticalLayout_3, 7, 0, 1, 1)
+
         self.NoiseReduction_checkBox = QtGui.QCheckBox(self.centralWidget)
         self.NoiseReduction_checkBox.setObjectName("NoiseReduction_checkBox")
-        self.gridLayout.addWidget(self.NoiseReduction_checkBox, 8, 2, 1, 2)
+        self.gridLayout.addWidget(self.NoiseReduction_checkBox, 9, 2, 1, 2)
+
+        # seperate line
         self.line_2 = QtGui.QFrame(self.centralWidget)
         self.line_2.setFrameShape(QtGui.QFrame.HLine)
         self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.gridLayout.addWidget(self.line_2, 3, 0, 1, 5)
+
+        ############################################################################################################
         self.Zoom_ScrollBar = QtGui.QScrollBar(self.centralWidget)
         self.Zoom_ScrollBar.setEnabled(True)
         self.Zoom_ScrollBar.setMinimum(0)
@@ -233,8 +233,10 @@ class MainWindow(QtGui.QMainWindow):
         self.Zoom_ScrollBar.setSingleStep(1)
         self.Zoom_ScrollBar.setProperty("value", 10)
         self.Zoom_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
+
         self.Zoom_ScrollBar.setObjectName("Zoom_ScrollBar")
-        self.gridLayout.addWidget(self.Zoom_ScrollBar, 12, 1, 1, 3)
+        self.gridLayout.addWidget(self.Zoom_ScrollBar, 14, 1, 1, 3)
+
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setContentsMargins(11, 11, 11, 11)
         self.horizontalLayout_4.setSpacing(6)
@@ -284,24 +286,28 @@ class MainWindow(QtGui.QMainWindow):
         self.Selector_scrollArea.setObjectName("Selector_scrollArea")
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
         self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 48))
+
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
-        self.gridLayout.addWidget(self.Selector_scrollArea, 9, 0, 1, 5)
+        self.gridLayout.addWidget(self.Selector_scrollArea, 11, 0, 1, 5)
+
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
         self.deNoise_Val_spinBox.setMinimum(1)
         self.deNoise_Val_spinBox.setMaximum(100)
         self.deNoise_Val_spinBox.setObjectName("deNoise_Val_spinBox")
-
-
-        self.gridLayout.addWidget(self.deNoise_Val_spinBox, 11, 4, 1, 1)
+        self.gridLayout.addWidget(self.deNoise_Val_spinBox, 13, 4, 1, 1)
         self.Stop_pushButton = QtGui.QPushButton(self.centralWidget)
         self.Stop_pushButton.setObjectName("Stop_pushButton")
         self.gridLayout.addWidget(self.Stop_pushButton, 4, 4, 1, 1)
+
+        # separate line
         self.line_4 = QtGui.QFrame(self.centralWidget)
         self.line_4.setFrameShape(QtGui.QFrame.HLine)
         self.line_4.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.gridLayout.addWidget(self.line_4, 5, 0, 1, 5)
+
+
         self.verticalLayout_2 = QtGui.QVBoxLayout()
         self.verticalLayout_2.setContentsMargins(11, 11, 11, 11)
         self.verticalLayout_2.setSpacing(6)
@@ -363,6 +369,8 @@ class MainWindow(QtGui.QMainWindow):
         self.verticalLayout_2.addWidget(self.Box_Size_spinBox)
         self.gridLayout.addLayout(self.verticalLayout_2, 7, 4, 1, 1)
 
+
+
         self.Display_scrollArea = QtGui.QScrollArea(self.centralWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -393,26 +401,43 @@ class MainWindow(QtGui.QMainWindow):
         self.deNoise_Val_ScrollBar.setMaximum(100)
         self.deNoise_Val_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
         self.deNoise_Val_ScrollBar.setObjectName("deNoise_Val_ScrollBar")
-        self.gridLayout.addWidget(self.deNoise_Val_ScrollBar, 11, 1, 1, 3)
+        self.gridLayout.addWidget(self.deNoise_Val_ScrollBar, 13, 1, 1, 3)
+
         self.label_12 = QtGui.QLabel(self.centralWidget)
         self.label_12.setObjectName("label_12")
-        self.gridLayout.addWidget(self.label_12, 12, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_12, 14, 0, 1, 1)
+
         self.label_9 = QtGui.QLabel(self.centralWidget)
         self.label_9.setObjectName("label_9")
-        self.gridLayout.addWidget(self.label_9, 11, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_9, 13, 0, 1, 1)
+
+        # bottom seperate line
         self.line_3 = QtGui.QFrame(self.centralWidget)
         self.line_3.setFrameShape(QtGui.QFrame.HLine)
         self.line_3.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
-        self.gridLayout.addWidget(self.line_3, 10, 0, 1, 5)
+        self.gridLayout.addWidget(self.line_3, 12, 0, 1, 5)
+
+        # first seperate line
         self.line = QtGui.QFrame(self.centralWidget)
         self.line.setFrameShape(QtGui.QFrame.HLine)
         self.line.setFrameShadow(QtGui.QFrame.Sunken)
         self.line.setObjectName("line")
         self.gridLayout.addWidget(self.line, 1, 0, 1, 5)
+
+
+        # my add separate line
+        self.line_5 = QtGui.QFrame(self.centralWidget)
+        self.line_5.setFrameShape(QtGui.QFrame.HLine)
+        self.line_5.setFrameShadow(QtGui.QFrame.Sunken)
+        self.line_5.setObjectName("line_5")
+        self.gridLayout.addWidget(self.line_5, 8, 0, 1, 5)
+
+
         self.Collision_checkBox = QtGui.QCheckBox(self.centralWidget)
         self.Collision_checkBox.setObjectName("Collision_checkBox")
-        self.gridLayout.addWidget(self.Collision_checkBox, 8, 0, 1, 2)
+        self.gridLayout.addWidget(self.Collision_checkBox, 9, 0, 1, 2)
+
         self.Execute_pushButton = QtGui.QPushButton(self.centralWidget)
         self.Execute_pushButton.setObjectName("Execute_pushButton")
         self.gridLayout.addWidget(self.Execute_pushButton, 4, 2, 1, 2)
@@ -440,10 +465,12 @@ class MainWindow(QtGui.QMainWindow):
         self.Selector_scrollArea.raise_()
         self.Zoom_ScrollBar.raise_()
         self.label_12.raise_()
-        self.line.raise_()
-        self.line_2.raise_()
-        self.line_3.raise_()
-        self.line_4.raise_()
+
+        # self.line.raise_()
+        # self.line_2.raise_()
+        # self.line_3.raise_()
+        # self.line_4.raise_()
+
         self.Execute_pushButton.raise_()
         self.Stop_pushButton.raise_()
         QtMouseTracker.setCentralWidget(self.centralWidget)
@@ -483,7 +510,6 @@ class MainWindow(QtGui.QMainWindow):
         #   Buttons
         self.Load_pushButton.clicked.connect(self.buttonAction_loadVideo)
         #self.Load_pushButton.clicked.connect(self.refresh)
-
         #self.connect(self.Load_pushButton, QtCore.SIGNAL("released()"), self.restart)
 
 
@@ -682,6 +708,7 @@ class MainWindow(QtGui.QMainWindow):
         # print self.img_width
 
         self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+        #self.displayLabel.resize(self.img_width+25, self.img_height+20)
         #self.displayLabel.setFixedSize(self.sizeHint())
 
         self.displayLabel.setText("")
@@ -690,41 +717,21 @@ class MainWindow(QtGui.QMainWindow):
         self.displayLabel.setMouseTracking(True)
         self.Display_scrollArea.setWidget(self.displayLabel)
 
+
         # Display first image
-
         self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
-
+        #self.displayLabel.display_image(self.Testimage, False, self.zoom)
         # show HSV information
 
-        hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
-        #print 'HHH',hsvImage
-        #print hsvImage[1][1]
-        cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
-        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+        # hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
+        # #print 'HHH',hsvImage
+        # #print hsvImage[1][1]
+        # cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
+        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
 
         self.parent_img = self.Tracker.first_frame
-        #self.displayLabel.resize(self.img_height,self.img_width)
-
-    def resizeEvent(self, event):
-        scaledSize = self.Tracker.first_frame.shape
-        print scaledSize
-        #scaledSize = self.originalPixmap.size()
-        scaledSize.scale(self.centralWidget.size(),QtCore.Qt.KeepAspectRatio)
-        #scaledSize.scale(self.screenshotLabel.size(), QtCore.Qt.KeepAspectRatio)
-        if not self.screenshotLabel.pixmap() or scaledSize != self.screenshotLabel.pixmap().size():
-                    self.updateScreenshotLabel()
 
 
-    def closeEvent(self, event):  # make sure the close is the accident
-
-        reply = QtGui.QMessageBox.question(self, 'Warning',
-            "Are you sure to quit?", QtGui.QMessageBox.Yes |
-            QtGui.QMessageBox.No, QtGui.QMessageBox.No)
-
-        if reply == QtGui.QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
 
     # Inline Member Method: buttonAction_savePath
     # Method that allows the user to select save directory
@@ -773,6 +780,9 @@ class MainWindow(QtGui.QMainWindow):
         self.displayLabel.setMouseTracking(True)
         self.Display_scrollArea.setWidget(self.displayLabel)
 
+
+        #self.Display_scrollArea.setWidget(self.roiLabel)
+
         # Display first image
         self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
 
@@ -819,8 +829,8 @@ class MainWindow(QtGui.QMainWindow):
         # Disable mouse selector
         # self.mouse_num_selector.setEnabled(False)
         # self.mouse_num_selector.setDisabled(True)
-        self.mouse_num_selector.setEnabled(True)
-        self.mouse_num_selector.setDisabled(False)
+        self.mouse_num_selector.setEnabled(False)
+        self.mouse_num_selector.setDisabled(True)
 
 
         # Disable View Mode Selector
@@ -832,6 +842,8 @@ class MainWindow(QtGui.QMainWindow):
         self.Zoom_ScrollBar.setDisabled(False)
 
         self.dialog.infoDialog("Draw a box around the cage")
+
+
 
     # Inline Member Method: buttonAction_detectMice
     # Method to execute mouse detection on current frame only
@@ -873,6 +885,7 @@ class MainWindow(QtGui.QMainWindow):
     def buttonAction_detectLeftFeet(self):
         img = self.parent_img.copy()
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+        #print "Left ",img[1][1]
 
         # De-noise
         if self.Tracker.noiseReduction_on is True:
@@ -883,6 +896,11 @@ class MainWindow(QtGui.QMainWindow):
             self.mouse_count), mouse_box_list)
 
         img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
+        #print "Left ",img[1][1]
+
+
+
+
         if self.viewMode != 'Original' and self.viewMode != 'HSV':
             mask = self.getColorMask(img)
             img = cv2.bitwise_and(img, img, mask=mask)
@@ -908,6 +926,9 @@ class MainWindow(QtGui.QMainWindow):
         # Insert cropped images
         self.Tracker.insert_images(mouse_box_list, crop_list, img)
 
+        cv2.putText(img, "Left Foot HSV: {}".format(img[1][1]), (10, 20),
+        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+
         self.displayLabel.display_image(img, False, self.zoom)
 
     # Inline Member Method: buttonAction_detectRightFeet
@@ -920,6 +941,7 @@ class MainWindow(QtGui.QMainWindow):
     def buttonAction_detectRightFeet(self):
         img = self.parent_img.copy()
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+        #print "Right ",img[1][1]
 
         # De-Noise
         if self.Tracker.noiseReduction_on is True:
@@ -930,6 +952,8 @@ class MainWindow(QtGui.QMainWindow):
             self.mouse_count), mouse_box_list)
 
         img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
+
+
         if self.viewMode != 'Original' and self.viewMode != 'HSV':
             mask = self.getColorMask(img)
             img = cv2.bitwise_and(img, img, mask=mask)
@@ -990,6 +1014,12 @@ class MainWindow(QtGui.QMainWindow):
 
         img = self.parent_img.copy()
 
+        #hsvImage = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        #print 'HHH',hsvImage
+        # print "LF_ROI",hsvImage[1][1]
+        # cv2.putText(img, "LF_HSV: {}".format(hsvImage[1][1]), (10, 20),
+        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+
         # Noise Reduction
         if self.Tracker.noiseReduction_on is True:
             img = cv2.fastNlMeansDenoisingColored(img, h=self.Tracker.deNoise_val)
@@ -1000,6 +1030,8 @@ class MainWindow(QtGui.QMainWindow):
 
         # Crop
         crop_list = self.Tracker.crop_images(img, box_list)
+        #print "croplist", crop_list
+
 
         # When scrollarea widget is reassigned to roiLabel object, the displayLabel object is destroyed
         # All valuable information from displayLabel must be backed up
@@ -1008,12 +1040,17 @@ class MainWindow(QtGui.QMainWindow):
 
         # Initialize roiLabel
         self.roiLabel = RoiLabel(self.mouse_count, crop_list, self.Tracker, self.zoom, QtInstance, 'left')
+        #print "roiLable1", self.roiLabel
+
         self.roiLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
 
         self.roiLabel.setText("")
         self.roiLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.roiLabel.setObjectName("roiLabel")
         self.roiLabel.setMouseTracking(True)
+
+
+
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
 
     # Inline Member Method: buttonAction_draw_RF_roi
@@ -1048,6 +1085,11 @@ class MainWindow(QtGui.QMainWindow):
         self.View_Mode_comboBox.setDisabled(True)
 
         img = self.parent_img.copy()
+        # hsvImage = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        # #print 'HHH',hsvImage
+        # print "RF_ROI",hsvImage[1][1]
+        # cv2.putText(img, "RF_HSV: {}".format(hsvImage[1][1]), (10, 20),
+        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
 
         # Noise Reduction
         if self.Tracker.noiseReduction_on is True:
@@ -1057,8 +1099,10 @@ class MainWindow(QtGui.QMainWindow):
         box_list, center_point_list = self.Tracker.detect_mice(img, int(self.mouse_count))
 
 
+
         # Crop
         crop_list = self.Tracker.crop_images(img, box_list)
+        #print crop_list
 
         # When scrollarea widget is reassigned to roiLabel object, the displayLabel object is destroyed
         # All valuable information from displayLabel must be backed up
@@ -1202,7 +1246,11 @@ class MainWindow(QtGui.QMainWindow):
     # Created by Sheldon Reeves on 6/24/15.
     # Language: Python 2.7
     def sliderUpdate_Zoom(self):
-        self.zoom = self.Zoom_ScrollBar.value() / 10
+        self.zoom = self.Zoom_ScrollBar.value() /10
+
+        self.zoom = 0.6*self.zoom
+
+        #print "zoom", self.zoom
         try:
             if self.Display_scrollArea.widget() == self.displayLabel:
                 self.displayLabel.zoom = self.zoom  # Update Zoom
@@ -1365,7 +1413,8 @@ class MainWindow(QtGui.QMainWindow):
     # Postcondition:
     #       -boxSize updated
     # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # Language: Python 3.4
+    #
     def sliderUpdate_boxSize(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_minBoxSize = self.Box_Size_ScrollBar.value()
@@ -1489,7 +1538,7 @@ class MainWindow(QtGui.QMainWindow):
     # Precondition: Selector image unchanged
     # Postcondition: Selector Image updated
     # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # Language: Python 3.4
     def updateSelectorImage(self):
         self.Tracker.generate_selector_images()
         if self.viewMode == 'Body Color Mask':
@@ -1507,6 +1556,7 @@ class MainWindow(QtGui.QMainWindow):
     # Postcondition: Slider positions updated
     # Created by Sheldon Reeves on 6/24/15.
     # Language: Python 2.7
+
     def setControlValues(self):
         if self.viewMode == 'Body Color Mask':
             self.L_Hue_ScrollBar.setValue(self.Tracker.body_color_lower_hue)
@@ -1577,7 +1627,6 @@ class MainWindow(QtGui.QMainWindow):
 
     def restartGame(self):
         self.clear()
-
         subprocess.call("python" + " MTracker_Qt.py", shell=True)
 
 
@@ -1785,7 +1834,15 @@ class MainWindow(QtGui.QMainWindow):
         self.displayImage(orig_img, False)
         self.timer.start()
 
+    def scaleImage(self, factor):
+        self.scaleFactor *= factor
+        self.imageLabel.resize(self.scaleFactor * self.imageLabel.pixmap().size())
 
+        self.adjustScrollBar(self.scrollArea.horizontalScrollBar(), factor)
+        self.adjustScrollBar(self.scrollArea.verticalScrollBar(), factor)
+
+        self.zoomInAct.setEnabled(self.scaleFactor < 3.0)
+        self.zoomOutAct.setEnabled(self.scaleFactor > 0.333)
 
 if __name__ == "__main__":
 

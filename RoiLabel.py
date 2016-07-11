@@ -79,10 +79,12 @@ class RoiLabel(QLabel):
         if self.list_complete is False:
             if self.left_click is True:
                 copy = self.crop_list[self.roi_count].copy()
+
                 cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
                               (255, 255, 255), 2)
                 self.display_image(copy, self.zoom)
+
             QWidget.mouseMoveEvent(self, eventQMouseEvent)
 
     # Overridden Inline Member Method: mouseReleaseEvent
@@ -208,6 +210,7 @@ class RoiLabel(QLabel):
         img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = cv2.resize(img, (0, 0), fx=self.zoom, fy=self.zoom)
+        #img = cv2.resize(img, None, fx = self.zoom*0.6, fy = self.zoom*0.6,interpolation=cv2.INTER_CUBIC)
         qimg = QtGui.QImage(img.data, img.shape[1], img.shape[0], img.shape[1] * 3, QtGui.QImage.Format_RGB888)
         p1 = QtGui.QPixmap.fromImage(qimg)
         self.setPixmap(p1)
