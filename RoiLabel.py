@@ -8,7 +8,7 @@ import cv2
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QWidget, QLabel
 from DisplayLabel import DisplayLabel
-
+import numpy as np
 #   Class RoiLabel:
 #       Purpose: Redefine QLabel class for main display and roi drawing
 #       Created by Sheldon Reeves on 6/24/15.
@@ -83,7 +83,29 @@ class RoiLabel(QLabel):
                 cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
                               (255, 255, 255), 2)
+
+                # shoe average HSV for roi dynamically
+                start = self.roi_buffer[self.roi_count][0]
+                New = int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)
+
+
+                [x1,y1] = start
+                [x2,y2] = New
+                roiImage = copy[x1:x2+2,y1:y2+2]
+                hsvImage = cv2.cvtColor(roiImage, cv2.COLOR_BGR2HSV)
+                #print "HSV", hsvImage
+                hue, sat, val = hsvImage[:,:,0], hsvImage[:,:,1], hsvImage[:,:,2]
+                H = int(np.mean(hue))
+                S = int(np.mean(sat))
+                V = int(np.mean(val))
+                ave_hsv = [H,S,V]
+
+
+                cv2.putText(copy, "Ave_HSV: {}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (127,0,255), 1)
+
                 self.display_image(copy, self.zoom)
+
 
             QWidget.mouseMoveEvent(self, eventQMouseEvent)
 
@@ -93,14 +115,17 @@ class RoiLabel(QLabel):
     # Language: Python 3.4
     def mouseReleaseEvent(self, eventQMouseEvent):
         if self.list_complete is False:
+            copy = self.crop_list[self.roi_count].copy()
+
             if self.left_click is True:
                 self.roi_buffer[self.roi_count].append(
                     (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)))
+
                 cv2.rectangle(self.crop_list[self.roi_count], self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
                               (255, 255, 255), 2)
 
-
+                #print "HH",self.roi_buffer[self.roi_count]
                 # Compensate for zoom
                 for i in self.roi_buffer[self.roi_count]:
                     i = list(i)
@@ -144,6 +169,7 @@ class RoiLabel(QLabel):
                 self.roi_count = self.roi_count + 1
 
                 if self.roi_count < len(self.crop_list):
+                    cv2.putText(self.crop_list[self.roi_count], "HSV:",(10,20),cv2.FONT_HERSHEY_SIMPLEX, 1, (127,0,255), 2)
                     self.display_image(self.crop_list[self.roi_count], self.zoom)
 
                 if self.roi_count == len(self.crop_list):
@@ -158,13 +184,21 @@ class RoiLabel(QLabel):
                     if self.foot == 'left':
                         self.QtInstance.left_foot_roi_hist_buffer = self.roi_hist_buffer
                         self.QtInstance.left_foot_roi_window_buffer = self.roi_window_buffer
+                        #print "left",self.roi_window_buffer
+
+                        # cv2.putText(img, "RF_HSV: {}".format(hsvImage[1][1]), (10, 20),
+                        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+
                     else:
                         self.QtInstance.right_foot_roi_hist_buffer = self.roi_hist_buffer
                         self.QtInstance.right_foot_roi_window_buffer = self.roi_window_buffer
+                        #print "right",self.roi_window_buffer
 
                     # displayLabel object must be initialized and restored to its previous condition in QtInstance
                     self.QtInstance.displayLabel = DisplayLabel(self.mTrack.first_frame, self.mTrack,
                                                                 self.zoom, self.QtInstance)
+
+
                     self.QtInstance.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
                     self.QtInstance.displayLabel.setText("")
                     self.QtInstance.displayLabel.setAlignment(
@@ -200,6 +234,7 @@ class RoiLabel(QLabel):
                         if len(self.QtInstance.left_foot_roi_hist_buffer) != 0:
                             self.QtInstance.Execute_pushButton.setEnabled(True)
                             self.QtInstance.Execute_pushButton.setDisabled(False)
+        #return self.roi_window_buffer
 
     # Inline Member Method: display_image
     # Method that displays image on Qlabel
@@ -213,4 +248,7 @@ class RoiLabel(QLabel):
         #img = cv2.resize(img, None, fx = self.zoom*0.6, fy = self.zoom*0.6,interpolation=cv2.INTER_CUBIC)
         qimg = QtGui.QImage(img.data, img.shape[1], img.shape[0], img.shape[1] * 3, QtGui.QImage.Format_RGB888)
         p1 = QtGui.QPixmap.fromImage(qimg)
+        #print "P1", p1.size()
+
+
         self.setPixmap(p1)

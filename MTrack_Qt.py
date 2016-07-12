@@ -104,6 +104,8 @@ class MainWindow(QtGui.QMainWindow):
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setContentsMargins(11, 11, 11, 11)
+
+
         self.verticalLayout.setSpacing(6)
         self.verticalLayout.setObjectName("verticalLayout")
         self.L_Hue_ScrollBar = QtGui.QScrollBar(self.centralWidget)
@@ -185,6 +187,7 @@ class MainWindow(QtGui.QMainWindow):
         self.gridLayout.addLayout(self.horizontalLayout_3, 0, 0, 1, 5)
         self.verticalLayout_3 = QtGui.QVBoxLayout()
         self.verticalLayout_3.setContentsMargins(11, 11, 11, 11)
+
         self.verticalLayout_3.setSpacing(6)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.label = QtGui.QLabel(self.centralWidget)
@@ -216,7 +219,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.NoiseReduction_checkBox = QtGui.QCheckBox(self.centralWidget)
         self.NoiseReduction_checkBox.setObjectName("NoiseReduction_checkBox")
-        self.gridLayout.addWidget(self.NoiseReduction_checkBox, 9, 2, 1, 2)
+        self.gridLayout.addWidget(self.NoiseReduction_checkBox, 8, 2, 1, 2)
 
         # seperate line
         self.line_2 = QtGui.QFrame(self.centralWidget)
@@ -284,12 +287,17 @@ class MainWindow(QtGui.QMainWindow):
 
         self.Selector_scrollArea.setWidgetResizable(True)
         self.Selector_scrollArea.setObjectName("Selector_scrollArea")
-        self.scrollAreaWidgetContents_4 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 48))
 
+
+        ## big box I need to change
+        #***********************
+         #***********************
+        self.scrollAreaWidgetContents_4 = QtGui.QWidget()
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 8))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
-        self.gridLayout.addWidget(self.Selector_scrollArea, 11, 0, 1, 5)
+        self.gridLayout.addWidget(self.Selector_scrollArea, 11, 1, 1,4)
+
 
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
         self.deNoise_Val_spinBox.setMinimum(1)
@@ -396,6 +404,8 @@ class MainWindow(QtGui.QMainWindow):
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.Display_scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.Display_scrollArea, 0, 5, 14, 1)
+
+
         self.deNoise_Val_ScrollBar = QtGui.QScrollBar(self.centralWidget)
         self.deNoise_Val_ScrollBar.setMinimum(1)
         self.deNoise_Val_ScrollBar.setMaximum(100)
@@ -431,12 +441,12 @@ class MainWindow(QtGui.QMainWindow):
         self.line_5.setFrameShape(QtGui.QFrame.HLine)
         self.line_5.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
-        self.gridLayout.addWidget(self.line_5, 8, 0, 1, 5)
+        self.gridLayout.addWidget(self.line_5, 9, 0, 1, 5)
 
 
         self.Collision_checkBox = QtGui.QCheckBox(self.centralWidget)
         self.Collision_checkBox.setObjectName("Collision_checkBox")
-        self.gridLayout.addWidget(self.Collision_checkBox, 9, 0, 1, 2)
+        self.gridLayout.addWidget(self.Collision_checkBox, 8, 0, 1, 2)
 
         self.Execute_pushButton = QtGui.QPushButton(self.centralWidget)
         self.Execute_pushButton.setObjectName("Execute_pushButton")
@@ -645,6 +655,8 @@ class MainWindow(QtGui.QMainWindow):
         self.Collision_checkBox.setText(_translate("QtMouseTracker", "Collision Detect"))
         self.Execute_pushButton.setText(_translate("QtMouseTracker", "Execute"))
         self.label_10.setText(_translate("QtMouseTracker", "# Mice:"))
+
+
         self.mouse_num_selector.setItemText(0, _translate("QtMouseTracker", "Select"))
         self.mouse_num_selector.setItemText(1, _translate("QtMouseTracker", "1"))
         self.mouse_num_selector.setItemText(2, _translate("QtMouseTracker", "2"))
@@ -827,10 +839,12 @@ class MainWindow(QtGui.QMainWindow):
         self.displayLabel.drawSetup(self.mouse_count)
 
         # Disable mouse selector
+        ################################################
+        ################################################
+        self.mouse_num_selector.setEnabled(True)
+        self.mouse_num_selector.setDisabled(False)
         # self.mouse_num_selector.setEnabled(False)
         # self.mouse_num_selector.setDisabled(True)
-        self.mouse_num_selector.setEnabled(False)
-        self.mouse_num_selector.setDisabled(True)
 
 
         # Disable View Mode Selector
@@ -1036,11 +1050,15 @@ class MainWindow(QtGui.QMainWindow):
         # When scrollarea widget is reassigned to roiLabel object, the displayLabel object is destroyed
         # All valuable information from displayLabel must be backed up
         self.cage_vertices = self.displayLabel.cage_vertices
+        #print "cage 1",self.cage_vertices
+
         self.cage_wall_vertices = self.displayLabel.cage_wall_vertices
 
         # Initialize roiLabel
         self.roiLabel = RoiLabel(self.mouse_count, crop_list, self.Tracker, self.zoom, QtInstance, 'left')
-        #print "roiLable1", self.roiLabel
+        #print "roiL", self.roiLabel.roi_window_buffer
+        #print "Lfoot", self.roiLabel.foot
+
 
         self.roiLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
 
@@ -1048,9 +1066,6 @@ class MainWindow(QtGui.QMainWindow):
         self.roiLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.roiLabel.setObjectName("roiLabel")
         self.roiLabel.setMouseTracking(True)
-
-
-
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
 
     # Inline Member Method: buttonAction_draw_RF_roi
@@ -1060,6 +1075,7 @@ class MainWindow(QtGui.QMainWindow):
     #       -Right foot ROIs defined
     # Created by Sheldon Reeves on 6/24/15.
     # Language: Python 2.7
+
     def buttonAction_draw_RF_roi(self):
         # Disable Buttons
         self.DrawCage_pushButton.setEnabled(False)
@@ -1085,6 +1101,7 @@ class MainWindow(QtGui.QMainWindow):
         self.View_Mode_comboBox.setDisabled(True)
 
         img = self.parent_img.copy()
+
         # hsvImage = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
         # #print 'HHH',hsvImage
         # print "RF_ROI",hsvImage[1][1]
@@ -1107,16 +1124,24 @@ class MainWindow(QtGui.QMainWindow):
         # When scrollarea widget is reassigned to roiLabel object, the displayLabel object is destroyed
         # All valuable information from displayLabel must be backed up
         self.cage_vertices = self.displayLabel.cage_vertices
+        #print "cage 2",self.cage_vertices
+
         self.cage_wall_vertices = self.displayLabel.cage_wall_vertices
+        #print "cage_wall",self.cage_wall_vertices
 
         # Initialize roiLabel
         self.roiLabel = RoiLabel(self.mouse_count, crop_list, self.Tracker, self.zoom, QtInstance, 'right')
+        #print "RRR", self.roiLabel.roi_window_buffer
+        #print "Rfoot", self.roiLabel.foot
+
+
         self.roiLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
         self.roiLabel.setText("")
         self.roiLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.roiLabel.setObjectName("roiLabel")
         self.roiLabel.setMouseTracking(True)
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
+
 
     # Inline Member Method: buttonAction_execute
     # Method to begin tracking execution loop
@@ -1128,6 +1153,7 @@ class MainWindow(QtGui.QMainWindow):
     # Created by Sheldon Reeves on 6/24/15.
     # Language: Python 2.7
     def buttonAction_execute(self):
+
         self.timer = QTimer()
         self.timer.timeout.connect(self.executionLoop)
         self.timer.setInterval(100)
@@ -1248,7 +1274,7 @@ class MainWindow(QtGui.QMainWindow):
     def sliderUpdate_Zoom(self):
         self.zoom = self.Zoom_ScrollBar.value() /10
 
-        self.zoom = 0.6*self.zoom
+        self.zoom = 0.5*self.zoom
 
         #print "zoom", self.zoom
         try:
@@ -1257,8 +1283,10 @@ class MainWindow(QtGui.QMainWindow):
                 self.displayImage(self.displayLabel.current_img, False)  # Redisplay Image
             else:
                 self.roiLabel.zoom = self.zoom  # Update Zoom
+                cv2.putText(self.roiLabel.crop_list[self.roiLabel.roi_count], "hhh: {}", (10, 20),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
                 self.roiLabel.display_image(self.roiLabel.crop_list[self.roiLabel.roi_count],
                                             self.zoom)  # Redisplay Image
+
         except:
             pass
 
