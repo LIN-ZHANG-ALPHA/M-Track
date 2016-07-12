@@ -101,8 +101,8 @@ class RoiLabel(QLabel):
                 ave_hsv = [H,S,V]
 
 
-                cv2.putText(copy, "Ave_HSV: {}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                cv2.FONT_HERSHEY_SIMPLEX, 1, (127,0,255), 1)
+                cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (127,0,255), 1)
 
                 self.display_image(copy, self.zoom)
 

@@ -709,6 +709,9 @@ class MainWindow(QtGui.QMainWindow):
         self.DrawCage_pushButton.setEnabled(True)
         self.DrawCage_pushButton.setDisabled(False)
 
+
+        self.disable_start()
+
         # Initialize displayLabel
         self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
                                          self.zoom, QtInstance)
@@ -1560,6 +1563,27 @@ class MainWindow(QtGui.QMainWindow):
         else:
             self.Collision_checkBox.setEnabled(False)
             self.Collision_checkBox.setDisabled(True)
+
+
+
+
+
+    def disable_start(self):
+
+        self.Detect_Mice_pushButton.setEnabled(False)
+        self.Detect_LF_pushButton.setEnabled(False)
+        self.Detect_RF_pushButton.setEnabled(False)
+        self.Draw_LF_Roi_pushButton.setEnabled(False)
+        self.Draw_RF_Roi_pushButton.setEnabled(False)
+        self.Execute_pushButton.setEnabled(False)
+
+
+        self.Detect_Mice_pushButton.setDisabled(True)
+        self.Detect_LF_pushButton.setDisabled(True)
+        self.Detect_RF_pushButton.setDisabled(True)
+        self.Draw_LF_Roi_pushButton.setDisabled(True)
+        self.Draw_RF_Roi_pushButton.setDisabled(True)
+        self.Execute_pushButton.setDisabled(True)
 
     # Inline Member Method: updateSelectorImage
     # Method to update the selector image color
