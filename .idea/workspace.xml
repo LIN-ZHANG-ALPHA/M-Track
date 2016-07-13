@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MTrack_Qt.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MTrack_Qt.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="10365" max-vertical-offset="28875">
+            <state vertical-scroll-proportion="22.436441" vertical-offset="0" max-vertical-offset="28875">
               <caret line="706" column="9" selection-start-line="706" selection-start-column="9" selection-end-line="706" selection-end-column="9" />
               <folding>
                 <element signature="e#533#543#0" expanded="true" />
@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linToolkit.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="linToolkit.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linToolkit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.030927835" vertical-offset="165" max-vertical-offset="690">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="690">
+              <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
               <folding>
                 <element signature="e#26#36#0" expanded="true" />
               </folding>
@@ -399,7 +399,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="94" y="69" width="1232" height="718" extended-state="0" />
+    <frame x="94" y="69" width="1232" height="718" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -787,23 +787,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
+    <entry file="file://$PROJECT_DIR$/linToolkit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10365" max-vertical-offset="28875">
-          <caret line="706" column="9" selection-start-line="706" selection-start-column="9" selection-end-line="706" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="690">
+          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
           <folding>
-            <element signature="e#533#543#0" expanded="true" />
-            <element signature="e#38277#39174#0" expanded="false" />
+            <element signature="e#26#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linToolkit.py">
+    <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.030927835" vertical-offset="165" max-vertical-offset="690">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="15" />
+        <state vertical-scroll-proportion="22.436441" vertical-offset="0" max-vertical-offset="28875">
+          <caret line="706" column="9" selection-start-line="706" selection-start-column="9" selection-end-line="706" selection-end-column="9" />
           <folding>
-            <element signature="e#26#36#0" expanded="true" />
+            <element signature="e#533#543#0" expanded="true" />
+            <element signature="e#38277#39174#0" expanded="false" />
           </folding>
         </state>
       </provider>
