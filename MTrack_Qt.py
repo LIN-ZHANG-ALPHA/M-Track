@@ -28,6 +28,10 @@ import subprocess
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtCore import QTimer
 from PyQt4.QtGui import QFileDialog, QLabel
+import platform
+
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 #   Project imports:
 #   Project imports:
@@ -95,6 +99,7 @@ class MainWindow(QtGui.QMainWindow):
         self.centralWidget.setMinimumSize(900,600)
 
         self.scaleFactor = 0.0
+
 
 
         self.gridLayout = QtGui.QGridLayout(self.centralWidget)
@@ -296,7 +301,7 @@ class MainWindow(QtGui.QMainWindow):
         self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 8))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
-        self.gridLayout.addWidget(self.Selector_scrollArea, 11, 1, 1,4)
+        self.gridLayout.addWidget(self.Selector_scrollArea, 11, 0, 1,4)
 
 
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
@@ -693,8 +698,19 @@ class MainWindow(QtGui.QMainWindow):
 
     def buttonAction_loadVideo(self):
 
+        # decide the system
+
+        sysstr = platform.system()
+
+
         fname = QFileDialog.getOpenFileName()
         #print 'fname: ', fname
+
+        if(sysstr =="Windows"):
+            fname = os.path.abspath(fname)
+        else:
+            pass
+
 
 
         self.Tracker = MTrack(str(fname)) # add str is required
@@ -703,6 +719,7 @@ class MainWindow(QtGui.QMainWindow):
         # self.cap    = cv2.VideoCapture(str(fname))
         # self.height = self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         # self.width  = self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        # print self.width
 
 
         # Enable DrawCage
@@ -1895,6 +1912,9 @@ class MainWindow(QtGui.QMainWindow):
 
         self.zoomInAct.setEnabled(self.scaleFactor < 3.0)
         self.zoomOutAct.setEnabled(self.scaleFactor > 0.333)
+
+
+
 
 if __name__ == "__main__":
 
