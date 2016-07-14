@@ -77,7 +77,7 @@ class RoiLabel(QLabel):
     # Language: Python 3.4
     def mouseMoveEvent(self, eventQMouseEvent):
         if self.list_complete is False:
-            print "eventQMouseEvent:", eventQMouseEvent
+            # print "eventQMouseEvent:", eventQMouseEvent
 
             if self.left_click is True:
 
@@ -86,11 +86,11 @@ class RoiLabel(QLabel):
                 if self.foot == 'left':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              ( 60 ,255, 255), 2)
+                              ( 90 , 255 ,255), 2)
                 elif self.foot == 'right':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              (175, 63, 255), 2)
+                              (136, 235, 255), 2)
 
                 # cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                 #               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),

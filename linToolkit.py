@@ -8,18 +8,13 @@ print cv2.__version__
 
 
 
-
-pink = np.uint8([[[203,192,255 ]]])
-hsv_green = cv2.cvtColor(pink,cv2.COLOR_BGR2HSV)
+green = np.uint8([[[255,20,147]]])
+hsv_green = cv2.cvtColor(green,cv2.COLOR_BGR2HSV)
 print hsv_green
 
+
 print(platform.platform())
-
-
-
-
-
-
+import platform
 
 def TestPlatform():
     print ("----------Operation System--------------------------")
