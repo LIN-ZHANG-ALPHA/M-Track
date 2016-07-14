@@ -100,8 +100,6 @@ class MainWindow(QtGui.QMainWindow):
 
         self.scaleFactor = 0.0
 
-
-
         self.gridLayout = QtGui.QGridLayout(self.centralWidget)
         self.gridLayout.setContentsMargins(11, 11, 11, 11)
 
@@ -717,6 +715,13 @@ class MainWindow(QtGui.QMainWindow):
 
         # size of video
         # self.cap    = cv2.VideoCapture(str(fname))
+        # fgbg = cv2.createBackgroundSubtractorMOG2()
+        # # # fgbg = cv2.createBackgroundSubtractorGMG()
+        # # imag = cv2.BackgroundSubtractorMOG()
+        # # #
+        # cv2.imshow('frame',fgbg)
+
+
         # self.height = self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         # self.width  = self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)
         # print self.width
@@ -1228,6 +1233,7 @@ class MainWindow(QtGui.QMainWindow):
     # Postcondition: Noise reduction state changed
     # Created by Sheldon Reeves on 6/24/15.
     # Language: Python 2.7
+
     def checkboxAction_NoiseReduction(self):
         self.Tracker.noiseReduction_on = self.NoiseReduction_checkBox.isChecked()
         self.displayImage(self.displayLabel.current_img, False)
@@ -1846,6 +1852,7 @@ class MainWindow(QtGui.QMainWindow):
                 # Draw Left Foot Center Points
                 for j in left_foot_center_points[i]:
                     cv2.circle(crop_list[i], j, 3, (184, 245, 255), 3)
+                    #print "left_crop_list: ", crop_list[i]
 
                 # Draw Right Foot Center Points
                 for j in right_foot_center_points[i]:
@@ -1864,7 +1871,9 @@ class MainWindow(QtGui.QMainWindow):
 
                 # Calculate and Draw angle lines
                 avgx = int((left_foot_center_points[i][0][0] + right_foot_center_points[i][0][0])/2)
+
                 avgy = int((left_foot_center_points[i][0][1] + right_foot_center_points[i][0][1])/2)
+
                 avgpoint = (avgx,avgy)
 
                 # Remove comment for body angle arrow
@@ -1895,7 +1904,7 @@ class MainWindow(QtGui.QMainWindow):
 
         # Draw wall Lines
         for i in range(0, len(self.cage_wall_vertices), 2):
-            cv2.line(orig_img, tuple(self.cage_wall_vertices[i]), tuple(self.cage_wall_vertices[i + 1]), (0, 255, 255),
+            cv2.line(orig_img, tuple(self.cage_wall_vertices[i]), tuple(self.cage_wall_vertices[i + 1]), (211, 0, 148),
                      1, 8)
 
 

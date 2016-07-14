@@ -68,9 +68,11 @@ class MTrack:
     def __init__(self, filename):
         # Initial Frame capture
         self.capture = cv2.VideoCapture(filename)
+
+
         # background subtraction
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
-        #fgbg = cv2.BackgroundSubtractorMOG()()
+        #kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
+        self.fgbg = cv2.createBackgroundSubtractorMOG2()
 
 
         f, self.first_frame = self.capture.read()
@@ -80,6 +82,10 @@ class MTrack:
         self.img_height, self.img_width, channels = self.first_frame.shape
 
         self.__initialize_variables()
+
+        self.kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(10,10))
+        self.t = 0
+        self.old_center = []
 
     # Inline Member Method: __initialize_variables
     # Method to initialize all variables for the class
@@ -211,7 +217,7 @@ class MTrack:
                 box_list.append((pt1, pt2))
 
         # Box collision detection
-        if box_list and collision_detect == True:
+        if box_list and (collision_detect == True):
             box_list = self.box_collision_detect(box_list)
 
         for i in box_list:
@@ -244,18 +250,67 @@ class MTrack:
                                              color_upper_hue,
                                              color_upper_sat, color_upper_val, dilation)
 
+        ## pre-processing image
+        # blur image
+        self.t = self.t+1
+
+        img = cv2.GaussianBlur(img, (41, 41), 0)
+        # kernel = np.ones((10,10),np.float32)/25
+        # img = cv2.filter2D(img,-1,kernel)
+
+        # denoise
+        #img = cv2.fastNlMeansDenoisingColored(img,None,30,30,7,21)
+
+        # background subtraction
+        fgmask = self.fgbg.apply(img)
+        fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, self.kernel)
+        #cv2.imshow('frame',fgmask)
+
+        # ##
+        # img_fg = cv2.bitwise_and(img,img,mask = fgmask)
+        # #cv2.imshow('img_fg',img_fg)
+        #
+        # ########
         masked_img = cv2.bitwise_and(img, img, mask=color_binary)
+        # #cv2.imshow('masked_img',masked_img)
+        #
+        # dst = cv2.addWeighted(masked_img,0.2,img_fg,0.8,0)
+        # #cv2.imshow('dst',dst)
+
 
         # Back Projection
         BP = cv2.calcBackProject([masked_img], [0], roi_hist, [0, 180], 1)
-
-
         # apply meanshift to get the new location
         object, track_window = cv2.CamShift(BP, track_window, self.term_crit)
 
         x = int(object[0][0])
         y = int(object[0][1])
-        center_points.append((x, y))
+
+
+        # add judge condition
+        # from 2nd frame
+        if self.t>1:
+            # movement in certain area
+            if abs(x-self.old_center[0][0])<20 or abs(y-self.old_center[0][1])<20:
+                center_points.append((x, y))
+                self.old_center  = center_points
+
+
+            else:
+                center_points = self.old_center
+
+            print "center_points: ", center_points
+            #print "center_points xy:", x,y
+
+
+        else:
+            #print "center_points11 xy:", x,y
+            center_points.append((x, y))
+            self.old_center  = center_points
+
+        # print self.old_center
+        # print self.old_center[0][0]
+
 
         return center_points, track_window
 

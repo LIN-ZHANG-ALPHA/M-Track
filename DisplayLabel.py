@@ -105,14 +105,14 @@ class DisplayLabel(QLabel):
                 copy = self.frame.copy()
                 cv2.line(copy, self.cage_vertices[self.cage_vertex_count],
                          (int(eventQMouseEvent.x()/self.zoom),
-                          int(eventQMouseEvent.y()/self.zoom)), (0, 0, 0), 2, 8)
+                          int(eventQMouseEvent.y()/self.zoom)), (211, 0, 148), 2, 8)
                 self.display_image(copy,self.crop,self.zoom)
 
             elif self.cage_walls_complete is False:
                 copy = self.current_img.copy()
                 cv2.line(copy, self.cage_wall_vertices[self.cage_wall_vertex_count],
                          (int(eventQMouseEvent.x()/self.zoom),
-                          int(eventQMouseEvent.y()/self.zoom)), (0, 255, 255), 2, 8)
+                          int(eventQMouseEvent.y()/self.zoom)), (211, 0, 148), 2, 8)
                 img = cv2.cvtColor(copy, cv2.COLOR_BGR2RGB)
                 img = cv2.resize(img, (0,0), fx = self.zoom, fy = self.zoom)
                 self.byte_width = img.shape[1]*3
@@ -188,7 +188,7 @@ class DisplayLabel(QLabel):
                 self.left_click = False
                 cv2.line(self.current_img, self.cage_wall_vertices[self.cage_wall_vertex_count],
                          (int(eventQMouseEvent.x()/self.zoom),
-                          int(eventQMouseEvent.y()/self.zoom)), (0, 255, 255), 2, 8)
+                          int(eventQMouseEvent.y()/self.zoom)), (211, 0, 148), 2, 8)
                 self.cage_wall_vertex_count += 2
                 if self.cage_wall_vertex_count >= self.mouse_count:
                     self.cage_walls_complete = True
