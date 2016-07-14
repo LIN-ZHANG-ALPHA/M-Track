@@ -63,8 +63,8 @@ class RoiLabel(QLabel):
     def mousePressEvent(self, eventQMouseEvent):
         if self.list_complete is False:
             # Disable Zoom
-            self.QtInstance.Zoom_ScrollBar.setEnabled(False)
-            self.QtInstance.Zoom_ScrollBar.setDisabled(True)
+            # self.QtInstance.Zoom_ScrollBar.setEnabled(False)
+            # self.QtInstance.Zoom_ScrollBar.setDisabled(True)
 
             self.roi_buffer[self.roi_count].append(
                 (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)))
@@ -77,12 +77,24 @@ class RoiLabel(QLabel):
     # Language: Python 3.4
     def mouseMoveEvent(self, eventQMouseEvent):
         if self.list_complete is False:
+            print "eventQMouseEvent:", eventQMouseEvent
+
             if self.left_click is True:
+
                 copy = self.crop_list[self.roi_count].copy()
 
-                cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
+                if self.foot == 'left':
+                    cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              (255, 255, 255), 2)
+                              ( 61, 10, 0), 2)
+                elif self.foot == 'right':
+                    cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
+                              (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                              (52, 63, 0), 2)
+
+                # cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
+                #               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                #               (255, 255, 255), 2)
 
                 # shoe average HSV for roi dynamically
                 start = self.roi_buffer[self.roi_count][0]
@@ -100,9 +112,12 @@ class RoiLabel(QLabel):
                 V = int(np.mean(val))
                 ave_hsv = [H,S,V]
 
+                cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (10,20),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2)
 
-                cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (127,0,255), 1)
+
+                # cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                # cv2.FONT_HERSHEY_SIMPLEX, 0.7, (127,0,255), 1)
 
                 self.display_image(copy, self.zoom)
 

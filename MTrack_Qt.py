@@ -161,7 +161,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Dilation_ScrollBar.setObjectName("Dilation_ScrollBar")
         self.verticalLayout.addWidget(self.Dilation_ScrollBar)
         self.Box_Size_ScrollBar = QtGui.QScrollBar(self.centralWidget)
-        self.Box_Size_ScrollBar.setMaximum(1000)
+        self.Box_Size_ScrollBar.setMaximum(10000)
         self.Box_Size_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
         self.Box_Size_ScrollBar.setObjectName("Box_Size_ScrollBar")
         self.verticalLayout.addWidget(self.Box_Size_ScrollBar)
@@ -374,7 +374,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Box_Size_spinBox = QtGui.QSpinBox(self.centralWidget)
         self.Box_Size_spinBox.setMouseTracking(True)
         self.Box_Size_spinBox.setMinimum(0)
-        self.Box_Size_spinBox.setMaximum(1000)
+        self.Box_Size_spinBox.setMaximum(10000)
         self.Box_Size_spinBox.setProperty("value", 0)
         self.Box_Size_spinBox.setObjectName("Box_Size_spinBox")
         self.verticalLayout_2.addWidget(self.Box_Size_spinBox)
@@ -697,10 +697,9 @@ class MainWindow(QtGui.QMainWindow):
     def buttonAction_loadVideo(self):
 
         # decide the system
-
         sysstr = platform.system()
 
-
+        # file name
         fname = QFileDialog.getOpenFileName()
         #print 'fname: ', fname
 
@@ -722,11 +721,6 @@ class MainWindow(QtGui.QMainWindow):
         # cv2.imshow('frame',fgbg)
 
 
-        # self.height = self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
-        # self.width  = self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-        # print self.width
-
-
         # Enable DrawCage
         self.DrawCage_pushButton.setEnabled(True)
         self.DrawCage_pushButton.setDisabled(False)
@@ -740,7 +734,6 @@ class MainWindow(QtGui.QMainWindow):
 
 
         self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
-
         # print self.img_height
         # print self.img_width
 
@@ -753,7 +746,6 @@ class MainWindow(QtGui.QMainWindow):
         self.displayLabel.setObjectName("displayLabel")
         self.displayLabel.setMouseTracking(True)
         self.Display_scrollArea.setWidget(self.displayLabel)
-
 
         # Display first image
         self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
@@ -790,7 +782,7 @@ class MainWindow(QtGui.QMainWindow):
              return
 
         self.saveFile = open(filenames,'w')
-        s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle\n")
+        s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseX MouseY MouseAngle  \n")
         self.saveFile.write(s)
         #self.saveFile.close()
 
@@ -1053,8 +1045,8 @@ class MainWindow(QtGui.QMainWindow):
 
         img = self.parent_img.copy()
 
-        #hsvImage = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-        #print 'HHH',hsvImage
+        # hsvImage = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        # print 'HHH',hsvImage
         # print "LF_ROI",hsvImage[1][1]
         # cv2.putText(img, "LF_HSV: {}".format(hsvImage[1][1]), (10, 20),
         # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
@@ -1891,8 +1883,8 @@ class MainWindow(QtGui.QMainWindow):
                 s = (str(self.frame_count) + " " + str(i) + " " +
                      str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
                      str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
-
-                     str(angle_list[i]) + '\n')
+                     str(angle_list[i])+ " " +
+                     str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " + '\n')
 
                 try:
                     self.saveFile.write(s)

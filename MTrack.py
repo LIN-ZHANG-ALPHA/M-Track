@@ -264,8 +264,8 @@ class MTrack:
         #img = cv2.fastNlMeansDenoisingColored(img,None,30,30,7,21)
 
         # background subtraction
-        fgmask = self.fgbg.apply(img)
-        fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, self.kernel)
+        #fgmask = self.fgbg.apply(img)
+        #fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, self.kernel)
         #cv2.imshow('frame',fgmask)
 
         # ##
