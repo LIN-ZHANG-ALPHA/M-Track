@@ -76,9 +76,6 @@ class MTrack:
 
 
         f, self.first_frame = self.capture.read()
-
-        #self.first_frame = fgbg.apply(self.first_frame)
-
         self.img_height, self.img_width, channels = self.first_frame.shape
 
         self.__initialize_variables()

@@ -5,7 +5,7 @@
 #  Using Python 3,opencv3, and Pyqt5
 #  Email: sheldonreeves316@gmail.com
 
-# Latest version Created By Lin Zhang since 06/10/2016
+#  Latest version Created By Lin Zhang since 06/10/2016
 #  Language: Python 2.7
 #  OpenCV Version: 3.0.0
 #  PyQt Version 4.8
@@ -701,25 +701,12 @@ class MainWindow(QtGui.QMainWindow):
 
         # file name
         fname = QFileDialog.getOpenFileName()
-        #print 'fname: ', fname
-
         if(sysstr =="Windows"):
             fname = os.path.abspath(fname)
         else:
             pass
 
-
-
         self.Tracker = MTrack(str(fname)) # add str is required
-
-        # size of video
-        # self.cap    = cv2.VideoCapture(str(fname))
-        # fgbg = cv2.createBackgroundSubtractorMOG2()
-        # # # fgbg = cv2.createBackgroundSubtractorGMG()
-        # # imag = cv2.BackgroundSubtractorMOG()
-        # # #
-        # cv2.imshow('frame',fgbg)
-
 
         # Enable DrawCage
         self.DrawCage_pushButton.setEnabled(True)
@@ -734,9 +721,6 @@ class MainWindow(QtGui.QMainWindow):
 
 
         self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
-        # print self.img_height
-        # print self.img_width
-
         self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
         #self.displayLabel.resize(self.img_width+25, self.img_height+20)
         #self.displayLabel.setFixedSize(self.sizeHint())
@@ -749,12 +733,8 @@ class MainWindow(QtGui.QMainWindow):
 
         # Display first image
         self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
-        #self.displayLabel.display_image(self.Testimage, False, self.zoom)
-        # show HSV information
 
         # hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
-        # #print 'HHH',hsvImage
-        # #print hsvImage[1][1]
         # cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
         # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
 
@@ -826,7 +806,7 @@ class MainWindow(QtGui.QMainWindow):
     #       -Cropped image displayed
     #       -Buttons Enabled
     # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # Language: Python 3.4
     def buttonAction_drawCage(self):
         # Clear ROI's
         self.left_foot_roi_buffer = []
@@ -930,9 +910,6 @@ class MainWindow(QtGui.QMainWindow):
         img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
         #print "Left ",img[1][1]
 
-
-
-
         if self.viewMode != 'Original' and self.viewMode != 'HSV':
             mask = self.getColorMask(img)
             img = cv2.bitwise_and(img, img, mask=mask)
@@ -960,7 +937,7 @@ class MainWindow(QtGui.QMainWindow):
 
         # cv2.putText(img, "Left Foot HSV: {}".format(img[1][1]), (10, 20),
         # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
-
+        img = cv2.cvtColor(img,cv2.COLOR_HSV2BGR)
         self.displayLabel.display_image(img, False, self.zoom)
 
     # Inline Member Method: buttonAction_detectRightFeet
@@ -1011,6 +988,7 @@ class MainWindow(QtGui.QMainWindow):
         # Insert cropped images
         self.Tracker.insert_images(mouse_box_list, crop_list, img)
 
+        img = cv2.cvtColor(img,cv2.COLOR_HSV2BGR)
         self.displayLabel.display_image(img, False, self.zoom)
 
     # Inline Member Method: buttonAction_draw_LF_roi
@@ -1064,8 +1042,7 @@ class MainWindow(QtGui.QMainWindow):
         crop_list = self.Tracker.crop_images(img, box_list)
         #print "croplist", crop_list
 
-
-        # When scrollarea widget is reassigned to roiLabel object, the displayLabel object is destroyed
+        # When scroll area widget is reassigned to roiLabel object, the displayLabel object is destroyed
         # All valuable information from displayLabel must be backed up
         self.cage_vertices = self.displayLabel.cage_vertices
         #print "cage 1",self.cage_vertices
@@ -1194,12 +1171,6 @@ class MainWindow(QtGui.QMainWindow):
     def buttonAction_exit(self):
         MTrack_Qt_instance.destroy()
         sys.exit()
-
-    # def buttonAction_clear(self):
-    #     self.mouse_num_selector.clear()
-    #     # directory = QFileDialog.getExistingDirectory()
-    #     # subprocess.call(directory+" MTracker_Qt.py", shell=True)
-    #     #sys.exit()
 
 
     # Inline Member Method: checkboxAction_collisionDetect
@@ -1582,8 +1553,6 @@ class MainWindow(QtGui.QMainWindow):
 
 
 
-
-
     def disable_start(self):
 
         self.Detect_Mice_pushButton.setEnabled(False)
@@ -1922,9 +1891,7 @@ class MainWindow(QtGui.QMainWindow):
 
 if __name__ == "__main__":
 
-    #print cv2.__version__
-    # currentExitCode = MTrack_Qt.EXIT_CODE_REBOOT
-    # while currentExitCode == MTrack_Qt.EXIT_CODE_REBOOT:
+
     app = QtGui.QApplication(sys.argv)
     MTrack_Qt_instance = QtGui.QMainWindow()
     #MTrack_Qt_instance.setGeometry(3,30,800,800)
@@ -1935,11 +1902,6 @@ if __name__ == "__main__":
     MTrack_Qt_instance.setPalette(pal)
 
     QtInstance = MainWindow(MTrack_Qt_instance)
-
-    # currentExitCode = app.exec_()
-    # a = None  # delete the QApplication object
-    # subprocess.Popen([__file__])
-    # sys.exit(0)
 
     MTrack_Qt_instance.show()
     sys.exit(app.exec_())
