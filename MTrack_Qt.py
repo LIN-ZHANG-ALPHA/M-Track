@@ -894,6 +894,7 @@ class MainWindow(QtGui.QMainWindow):
         box_list, center_point_list = self.Tracker.detect_mice(img, int(self.mouse_count))
 
         img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
+
         if self.viewMode != 'Original' and self.viewMode != 'HSV':
             mask = self.getColorMask(img)
             img = cv2.bitwise_and(img, img, mask=mask)
