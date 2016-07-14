@@ -902,10 +902,10 @@ class MainWindow(QtGui.QMainWindow):
             img = cv2.bitwise_and(img, img, mask=mask)
 
         # Draw Boxes
-        self.Tracker.draw_boxes(box_list, (255, 0, 0), img)
+        self.Tracker.draw_boxes(box_list, (208, 224, 64), img)
 
         # Center Points
-        self.Tracker.draw_center_points(center_point_list, (255, 0, 0), img)
+        self.Tracker.draw_center_points(center_point_list, (208, 224, 64), img)
 
         self.displayLabel.display_image(img, False, self.zoom)
 
@@ -946,16 +946,16 @@ class MainWindow(QtGui.QMainWindow):
                 crop_list[i] = cv2.bitwise_and(crop_list[i], crop_list[i], mask=mask)
 
             # Draw Left Foot Boxes
-            self.Tracker.draw_boxes(left_foot_box_list[i], (0, 0, 255), crop_list[i])
+            self.Tracker.draw_boxes(left_foot_box_list[i], (194, 245, 255), crop_list[i])
 
             # Draw Left Foot Center Points
-            self.Tracker.draw_center_points(left_foot_center_points[i], (0, 0, 255), crop_list[i])
+            self.Tracker.draw_center_points(left_foot_center_points[i], (194, 245, 255), crop_list[i])
 
         # Draw Mouse Boxes
-        self.Tracker.draw_boxes(mouse_box_list, (255, 0, 0), img)
+        self.Tracker.draw_boxes(mouse_box_list, (208, 224, 64), img)
 
         # Draw Mouse Center Points
-        self.Tracker.draw_center_points(mouse_center_points, (255, 0, 0), img)
+        self.Tracker.draw_center_points(mouse_center_points, (208, 224, 64), img)
 
         # Insert cropped images
         self.Tracker.insert_images(mouse_box_list, crop_list, img)
@@ -998,17 +998,17 @@ class MainWindow(QtGui.QMainWindow):
                 mask = self.getColorMask(crop_list[i])
                 crop_list[i] = cv2.bitwise_and(crop_list[i], crop_list[i], mask=mask)
 
-            # Draw Left Foot Boxes
-            self.Tracker.draw_boxes(right_foot_box_list[i], (0, 255, 0), crop_list[i])
+            # Draw Right Foot Boxes
+            self.Tracker.draw_boxes(right_foot_box_list[i], (203, 192, 255), crop_list[i])
 
-            # Draw Left Foot Center Points
-            self.Tracker.draw_center_points(right_foot_center_points[i], (0, 255, 0), crop_list[i])
+            # Draw Right Foot Center Points
+            self.Tracker.draw_center_points(right_foot_center_points[i], (203, 192, 255), crop_list[i])
 
         # Draw Mouse Boxes
-        self.Tracker.draw_boxes(mouse_box_list, (255, 0, 0), img)
+        self.Tracker.draw_boxes(mouse_box_list, (208, 224, 64), img)
 
         # Draw Mouse Center Points
-        self.Tracker.draw_center_points(mouse_center_points, (255, 0, 0), img)
+        self.Tracker.draw_center_points(mouse_center_points, (208, 224, 64), img)
 
         # Insert cropped images
         self.Tracker.insert_images(mouse_box_list, crop_list, img)
@@ -1832,12 +1832,12 @@ class MainWindow(QtGui.QMainWindow):
             orig_img = cv2.cvtColor(orig_img, cv2.COLOR_HSV2RGB)  # Convert color back
 
             # Draw Mouse Boxes
-            self.Tracker.draw_boxes(mouse_box_list, (255, 0, 0), orig_img)
+            self.Tracker.draw_boxes(mouse_box_list, (208, 224, 64), orig_img)
 
             # Draw Mouse Center Points
             for i in mouse_center_points:
                 if len(i) != 0:
-                    cv2.circle(orig_img, i, 1, (255, 0, 0), 3)
+                    cv2.circle(orig_img, i, 1, (208, 224, 64), 3)
 
             for i in range(0, len(crop_list)):
 
@@ -1845,11 +1845,11 @@ class MainWindow(QtGui.QMainWindow):
 
                 # Draw Left Foot Center Points
                 for j in left_foot_center_points[i]:
-                    cv2.circle(crop_list[i], j, 3, (0, 255, 0), 3)
+                    cv2.circle(crop_list[i], j, 3, (184, 245, 255), 3)
 
                 # Draw Right Foot Center Points
                 for j in right_foot_center_points[i]:
-                    cv2.circle(crop_list[i], j, 3, (0, 0, 255), 3)
+                    cv2.circle(crop_list[i], j, 3, (203, 192, 255), 3)
 
 
             # Change center point coords to be relative to global image
@@ -1881,7 +1881,9 @@ class MainWindow(QtGui.QMainWindow):
             for i in range(0, len(mouse_box_list)):
                 s = (str(self.frame_count) + " " + str(i) + " " +
                      str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
-                     str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " + str(angle_list[i]) + '\n')
+                     str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
+
+                     str(angle_list[i]) + '\n')
 
                 try:
                     self.saveFile.write(s)
