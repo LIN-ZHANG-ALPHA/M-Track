@@ -209,6 +209,8 @@ class MTrack:
         # Generate box list from contours
         for idx, contour in enumerate(contours):
             moment = cv2.moments(contour)
+            #print "Moment: ", moment
+
             if moment["m00"] > minboxsize:
                 bound_rect = cv2.boundingRect(contour)
                 pt1 = (int(bound_rect[0] / box_scale), int(bound_rect[1] / box_scale))
@@ -299,7 +301,7 @@ class MTrack:
             else:
                 center_points = self.old_center
 
-            print "center_points: ", center_points
+            #print "center_points: ", center_points
             #print "center_points xy:", x,y
 
 

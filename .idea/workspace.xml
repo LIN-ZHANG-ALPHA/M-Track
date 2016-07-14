@@ -26,8 +26,8 @@
       <file leaf-file-name="MTrack_Qt.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33271375" vertical-offset="11026" max-vertical-offset="28845">
-              <caret line="760" column="18" selection-start-line="760" selection-start-column="15" selection-end-line="760" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.50574714" vertical-offset="14960" max-vertical-offset="28845">
+              <caret line="1047" column="36" selection-start-line="1047" selection-start-column="36" selection-end-line="1047" selection-end-column="36" />
               <folding>
                 <element signature="e#38486#39383#0" expanded="false" />
               </folding>
@@ -38,10 +38,11 @@
       <file leaf-file-name="MTrack.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MTrack.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.076923" vertical-offset="1561" max-vertical-offset="11685">
-              <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+            <state vertical-scroll-proportion="-10.769231" vertical-offset="3185" max-vertical-offset="10965">
+              <caret line="299" column="0" selection-start-line="294" selection-start-column="10" selection-end-line="299" selection-end-column="0" />
               <folding>
-                <element signature="e#14940#15676#0" expanded="false" />
+                <element signature="e#6937#8755#0" expanded="false" />
+                <element signature="e#9285#10942#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -81,10 +82,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="133" />
-    <option name="y" value="195" />
-    <option name="width" value="1301" />
-    <option name="height" value="857" />
+    <option name="x" value="87" />
+    <option name="y" value="48" />
+    <option name="width" value="1151" />
+    <option name="height" value="719" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -399,26 +400,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="133" y="195" width="1301" height="857" extended-state="0" />
+    <frame x="87" y="48" width="1151" height="719" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20522675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21285838" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2824632" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23223351" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25297618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -722,13 +723,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4185">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/usuage.txt">
@@ -742,7 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
           <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -750,7 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2755102" vertical-offset="0" max-vertical-offset="490">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -758,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="14.150944" vertical-offset="0" max-vertical-offset="28200">
           <caret line="460" column="67" selection-start-line="460" selection-start-column="67" selection-end-line="460" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,9 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12244898" vertical-offset="0" max-vertical-offset="490">
           <caret line="5" column="15" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="15" />
-          <folding>
-            <element signature="e#108#2395#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -776,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29591838" vertical-offset="170" max-vertical-offset="675">
           <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,16 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
           <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
-          <folding>
-            <element signature="e#1811#2202#0" expanded="false" />
-            <element signature="e#2403#2966#0" expanded="false" />
-            <element signature="e#3203#3893#0" expanded="false" />
-            <element signature="e#4129#5302#0" expanded="false" />
-            <element signature="e#5544#10881#0" expanded="false" />
-            <element signature="e#11090#12028#0" expanded="false" />
-            <element signature="e#12242#13022#0" expanded="false" />
-            <element signature="e#13086#13466#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -801,24 +785,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1221" max-vertical-offset="3840">
           <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MTrack.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.076923" vertical-offset="1561" max-vertical-offset="11685">
-          <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+        <state vertical-scroll-proportion="-10.769231" vertical-offset="3185" max-vertical-offset="10965">
+          <caret line="299" column="0" selection-start-line="294" selection-start-column="10" selection-end-line="299" selection-end-column="0" />
           <folding>
-            <element signature="e#14940#15676#0" expanded="false" />
+            <element signature="e#6937#8755#0" expanded="false" />
+            <element signature="e#9285#10942#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33271375" vertical-offset="11026" max-vertical-offset="28845">
-          <caret line="760" column="18" selection-start-line="760" selection-start-column="15" selection-end-line="760" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.50574714" vertical-offset="14960" max-vertical-offset="28845">
+          <caret line="1047" column="36" selection-start-line="1047" selection-start-column="36" selection-end-line="1047" selection-end-column="36" />
           <folding>
             <element signature="e#38486#39383#0" expanded="false" />
           </folding>

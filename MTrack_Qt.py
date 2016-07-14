@@ -880,7 +880,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Zoom_ScrollBar.setEnabled(True)
         self.Zoom_ScrollBar.setDisabled(False)
 
-        self.dialog.infoDialog("Draw a box around the cage")
+        self.dialog.infoDialog("Draw a box for the cage")
 
 
 
@@ -1045,7 +1045,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Draw_RF_Roi_pushButton.setDisabled(True)
         self.Execute_pushButton.setDisabled(True)
 
-        self.dialog.infoDialog("Drag a box around each left foot")
+        self.dialog.infoDialog("Draw a box for each left foot")
 
         # Disable View Mode Selector
         self.View_Mode_comboBox.setEnabled(False)
@@ -1119,7 +1119,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Draw_RF_Roi_pushButton.setDisabled(True)
         self.Execute_pushButton.setDisabled(True)
 
-        self.dialog.infoDialog("Drag a box around each right foot")
+        self.dialog.infoDialog("Draw a box for each right foot")
 
         # Disable View Mode Selector
         self.View_Mode_comboBox.setEnabled(False)
