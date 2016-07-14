@@ -86,11 +86,11 @@ class RoiLabel(QLabel):
                 if self.foot == 'left':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              ( 61, 10, 0), 2)
+                              ( 60 ,255, 255), 2)
                 elif self.foot == 'right':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              (52, 63, 0), 2)
+                              (175, 63, 255), 2)
 
                 # cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                 #               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),

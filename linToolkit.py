@@ -3,12 +3,23 @@ __author__ = 'linzhang'
 
 import cv2
 import  platform
-
+import numpy as np
 print cv2.__version__
 
 
+
+
+pink = np.uint8([[[203,192,255 ]]])
+hsv_green = cv2.cvtColor(pink,cv2.COLOR_BGR2HSV)
+print hsv_green
+
 print(platform.platform())
-import platform
+
+
+
+
+
+
 
 def TestPlatform():
     print ("----------Operation System--------------------------")
