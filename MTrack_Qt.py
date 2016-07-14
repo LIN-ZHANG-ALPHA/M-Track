@@ -965,8 +965,8 @@ class MainWindow(QtGui.QMainWindow):
         # Insert cropped images
         self.Tracker.insert_images(mouse_box_list, crop_list, img)
 
-        cv2.putText(img, "Left Foot HSV: {}".format(img[1][1]), (10, 20),
-        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+        # cv2.putText(img, "Left Foot HSV: {}".format(img[1][1]), (10, 20),
+        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
 
         self.displayLabel.display_image(img, False, self.zoom)
 
