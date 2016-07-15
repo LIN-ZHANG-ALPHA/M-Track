@@ -13,9 +13,6 @@ from DisplayLabel import DisplayLabel
 import numpy as np
 #   Class RoiLabel:
 #       Purpose: Redefine QLabel class for main display and roi drawing
-#       Created by Sheldon Reeves on 6/24/15.
-#       Language: Python 3.4
-#
 #       Dictionary of Variables:
 #           - QtInstance: Reference to the main MTrack_Qt instance
 #           - crop_list: Buffer containing cropped mouse bounding boxes

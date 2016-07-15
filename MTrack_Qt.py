@@ -170,7 +170,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.NoiseReduction_checkBox = QtGui.QCheckBox(self.centralWidget)
         self.NoiseReduction_checkBox.setObjectName("NoiseReduction_checkBox")
-        self.gridLayout.addWidget(self.NoiseReduction_checkBox, 8, 2, 1, 2)
+        self.gridLayout.addWidget(self.NoiseReduction_checkBox, 8, 3, 1, 2)
 
         # seperate line
         self.line_2 = QtGui.QFrame(self.centralWidget)
@@ -231,6 +231,7 @@ class MainWindow(QtGui.QMainWindow):
         self.gridLayout_2.addWidget(self.Draw_RF_Roi_pushButton, 0, 2, 1, 1)
         self.gridLayout.addLayout(self.gridLayout_2, 2, 0, 1, 5)
 
+        # for lower and upper HSV limits
         self.Selector_scrollArea = QtGui.QScrollArea(self.centralWidget)
         #self.Selector_scrollArea.setMaximumSize(QtCore.QSize(301, 50))
         self.Selector_scrollArea.setMinimumSize(QtCore.QSize(200,40))
@@ -334,7 +335,6 @@ class MainWindow(QtGui.QMainWindow):
         self.Display_scrollArea.setSizePolicy(sizePolicy)
         self.Display_scrollArea.setAutoFillBackground(True)
         self.Display_scrollArea.setFrameShadow(QtGui.QFrame.Sunken)
-
         #self.Display_scrollArea.setSizePolicy(QtGui.QSizePolicy.Ignored,QtGui.QSizePolicy.Ignored)
         #self.Display_scrollArea.setSizeAdjustPolicy(QtGui.QAbstractScrollArea.AdjustIgnored)
 
@@ -380,9 +380,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.LowerValue_Box2 = QtGui.QLabel(self.centralWidget)
         self.LowerValue_Box2.setObjectName("Test1")
-        self.gridLayout.addWidget(self.LowerValue_Box2, 12, 2, 1, 2)
-
-
+        self.gridLayout.addWidget(self.LowerValue_Box2, 12, 3.7, 1, 2)
 
         # first seperate line
         self.line = QtGui.QFrame(self.centralWidget)
@@ -477,8 +475,6 @@ class MainWindow(QtGui.QMainWindow):
         # --------Event Bindings---------
         #   Buttons
         self.Load_pushButton.clicked.connect(self.buttonAction_loadVideo)
-        #self.Load_pushButton.clicked.connect(self.refresh)
-        #self.connect(self.Load_pushButton, QtCore.SIGNAL("released()"), self.restart)
         self.Save_pushButton.clicked.connect(self.buttonAction_savePath)
         self.StartCam_pushButton.clicked.connect(self.buttonAction_startCam)
         self.DrawCage_pushButton.clicked.connect(self.buttonAction_drawCage)
@@ -603,7 +599,7 @@ class MainWindow(QtGui.QMainWindow):
         self.label_9.setText(_translate("QtMouseTracker", "Denoise Val"))
 
         self.LowerValue_Box1.setText(_translate("QtMouseTracker", "Lower HSV limit"))
-        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "Upper HSV limit"))
+        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "         Upper HSV limit "))
 
         self.Collision_checkBox.setText(_translate("QtMouseTracker", "Collision Detect"))
         self.Execute_pushButton.setText(_translate("QtMouseTracker", "Execute"))
@@ -640,6 +636,8 @@ class MainWindow(QtGui.QMainWindow):
         self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
 
         self.displayLabel.setGeometry(QtCore.QRect(0, 0, 631, 621))
+
+
         #self.displayLabel.resize(self.img_width+25, self.img_height+20)
         #self.displayLabel.setFixedSize(self.sizeHint())
 
@@ -676,7 +674,7 @@ class MainWindow(QtGui.QMainWindow):
 
         # Initialize displayLabel
         self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker, self.zoom, QtInstance)
-        self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+        #self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 521))
         self.displayLabel.setText("")
         self.displayLabel.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.displayLabel.setObjectName("displayLabel")
@@ -990,7 +988,6 @@ class MainWindow(QtGui.QMainWindow):
 
     #  tracking execution loop
     def buttonAction_execute(self):
-
         self.timer = QTimer()
         self.timer.timeout.connect(self.executionLoop)
         self.timer.setInterval(100)
@@ -1082,7 +1079,6 @@ class MainWindow(QtGui.QMainWindow):
                 #cv2.putText(self.roiLabel.crop_list[self.roiLabel.roi_count], "hhh: {}", (10, 20),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
                 self.roiLabel.display_image(self.roiLabel.crop_list[self.roiLabel.roi_count],
                                             self.zoom)  # Redisplay Image
-
         except:
             pass
 
@@ -1101,7 +1097,6 @@ class MainWindow(QtGui.QMainWindow):
         self.displayImage(self.parent_img, False)
 
     # update the LSat when changed
-
     def sliderUpdate_LSat(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_lower_sat = self.L_Sat_ScrollBar.value()
@@ -1443,8 +1438,7 @@ class MainWindow(QtGui.QMainWindow):
                                                                                self.Tracker.body_color_upper_val,
                                                                                self.Tracker.body_collision_detect,
                                                                                self.Tracker.body_dilation,
-                                                                               self.Tracker.body_minBoxSize,
-                                                                               self.Tracker.box_scale)
+                                                                               self.Tracker.body_minBoxSize,                                                                               self.Tracker.box_scale)
         # If too many mice are detected
         if len(mouse_box_list) > int(self.mouse_count):
             self.dialog.infoDialog("Too many mice detected! Reconfigure Parameters.")
@@ -1550,10 +1544,6 @@ class MainWindow(QtGui.QMainWindow):
                 rads %= 2*math.pi
                 degs = math.degrees(rads)
                 angle_list.append(degs)
-
-
-
-
 
 
             # Generate Output strings

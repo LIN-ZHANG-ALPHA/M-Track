@@ -232,14 +232,14 @@ class DisplayLabel(QLabel):
             self.current_img = img # Define current image
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-            img = cv2.resize(img, None, fx = self.zoom*1, fy = self.zoom*1,interpolation=cv2.INTER_CUBIC)
+            img = cv2.resize(img, None, fx = self.zoom, fy = self.zoom,interpolation=cv2.INTER_CUBIC)
             qimg = QtGui.QImage(img.data , img.shape[1], img.shape[0], img.shape[1]*3, QtGui.QImage.Format_RGB888)
             p1 = QtGui.QPixmap.fromImage(qimg)
         else:
             self.current_img = img
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             #img = cv2.resize(img, (0,0), fx = self.zoom, fy = self.zoom)
-            img = cv2.resize(img, None, fx = self.zoom*1, fy = self.zoom*1,interpolation=cv2.INTER_CUBIC)
+            img = cv2.resize(img, None, fx = self.zoom, fy = self.zoom,interpolation=cv2.INTER_CUBIC)
             qimg = QtGui.QImage(img.data,img.shape[1], img.shape[0],img.shape[1]*3, QtGui.QImage.Format_RGB888)
             p1 = QtGui.QPixmap.fromImage(qimg)
         self.setPixmap(p1)
