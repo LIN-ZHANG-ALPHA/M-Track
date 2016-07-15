@@ -1,9 +1,9 @@
 #  MTrack.py
-#  This file is part of the mTrack program
-#  Created by Sheldon Reeves on 6/24/15.
-#  Email: sheldonreeves316@gmail.com
-#  Language: Python 3.4
-#  OpenCV Version: 3.0.0
+#  This file is part of the M-Track program
+#  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
+#  Language: Python 2.7
+#  OpenCV Version: 3.0
+#  PyQt Version: 4.8
 
 import cv2
 import numpy as np
@@ -253,22 +253,8 @@ class MTrack:
         # blur image
         self.t = self.t+1
 
-        img = cv2.GaussianBlur(img, (41, 41), 0)
-        # kernel = np.ones((10,10),np.float32)/25
-        # img = cv2.filter2D(img,-1,kernel)
 
-        # denoise
-        #img = cv2.fastNlMeansDenoisingColored(img,None,30,30,7,21)
 
-        # background subtraction
-        #fgmask = self.fgbg.apply(img)
-        #fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, self.kernel)
-        #cv2.imshow('frame',fgmask)
-
-        # ##
-        # img_fg = cv2.bitwise_and(img,img,mask = fgmask)
-        # #cv2.imshow('img_fg',img_fg)
-        #
         # ########
         masked_img = cv2.bitwise_and(img, img, mask=color_binary)
         # #cv2.imshow('masked_img',masked_img)
@@ -284,39 +270,28 @@ class MTrack:
 
         x = int(object[0][0])
         y = int(object[0][1])
+        center_points.append((x, y))
 
 
-        # add judge condition
-        # from 2nd frame
-        if self.t>1:
-            # movement in certain area
-            if abs(x-self.old_center[0][0])<20 or abs(y-self.old_center[0][1])<20:
-                center_points.append((x, y))
-                self.old_center  = center_points
+        # add judge condition to avoid sudden change
 
-
-            else:
-                center_points = self.old_center
-
-            #print "center_points: ", center_points
-            #print "center_points xy:", x,y
-
-
-        else:
-            #print "center_points11 xy:", x,y
-            center_points.append((x, y))
-            self.old_center  = center_points
-
-        # print self.old_center
-        # print self.old_center[0][0]
-
+        # if self.t>1:
+        #     # movement in certain area
+        #     if abs(x-self.old_center[0][0])<20 or abs(y-self.old_center[0][1])<20:
+        #         center_points.append((x, y))
+        #         self.old_center  = center_points
+        #     else:
+        #         center_points = self.old_center
+        #     #print "center_points: ", center_points
+        #     #print "center_points xy:", x,y
+        # else:
+        #     #print "center_points11 xy:", x,y
+        #     center_points.append((x, y))
+        #     self.old_center  = center_points
 
         return center_points, track_window
 
-    # Inline Static Member Method: map_binary_color
     # Method to generate a binary color mask from threshold color values
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def map_binary_color(img, color_lower_hue, color_lower_sat, color_lower_val, color_upper_hue,
                          color_upper_sat,
@@ -449,12 +424,8 @@ class MTrack:
 
         return left_foot_box_list, left_foot_center_points, crop_list
 
-    # Inline Member Method: detect_right_feet
+
     # Method to perform mouse right foot detection on a single image
-    # Precondition: Right feet not detected
-    # Postcondition: Right feet detected
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def detect_right_feet(self, img, mouse_count, mouse_box_list):
         right_foot_box_list = [[0 for x in range(100)] for x in range(100)]
         right_foot_center_points = [[0 for x in range(100)] for x in range(100)]
@@ -477,10 +448,8 @@ class MTrack:
 
         return right_foot_box_list, right_foot_center_points, crop_list
 
-    # Inline Static Member Method: line_bres
+
     # Method to execute generic bresenham algorithm
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def line_bres(pt1, pt2):
         x = pt1[0]
@@ -542,13 +511,9 @@ class MTrack:
 
         return swap, points
 
-    # Inline Member Method: sort_mouse_list
+
     # Method to sort mouse list from top left to bottom right
-    # Precondition: Mouse list not sorted
-    # Postcondition:Mouse List Sorted
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
-    def sort_mouse_list(self, box_list, center_points, line_points, left_foot_roi_hist_buffer,
+    def sort_mouse_list(self, box_list, center_points, left_foot_roi_hist_buffer,
                         left_foot_roi_window_buffer,right_foot_roi_hist_buffer,right_foot_roi_window_buffer):
         # Storage Tuples
         top_left = ()
@@ -723,32 +688,26 @@ class MTrack:
                 left_foot_roi_window_buffer = [left_foot_left_single_roi_window,left_foot_right_single_roi_window]
                 right_foot_roi_window_buffer = [right_foot_left_single_roi_window,right_foot_right_single_roi_window]
 
-        return box_list, center_points, line_points, left_foot_roi_hist_buffer, left_foot_roi_window_buffer, right_foot_roi_hist_buffer, right_foot_roi_window_buffer
+        return box_list, center_points, left_foot_roi_hist_buffer, left_foot_roi_window_buffer, right_foot_roi_hist_buffer, right_foot_roi_window_buffer
 
-    # Inline Static Member Method: draw_boxes
+
     # Method to draw boxes on an image
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def draw_boxes(box_list, color, img):
         for i in box_list:
             if len(i) != 0:
                 cv2.rectangle(img, i[0], i[1], color, 2)
 
-    # Inline Static Member Method: draw_center_points
+
     # Method to draw points on an image
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def draw_center_points(point_list, color, img):
         for i in point_list:
             if len(i) != 0:
                 cv2.circle(img, i, 1, color, 3)
 
-    # Inline Static Member Method: crop_images
+
     # Method to crop boxed regions from an image
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def crop_images(img, box_list):
         crop_list = []
@@ -757,10 +716,8 @@ class MTrack:
                 crop_list.append(img[i[0][1]:i[1][1], i[0][0]:i[1][0]])
         return crop_list
 
-    # Inline Static Member Method: insert_images
+
     # Method to insert cropped regions back into image
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def insert_images(box_list, crop_list, orig_img):
         if len(box_list) != 0:  # No mice detected
@@ -768,10 +725,7 @@ class MTrack:
                 if len(box_list[i]) != 0:  # Expected mouse not found
                     orig_img[box_list[i][0][1]:box_list[i][1][1], box_list[i][0][0]:box_list[i][1][0]] = crop_list[i]
 
-    # Inline Static Member Method: globalize_center_points
     # Method to convert relative center point coords into global coords
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     @staticmethod
     def globalize_center_points(box_list, center_points):
         if len(box_list) != 0:  # No mice detected

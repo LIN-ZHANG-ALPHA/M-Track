@@ -1,9 +1,10 @@
-#  DisplayLabel.py
-#  This file is part of the mTrack program
-#  Created by Sheldon Reeves on 6/24/15.
-#  Email: sheldonreeves316@gmail.com
-#  Language: Python 3.4
-#  OpenCV Version: 3.0.0
+#  MTrack.py
+#  This file is part of the M-Track program
+#  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
+#  Language: Python 2.7
+#  OpenCV Version: 3.0
+#  PyQt Version: 4.8
+
 
 import cv2
 import numpy as np

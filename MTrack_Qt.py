@@ -1,22 +1,9 @@
 #  MTrack_Qt.py
 #  This software is designed to capture the location of mice and their feet from video for data analysis.
-
-#  First version Created by Sheldon Reeves on 6/24/15.
-#  Using Python 3,opencv3, and Pyqt5
-#  Email: sheldonreeves316@gmail.com
-
-#  Latest version Created By Lin Zhang since 06/10/2016
+#  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
 #  Language: Python 2.7
-#  OpenCV Version: 3.0.0
-#  PyQt Version 4.8
-
-
-#  Required Files in same directory:
-#       - MTrack.py
-#       - DisplayLabel.py
-#       - RoiLabel.py
-#       - ColorLabel.py
-#       - InfoDialog.py
+#  OpenCV Version: 3.0
+#  PyQt Version: 4.8
 
 import sys
 import cv2
@@ -33,53 +20,13 @@ import platform
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
-#   Project imports:
-#   Project imports:
 from MTrack import MTrack
 from DisplayLabel import DisplayLabel
 from RoiLabel import RoiLabel
 from InfoDialog import InfoDialog
 from ColorLabel import ColorLabel
-from drawMatches import drawMatches
-
-#   Class mTrack_Qt:
-#       Purpose: mTrack GUI Definition
-#       Created by Sheldon Reeves on 6/24/15.
-#       Language: Python 2.7
-#
-#       Dictionary of non-Qt Variables:
-#           - cage_vertices: Storage buffer for cage vertices
-#           - cage_wall_vertices: Storage buffer for cage wall vertices
-#           - dialog: Instance of InfoDialog class
-#           - displayLabel: Instance of DisplayLabel class
-#           - frame_count: Counter for number of frames read/displayed
-#           - left_foot_roi_buffer: Storage buffer for left foot ROI vertices
-#           - left_foot_roi_hist_buffer: Storage buffer for left foot ROI histograms
-#           - left_foot_roi_window_buffer: Storage buffer for left foot tracking windows
-#           - mouse_count: The number of mice being tracked
-#           - parent_img: The original version of the current frame
-#           - right_foot_roi_buffer: Storage buffer for right foot ROI vertices
-#           - right_foot_roi_hist_buffer: Storage buffer for right foot ROI histograms
-#           - right_foot_roi_window_buffer: Storage buffer for right foot tracking windows
-#           - roiLabel: Instance of the RoiLabel class
-#           - saveDirectory: string of path to save location
-#           - saveFile: reference to save file
-#           - timer: Execution loop timer
-#           - viewMode: string of current view mode setting
-#           - zoom: zoom value
-#           - Tracker: Instance of MTrack class
 
 
-
-
-    # Inline Private Member Method: __init_
-    # Method that generates the GUI, defines events, and initializes variables
-    # Precondition: GUI not created, event bindings not defined
-    # Postcondition: GUI created and event bindings defined
-    #super(MTrack_Qt, self).__init__(parent)
-    #showForm2Signal = pyqtSignal()
-
-#class MTrack_Qt(QtGui.QMainWindow):
 class MainWindow(QtGui.QMainWindow):
     def __init__(self, QtMouseTracker,parent = None):
         QtGui.QMainWindow.__init__(self, parent)
@@ -175,8 +122,6 @@ class MainWindow(QtGui.QMainWindow):
         self.Load_pushButton.setObjectName("Load_pushButton")
         #self.Load_pushButton.connect(self.Load_pushButton, QtCore.SIGNAL("released()"), self.get_output1_statement)
 
-
-
         self.horizontalLayout_3.addWidget(self.Load_pushButton)
         self.Save_pushButton = QtGui.QPushButton(self.centralWidget)
         self.Save_pushButton.setObjectName("Save_pushButton")
@@ -235,7 +180,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Zoom_ScrollBar = QtGui.QScrollBar(self.centralWidget)
         self.Zoom_ScrollBar.setEnabled(True)
         self.Zoom_ScrollBar.setMinimum(0)
-        self.Zoom_ScrollBar.setMaximum(20)
+        self.Zoom_ScrollBar.setMaximum(50)
         self.Zoom_ScrollBar.setSingleStep(1)
         self.Zoom_ScrollBar.setProperty("value", 10)
         self.Zoom_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
@@ -291,16 +236,11 @@ class MainWindow(QtGui.QMainWindow):
         self.Selector_scrollArea.setWidgetResizable(True)
         self.Selector_scrollArea.setObjectName("Selector_scrollArea")
 
-
-        ## big box I need to change
-        #***********************
-         #***********************
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
         self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 8))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
         self.gridLayout.addWidget(self.Selector_scrollArea, 11, 0, 1,4)
-
 
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
         self.deNoise_Val_spinBox.setMinimum(1)
@@ -317,7 +257,6 @@ class MainWindow(QtGui.QMainWindow):
         self.line_4.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.gridLayout.addWidget(self.line_4, 5, 0, 1, 5)
-
 
         self.verticalLayout_2 = QtGui.QVBoxLayout()
         self.verticalLayout_2.setContentsMargins(11, 11, 11, 11)
@@ -524,11 +463,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Load_pushButton.clicked.connect(self.buttonAction_loadVideo)
         #self.Load_pushButton.clicked.connect(self.refresh)
         #self.connect(self.Load_pushButton, QtCore.SIGNAL("released()"), self.restart)
-
-
         self.Save_pushButton.clicked.connect(self.buttonAction_savePath)
-
-
         self.StartCam_pushButton.clicked.connect(self.buttonAction_startCam)
         self.DrawCage_pushButton.clicked.connect(self.buttonAction_drawCage)
         self.Detect_Mice_pushButton.clicked.connect(self.buttonAction_detectMice)
@@ -616,21 +551,16 @@ class MainWindow(QtGui.QMainWindow):
         self.Stop_pushButton.setDisabled(True)
 
 
-        #
-        # layout = QtGui.QVBoxLayout(self)
-        # layout.add(QtMouseTracker)
 
     # Generated by pyuic5:
+
     def retranslateUi(self, QtMouseTracker):
         _translate = QtCore.QCoreApplication.translate
         QtMouseTracker.setWindowTitle(_translate("QtMouseTracker", "QtMouseTracker"))
         self.Load_pushButton.setText(_translate("QtMouseTracker", "Load Video"))
         self.Save_pushButton.setText(_translate("QtMouseTracker", "Save Path"))
         self.StartCam_pushButton.setText(_translate("QtMouseTracker", "Start CAM"))
-
         self.Exit_pushButton.setText(_translate("QtMouseTracker", "Exit"))
-        #self.Exit_pushButton.setText(_translate("QtMouseTracker", "Clear"))
-
         self.label.setText(_translate("QtMouseTracker", "L Hue"))
         self.label_2.setText(_translate("QtMouseTracker", "L Sat"))
         self.label_3.setText(_translate("QtMouseTracker", "L Val"))
@@ -658,41 +588,10 @@ class MainWindow(QtGui.QMainWindow):
         self.Collision_checkBox.setText(_translate("QtMouseTracker", "Collision Detect"))
         self.Execute_pushButton.setText(_translate("QtMouseTracker", "Execute"))
         self.label_10.setText(_translate("QtMouseTracker", "# Mice:"))
-
-
         self.mouse_num_selector.setItemText(0, _translate("QtMouseTracker", "Select"))
         self.mouse_num_selector.setItemText(1, _translate("QtMouseTracker", "1"))
         self.mouse_num_selector.setItemText(2, _translate("QtMouseTracker", "2"))
         self.mouse_num_selector.setItemText(3, _translate("QtMouseTracker", "4"))
-
-    # def restart(self):
-    #     # create a signal equivalent to "void someSignal(int, QWidget)"
-    #     self.emit(QtCore.SIGNAL("RESTARTREQUIRED"), True)
-
-        # End pyuic5 generated code
-
-    #def get_output1_statement(self):
-
-    # def refresh(self):
-    #     filename = "user_name_session"
-    #     target = open(filename, "r+")
-    #     name = target.read(10)
-    #     self.cashregisterid.setText(str(name))
-    #
-    #
-
-
-        #self.tableWidget.setItem(0,0,QtGui.QTableWidgetItem("add some data"))
-    # def reloadList(info):
-    #     # info is a list of strings
-    #     listwidget.clear()
-    #     listwidget.addItems(info)
-
-    # Inline Member Method: buttonAction_loadVideo
-    # Method that allows the user to select a video file
-    # Precondition: Video file not selected
-    # Postcondition: Video file selected, first frame displayed, Draw cage button enabled
-
 
     def buttonAction_loadVideo(self):
 
@@ -733,25 +632,8 @@ class MainWindow(QtGui.QMainWindow):
 
         # Display first image
         self.displayLabel.display_image(self.Tracker.first_frame, False, self.zoom)
-
-        # hsvImage = cv2.cvtColor(self.Tracker.first_frame, cv2.COLOR_BGR2HSV)
-        # cv2.putText(self.Tracker.first_frame, "HSV: {}".format(hsvImage[1][1]), (10, 20),
-        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
-
         self.parent_img = self.Tracker.first_frame
 
-
-
-    # Inline Member Method: buttonAction_savePath
-    # Method that allows the user to select save directory
-    # Precondition: Save Directory not selected
-    # Postcondition: Save Directory Selected, column labels written to file
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
-
-    # Created by Lin Zhang on 6/30/16.
-    # save file as multi-format
-    # Language: Python 2.7
     def buttonAction_savePath(self):
         caption = 'save files'
         directory = QFileDialog.getExistingDirectory()
@@ -762,17 +644,11 @@ class MainWindow(QtGui.QMainWindow):
              return
 
         self.saveFile = open(filenames,'w')
-        s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseX MouseY MouseAngle  \n")
+        s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY   \n")
         self.saveFile.write(s)
         #self.saveFile.close()
 
-
-
-    # Inline Member Method: buttonAction_startCam
     # Method that allows the user to select a video file
-    # Precondition: Video file not selected
-    # Postcondition: Camera started in place of video file, first frame displayed, draw cage enabled
-
     def buttonAction_startCam(self):
         self.Tracker = MTrack(0)
 
@@ -789,7 +665,6 @@ class MainWindow(QtGui.QMainWindow):
         self.displayLabel.setMouseTracking(True)
         self.Display_scrollArea.setWidget(self.displayLabel)
 
-
         #self.Display_scrollArea.setWidget(self.roiLabel)
 
         # Display first image
@@ -797,16 +672,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.parent_img = self.Tracker.first_frame
 
-    # Inline Member Method: buttonAction_drawCage
-    # Method that allows the user to draw a box around the tracking region
-    # Precondition: Tracking region undefined
-    # Postcondition:
-    #       -Tracking Region Defined
-    #       -Cage walls defined(if any)
-    #       -Cropped image displayed
-    #       -Buttons Enabled
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+    # draw a box around the tracking region
     def buttonAction_drawCage(self):
         # Clear ROI's
         self.left_foot_roi_buffer = []
@@ -836,8 +702,6 @@ class MainWindow(QtGui.QMainWindow):
         self.displayLabel.drawSetup(self.mouse_count)
 
         # Disable mouse selector
-        ################################################
-        ################################################
         self.mouse_num_selector.setEnabled(True)
         self.mouse_num_selector.setDisabled(False)
         # self.mouse_num_selector.setEnabled(False)
@@ -856,13 +720,8 @@ class MainWindow(QtGui.QMainWindow):
 
 
 
-    # Inline Member Method: buttonAction_detectMice
-    # Method to execute mouse detection on current frame only
-    # Precondition: No mice detected
-    # Postcondition:
-    #       -Mice detected and boxes drawn
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+
+    #  mouse detection on current frame only
     def buttonAction_detectMice(self):
         img = self.parent_img.copy()
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
@@ -887,13 +746,8 @@ class MainWindow(QtGui.QMainWindow):
 
         self.displayLabel.display_image(img, False, self.zoom)
 
-    # Inline Member Method: buttonAction_detectLeftFeet
-    # Method to execute left foot detection on current frame only
-    # Precondition: No Left feet detected
-    # Postcondition:
-    #       -Left feet detected and boxes drawn
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+
+    # execute left foot detection on current frame only
     def buttonAction_detectLeftFeet(self):
         img = self.parent_img.copy()
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
@@ -940,13 +794,10 @@ class MainWindow(QtGui.QMainWindow):
         img = cv2.cvtColor(img,cv2.COLOR_HSV2BGR)
         self.displayLabel.display_image(img, False, self.zoom)
 
-    # Inline Member Method: buttonAction_detectRightFeet
+
     # Method to execute right foot detection on current frame only
-    # Precondition: No right feet detected
-    # Postcondition:
-    #       -Right feet detected and boxes drawn
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+
+
     def buttonAction_detectRightFeet(self):
         img = self.parent_img.copy()
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
@@ -991,13 +842,7 @@ class MainWindow(QtGui.QMainWindow):
         img = cv2.cvtColor(img,cv2.COLOR_HSV2BGR)
         self.displayLabel.display_image(img, False, self.zoom)
 
-    # Inline Member Method: buttonAction_draw_LF_roi
-    # Method to allow the user to define the ROI for each left foot
-    # Precondition: Left foot ROIs undefined
-    # Postcondition:
-    #       -Left foot ROIs defined
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  define the ROI for each left foot
     def buttonAction_draw_LF_roi(self):
         # Disable Buttons
         self.DrawCage_pushButton.setEnabled(False)
@@ -1037,7 +882,6 @@ class MainWindow(QtGui.QMainWindow):
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
         box_list, center_point_list = self.Tracker.detect_mice(img, int(self.mouse_count))
 
-
         # Crop
         crop_list = self.Tracker.crop_images(img, box_list)
         #print "croplist", crop_list
@@ -1045,15 +889,12 @@ class MainWindow(QtGui.QMainWindow):
         # When scroll area widget is reassigned to roiLabel object, the displayLabel object is destroyed
         # All valuable information from displayLabel must be backed up
         self.cage_vertices = self.displayLabel.cage_vertices
-        #print "cage 1",self.cage_vertices
+
 
         self.cage_wall_vertices = self.displayLabel.cage_wall_vertices
 
         # Initialize roiLabel
         self.roiLabel = RoiLabel(self.mouse_count, crop_list, self.Tracker, self.zoom, QtInstance, 'left')
-        #print "roiL", self.roiLabel.roi_window_buffer
-        #print "Lfoot", self.roiLabel.foot
-
 
         self.roiLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
 
@@ -1063,14 +904,7 @@ class MainWindow(QtGui.QMainWindow):
         self.roiLabel.setMouseTracking(True)
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
 
-    # Inline Member Method: buttonAction_draw_RF_roi
     # Method to allow the user to define the ROI for each right foot
-    # Precondition: Right foot ROIs undefined
-    # Postcondition:
-    #       -Right foot ROIs defined
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
-
     def buttonAction_draw_RF_roi(self):
         # Disable Buttons
         self.DrawCage_pushButton.setEnabled(False)
@@ -1110,8 +944,6 @@ class MainWindow(QtGui.QMainWindow):
         img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
         box_list, center_point_list = self.Tracker.detect_mice(img, int(self.mouse_count))
 
-
-
         # Crop
         crop_list = self.Tracker.crop_images(img, box_list)
         #print crop_list
@@ -1138,15 +970,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Display_scrollArea.setWidget(self.roiLabel)  # self.displayLabel is destroyed in c++ space
 
 
-    # Inline Member Method: buttonAction_execute
-    # Method to begin tracking execution loop
-    # Precondition: Tracking loop not started
-    # Postcondition:
-    #       -Timer defined
-    #       -Timer Started
-    #       -Timer connected to executionLoop()
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  tracking execution loop
     def buttonAction_execute(self):
 
         self.timer = QTimer()
@@ -1154,31 +978,18 @@ class MainWindow(QtGui.QMainWindow):
         self.timer.setInterval(100)
         self.timer.start()
 
-    # Inline Member Method: buttonAction_stop
-    # Method to halt execution loop
-    # Precondition: Execution timer running
-    # Postcondition: Execution timer stopped
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  halt execution loop
     def buttonAction_stop(self):
         self.timer.stop()
         self.timer.timeout.connect(self.buttonAction_stop)
 
-    # Inline Member Method: buttonAction_exit
+
     # Method to exit the application
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
     def buttonAction_exit(self):
         MTrack_Qt_instance.destroy()
         sys.exit()
 
-
-    # Inline Member Method: checkboxAction_collisionDetect
-    # Method to activate collision detection when checkbox is checked
-    # Precondition: Collision detection state unchanged
-    # Postcondition: Collision detection state changed
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # activate collision detection when checkbox is checked
     def checkboxAction_collisionDetect(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_collision_detect = self.Collision_checkBox.isChecked()
@@ -1191,34 +1002,17 @@ class MainWindow(QtGui.QMainWindow):
 
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: checkboxAction_NoiseReduction
-    # Method to activate noise reduction when checkbox is checked
-    # Precondition: Noise reduction state unchanged
-    # Postcondition: Noise reduction state changed
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
-
+    # activate noise reduction when checkbox is checked
     def checkboxAction_NoiseReduction(self):
         self.Tracker.noiseReduction_on = self.NoiseReduction_checkBox.isChecked()
         self.displayImage(self.displayLabel.current_img, False)
 
-    # Inline Member Method: selectorUpdate_mouseNum
-    # Method to update the mouse count when the mouse number selector is changed
-    # Precondition: Mouse count unchanged
-    # Postcondition: Mouse count updated
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update the mouse count when the mouse number selector is changed
     def selectorUpdate_mouseNum(self):
         self.mouse_count = str(self.mouse_num_selector.currentText())
 
-    # Inline Member Method: selectorUpdate_viewMode
-    # Method to update the view mode when the view mode selector is changed
-    # Precondition: View mode unchanged
-    # Postcondition:
-    #       -View mode updated
-    #       -Image redisplayed in new view mode
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+
+    # update the view mode when the view mode selector is changed
     def selectorUpdate_viewMode(self):
         if self.View_Mode_comboBox.currentText() == 'Original':
             self.disableControls()
@@ -1253,14 +1047,8 @@ class MainWindow(QtGui.QMainWindow):
             self.updateSelectorImage()
             self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_Zoom
-    # Method to update zoom when changed
-    # Precondition: Zoom unchanged
-    # Postcondition:
-    #       -Zoom updated
-    #       -Image redisplayed zoomed
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update zoom when changed
+
     def sliderUpdate_Zoom(self):
         self.zoom = self.Zoom_ScrollBar.value() /10
 
@@ -1273,21 +1061,14 @@ class MainWindow(QtGui.QMainWindow):
                 self.displayImage(self.displayLabel.current_img, False)  # Redisplay Image
             else:
                 self.roiLabel.zoom = self.zoom  # Update Zoom
-                cv2.putText(self.roiLabel.crop_list[self.roiLabel.roi_count], "hhh: {}", (10, 20),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+                #cv2.putText(self.roiLabel.crop_list[self.roiLabel.roi_count], "hhh: {}", (10, 20),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
                 self.roiLabel.display_image(self.roiLabel.crop_list[self.roiLabel.roi_count],
                                             self.zoom)  # Redisplay Image
 
         except:
             pass
 
-    # Inline Member Method: selectorUpdate_LHue
-    # Method to update the LHue when changed
-    # Precondition: LHue unchanged
-    # Postcondition:
-    #       -LHue updated
-    #       -Image redisplayed with changes
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  update the LHue when changed
     def sliderUpdate_LHue(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_lower_hue = self.L_Hue_ScrollBar.value()
@@ -1301,14 +1082,8 @@ class MainWindow(QtGui.QMainWindow):
         self.updateSelectorImage()
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_LSat
-    # Method to update the LSat when changed
-    # Precondition: LSat unchanged
-    # Postcondition:
-    #       -LSat updated
-    #       -Image redisplayed with changes
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update the LSat when changed
+
     def sliderUpdate_LSat(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_lower_sat = self.L_Sat_ScrollBar.value()
@@ -1322,14 +1097,7 @@ class MainWindow(QtGui.QMainWindow):
         self.updateSelectorImage()
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_LVal
-    # Method to update the LVal when changed
-    # Precondition: LVal unchanged
-    # Postcondition:
-    #       -LVal updated
-    #       -Image redisplayed with changes
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update the LVal when changed
     def sliderUpdate_LVal(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_lower_val = self.L_Val_ScrollBar.value()
@@ -1343,14 +1111,7 @@ class MainWindow(QtGui.QMainWindow):
         self.updateSelectorImage()
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_UHue
-    # Method to update the UHue when changed
-    # Precondition: UHue unchanged
-    # Postcondition:
-    #       -UHue updated
-    #       -Image redisplayed with changes
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update the UHue when changed
     def sliderUpdate_UHue(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_upper_hue = self.U_Hue_ScrollBar.value()
@@ -1364,14 +1125,7 @@ class MainWindow(QtGui.QMainWindow):
         self.updateSelectorImage()
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_USat
-    # Method to update the USat when changed
-    # Precondition: USat unchanged
-    # Postcondition:
-    #       -USat updated
-    #       -Image redisplayed with changes
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update the USat when changed
     def sliderUpdate_USat(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_upper_sat = self.U_Sat_ScrollBar.value()
@@ -1385,14 +1139,7 @@ class MainWindow(QtGui.QMainWindow):
         self.updateSelectorImage()
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_UVal
-    # Method to update the UVal when changed
-    # Precondition: UVal unchanged
-    # Postcondition:
-    #       -UVal updated
-    #       -Image redisplayed with changes
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  update the UVal when changed
     def sliderUpdate_UVal(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_color_upper_val = self.U_Val_ScrollBar.value()
@@ -1406,13 +1153,8 @@ class MainWindow(QtGui.QMainWindow):
         self.updateSelectorImage()
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_Dilation
-    # Method to update the Dilation when changed
-    # Precondition: Dilation unchanged
-    # Postcondition:
-    #       -Dilation updated
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+
+    # update the Dilation when changed
     def sliderUpdate_Dilation(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_dilation = self.Dilation_ScrollBar.value()
@@ -1425,14 +1167,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_boxSize
     # Method to update the boxSize when changed
-    # Precondition: boxSize unchanged
-    # Postcondition:
-    #       -boxSize updated
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
-    #
     def sliderUpdate_boxSize(self):
         if self.viewMode == 'Body Color Mask':
             self.Tracker.body_minBoxSize = self.Box_Size_ScrollBar.value()
@@ -1445,23 +1180,12 @@ class MainWindow(QtGui.QMainWindow):
 
         self.displayImage(self.parent_img, False)
 
-    # Inline Member Method: selectorUpdate_deNoiseVal
-    # Method to update the deNoiseVal when changed
-    # Precondition: deNoise_val unchanged
-    # Postcondition:
-    #       -deNoise_val updated
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    # update the deNoiseVal when changed
     def sliderUpdate_deNoiseVal(self):
         self.Tracker.deNoise_val = self.deNoise_Val_ScrollBar.value()
         self.displayImage(self.displayLabel.current_img, False)
 
-    # Inline Member Method: disableControls
-    # Method to disable image manipulation and tracking controls
-    # Precondition: Controls enabled
-    # Postcondition: Controls disabled
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  disable image manipulation and tracking controls
     def disableControls(self):
         # Dis-Enable
         self.L_Hue_ScrollBar.setEnabled(False)
@@ -1501,12 +1225,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Dilation_spinBox.setDisabled(True)
         self.Box_Size_spinBox.setDisabled(True)
 
-    # Inline Member Method: enableControls
     # Method to enable image manipulation and tracking controls
-    # Precondition: Controls disabled
-    # Postcondition: Controls enabled
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
     def enableControls(self):
         # Re-Enable
         self.L_Hue_ScrollBar.setEnabled(True)
@@ -1551,8 +1270,6 @@ class MainWindow(QtGui.QMainWindow):
             self.Collision_checkBox.setEnabled(False)
             self.Collision_checkBox.setDisabled(True)
 
-
-
     def disable_start(self):
 
         self.Detect_Mice_pushButton.setEnabled(False)
@@ -1562,7 +1279,6 @@ class MainWindow(QtGui.QMainWindow):
         self.Draw_RF_Roi_pushButton.setEnabled(False)
         self.Execute_pushButton.setEnabled(False)
 
-
         self.Detect_Mice_pushButton.setDisabled(True)
         self.Detect_LF_pushButton.setDisabled(True)
         self.Detect_RF_pushButton.setDisabled(True)
@@ -1570,12 +1286,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Draw_RF_Roi_pushButton.setDisabled(True)
         self.Execute_pushButton.setDisabled(True)
 
-    # Inline Member Method: updateSelectorImage
     # Method to update the selector image color
-    # Precondition: Selector image unchanged
-    # Postcondition: Selector Image updated
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def updateSelectorImage(self):
         self.Tracker.generate_selector_images()
         if self.viewMode == 'Body Color Mask':
@@ -1587,12 +1298,7 @@ class MainWindow(QtGui.QMainWindow):
         elif self.viewMode == 'Right Foot Color Mask':
             self.colorLabel.display_image(self.Tracker.right_foot_color_image)
 
-    # Inline Member Method: setControlValues
     # Method to set slider positions based on view mode
-    # Precondition: Slider positions/values unchanged
-    # Postcondition: Slider positions updated
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
 
     def setControlValues(self):
         if self.viewMode == 'Body Color Mask':
@@ -1626,10 +1332,7 @@ class MainWindow(QtGui.QMainWindow):
             self.Box_Size_ScrollBar.setValue(self.Tracker.right_foot_minBoxSize)
             self.Collision_checkBox.setChecked(self.Tracker.right_foot_collision_detect)
 
-    # Inline Member Method: getColorMask
     # Method to generate color mask from current settings
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
     def getColorMask(self, img):
         if self.viewMode == 'Body Color Mask':
             Lhue = self.Tracker.body_color_lower_hue
@@ -1659,18 +1362,10 @@ class MainWindow(QtGui.QMainWindow):
         mask = self.Tracker.map_binary_color(img, Lhue, Lsat, Lval, Uhue, Usat, Uval, dilation)
         return mask
 
-
-
-
     def restartGame(self):
         self.clear()
         subprocess.call("python" + " MTracker_Qt.py", shell=True)
 
-
-    # Inline Member Method: displayImage
-    # Method to display image
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
     def displayImage(self, img, crop):
         if self.viewMode == 'Original':
             self.displayLabel.display_image(img, crop, self.zoom)
@@ -1694,22 +1389,12 @@ class MainWindow(QtGui.QMainWindow):
             mask = cv2.bitwise_and(img, img, mask=mask)
             self.displayLabel.display_image(mask, crop, self.zoom)
 
-    # Inline Member Method: executionLoop
-    # Method to read next frame from file and perform tracking on that frame
-    # Precondition: Tracking not performed
-    # Postcondition:
-    #       - Frame read from file
-    #       - Tracking performed on frame
-    #       - Tracking data outputed to file
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 2.7
+    #  next frame from file and perform tracking on that frame
     def executionLoop(self):
 
         self.Stop_pushButton.setEnabled(True)
         self.Stop_pushButton.setDisabled(False)
-
         self.timer.stop()
-
 
         # Initialize Lists
         left_foot_center_points = [[0 for x in range(100)] for x in range(100)]
@@ -1750,7 +1435,7 @@ class MainWindow(QtGui.QMainWindow):
 
         # Sort mouse lists
         if int(self.mouse_count) > 1:
-            mouse_box_list, mouse_center_points,line_points, self.left_foot_roi_hist_buffer, self.left_foot_roi_window_buffer, self.right_foot_roi_hist_buffer, self.right_foot_roi_window_buffer = self.Tracker.sort_mouse_list(
+            mouse_box_list, mouse_center_points, self.left_foot_roi_hist_buffer, self.left_foot_roi_window_buffer, self.right_foot_roi_hist_buffer, self.right_foot_roi_window_buffer = self.Tracker.sort_mouse_list(
                 mouse_box_list, mouse_center_points,
                 self.left_foot_roi_hist_buffer,
                 self.left_foot_roi_window_buffer,
@@ -1820,12 +1505,10 @@ class MainWindow(QtGui.QMainWindow):
                 for j in right_foot_center_points[i]:
                     cv2.circle(crop_list[i], j, 3, (203, 192, 255), 3)
 
-
             # Change center point coords to be relative to global image
             left_foot_center_points = self.Tracker.globalize_center_points(mouse_box_list, left_foot_center_points)
             right_foot_center_points = self.Tracker.globalize_center_points(mouse_box_list,
                                                                             right_foot_center_points)
-
             # Insert modified images
             self.Tracker.insert_images(mouse_box_list, crop_list, orig_img)
 
@@ -1853,8 +1536,11 @@ class MainWindow(QtGui.QMainWindow):
                 s = (str(self.frame_count) + " " + str(i) + " " +
                      str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
                      str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
-                     str(angle_list[i])+ " " +
-                     str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " + '\n')
+                     str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " +
+                     str(int(angle_list[i]))+ " " + '\n')
+
+                # print angle_list[i]
+                # print int(angle_list[i])
 
                 try:
                     self.saveFile.write(s)
@@ -1869,10 +1555,6 @@ class MainWindow(QtGui.QMainWindow):
             cv2.line(orig_img, tuple(self.cage_wall_vertices[i]), tuple(self.cage_wall_vertices[i + 1]), (211, 0, 148),
                      1, 8)
 
-
-
-
-
         self.displayImage(orig_img, False)
         self.timer.start()
 
@@ -1886,11 +1568,7 @@ class MainWindow(QtGui.QMainWindow):
         self.zoomInAct.setEnabled(self.scaleFactor < 3.0)
         self.zoomOutAct.setEnabled(self.scaleFactor > 0.333)
 
-
-
-
 if __name__ == "__main__":
-
 
     app = QtGui.QApplication(sys.argv)
     MTrack_Qt_instance = QtGui.QMainWindow()

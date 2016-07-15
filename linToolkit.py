@@ -8,7 +8,7 @@ print cv2.__version__
 
 
 
-green = np.uint8([[[255,20,147]]])
+green = np.uint8([[[255,192,203]]])  # list Sequence RGB
 hsv_green = cv2.cvtColor(green,cv2.COLOR_BGR2HSV)
 print hsv_green
 

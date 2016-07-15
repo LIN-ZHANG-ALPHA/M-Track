@@ -1,9 +1,11 @@
-#  RoiLabel.py
-#  This file is part of the mTrack program
-#  Created by Sheldon Reeves on 6/24/15.
-#  Email: sheldonreeves316@gmail.com
-#  Language: Python 3.4
-#  OpenCV Version: 3.0.0
+#  MTrack.py
+#  This file is part of the M-Track program
+#  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
+#  Language: Python 2.7
+#  OpenCV Version: 3.0
+#  PyQt Version: 4.8
+
+
 import cv2
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QWidget, QLabel
@@ -29,10 +31,8 @@ import numpy as np
 
 class RoiLabel(QLabel):
 
-    # Inline Private Member Method: __init__
+
     # Method to initialize variables
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def __init__(self, mouse_count, crop_list, mouseTracker, zoom, QtInstance, foot):
         super(RoiLabel, self).__init__()
         self.mouse_count = int(mouse_count)
@@ -43,10 +43,8 @@ class RoiLabel(QLabel):
         self.foot = foot
         self.setup()
 
-    # Inline Member Method: setup
+
     # Method to setup variables for drawing
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def setup(self):
         self.left_click = False
         self.roi_count = 0
@@ -56,10 +54,9 @@ class RoiLabel(QLabel):
         self.roi_window_buffer = []
         self.display_image(self.crop_list[self.roi_count], self.zoom)
 
-    # Overridden Inline Member Method: mousePressEvent
+
     # Method that defines actions for mouse presses
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+
     def mousePressEvent(self, eventQMouseEvent):
         if self.list_complete is False:
             # Disable Zoom
@@ -73,8 +70,6 @@ class RoiLabel(QLabel):
 
     # Overridden Inline Member Method: mouseMoveEvent
     # Method that defines actions for mouse movement
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def mouseMoveEvent(self, eventQMouseEvent):
         if self.list_complete is False:
             # print "eventQMouseEvent:", eventQMouseEvent
@@ -86,11 +81,11 @@ class RoiLabel(QLabel):
                 if self.foot == 'left':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              ( 90 , 255 ,255), 2)
+                              ( 95 ,61 ,255), 2)
                 elif self.foot == 'right':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                              (136, 235, 255), 2)
+                              (125,  63, 255), 2)
 
                 # cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
                 #               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
@@ -124,10 +119,9 @@ class RoiLabel(QLabel):
 
             QWidget.mouseMoveEvent(self, eventQMouseEvent)
 
-    # Overridden Inline Member Method: mouseReleaseEvent
+
     # Method that defines actions for mouse releases
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+
     def mouseReleaseEvent(self, eventQMouseEvent):
         if self.list_complete is False:
             copy = self.crop_list[self.roi_count].copy()
@@ -251,10 +245,8 @@ class RoiLabel(QLabel):
                             self.QtInstance.Execute_pushButton.setDisabled(False)
         #return self.roi_window_buffer
 
-    # Inline Member Method: display_image
+
     # Method that displays image on Qlabel
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def display_image(self, img, zoom):
         self.current_img = img
         img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
