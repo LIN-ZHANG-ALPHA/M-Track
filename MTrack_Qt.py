@@ -5,6 +5,7 @@
 #  OpenCV Version: 3.0
 #  PyQt Version: 4.8
 
+
 import sys
 import cv2
 import time
@@ -601,8 +602,8 @@ class MainWindow(QtGui.QMainWindow):
         self.label_12.setText(_translate("QtMouseTracker", "Zoom"))
         self.label_9.setText(_translate("QtMouseTracker", "Denoise Val"))
 
-        self.LowerValue_Box1.setText(_translate("QtMouseTracker", "Low Value"))
-        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "High Value"))
+        self.LowerValue_Box1.setText(_translate("QtMouseTracker", "Lower Limit"))
+        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "Upper Limit"))
 
         self.Collision_checkBox.setText(_translate("QtMouseTracker", "Collision Detect"))
         self.Execute_pushButton.setText(_translate("QtMouseTracker", "Execute"))
@@ -661,7 +662,6 @@ class MainWindow(QtGui.QMainWindow):
         #print filenames  # test
         if not filenames:
              return
-
         self.saveFile = open(filenames,'w')
         s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY   \n")
         self.saveFile.write(s)
@@ -1446,7 +1446,6 @@ class MainWindow(QtGui.QMainWindow):
                                                                                self.Tracker.body_dilation,
                                                                                self.Tracker.body_minBoxSize,
                                                                                self.Tracker.box_scale)
-
         # If too many mice are detected
         if len(mouse_box_list) > int(self.mouse_count):
             self.dialog.infoDialog("Too many mice detected! Reconfigure Parameters.")
@@ -1460,6 +1459,9 @@ class MainWindow(QtGui.QMainWindow):
                 self.left_foot_roi_window_buffer,
                 self.right_foot_roi_hist_buffer,
                 self.right_foot_roi_window_buffer)
+
+
+
 
         # Crop mice from image
         if mouse_box_list:
