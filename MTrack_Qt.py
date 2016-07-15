@@ -44,7 +44,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.centralWidget = QtGui.QWidget(QtMouseTracker)
         self.centralWidget.setObjectName("centralWidget")
-        self.centralWidget.setMinimumSize(900,650)
+        self.centralWidget.setMinimumSize(900,600)
 
         self.scaleFactor = 0.0
 
@@ -240,10 +240,12 @@ class MainWindow(QtGui.QMainWindow):
         self.Selector_scrollArea.setObjectName("Selector_scrollArea")
 
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 200))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 199, 400))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
-        self.gridLayout.addWidget(self.Selector_scrollArea, 15, 0, 1,4)
+        self.Selector_scrollArea.setContentsMargins(11,11,11,11)
+        self.gridLayout.addWidget(self.Selector_scrollArea, 15, 0, 1,4.5)
+
 
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
         self.deNoise_Val_spinBox.setMinimum(1)
@@ -634,7 +636,6 @@ class MainWindow(QtGui.QMainWindow):
         # Initialize displayLabel
         self.displayLabel = DisplayLabel(self.Tracker.first_frame, self.Tracker,
                                          self.zoom, QtInstance)
-
 
         self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
         self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
