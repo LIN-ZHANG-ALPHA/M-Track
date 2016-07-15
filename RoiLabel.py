@@ -108,7 +108,7 @@ class RoiLabel(QLabel):
                 ave_hsv = [H,S,V]
 
                 cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (10,20),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (100,255,255), 2)
+                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,255), 2)
 
 
                 # cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
@@ -178,7 +178,7 @@ class RoiLabel(QLabel):
                 self.roi_count = self.roi_count + 1
 
                 if self.roi_count < len(self.crop_list):
-                    cv2.putText(self.crop_list[self.roi_count], "HSV:",(10,20),cv2.FONT_HERSHEY_SIMPLEX, 1, (127,0,255), 2)
+                    #cv2.putText(self.crop_list[self.roi_count], "HSV:",(10,20),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (127,0,255), 2)
                     self.display_image(self.crop_list[self.roi_count], self.zoom)
 
                 if self.roi_count == len(self.crop_list):

@@ -232,7 +232,8 @@ class MainWindow(QtGui.QMainWindow):
         self.gridLayout.addLayout(self.gridLayout_2, 2, 0, 1, 5)
 
         self.Selector_scrollArea = QtGui.QScrollArea(self.centralWidget)
-        self.Selector_scrollArea.setMaximumSize(QtCore.QSize(301, 50))
+        #self.Selector_scrollArea.setMaximumSize(QtCore.QSize(301, 50))
+        self.Selector_scrollArea.setMinimumSize(QtCore.QSize(200,40))
 
         #self.Selector_scrollArea.ScrollBarPolicy(QtGui.QAbstractScrollArea.AdjustIgnored)
 
@@ -240,11 +241,11 @@ class MainWindow(QtGui.QMainWindow):
         self.Selector_scrollArea.setObjectName("Selector_scrollArea")
 
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 199, 400))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 199, 200))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
         self.Selector_scrollArea.setContentsMargins(11,11,11,11)
-        self.gridLayout.addWidget(self.Selector_scrollArea, 15, 0, 1,4.5)
+        self.gridLayout.addWidget(self.Selector_scrollArea, 15, 0, 1,5)
 
 
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
@@ -630,7 +631,6 @@ class MainWindow(QtGui.QMainWindow):
         self.DrawCage_pushButton.setEnabled(True)
         self.DrawCage_pushButton.setDisabled(False)
 
-
         self.disable_start()
 
         # Initialize displayLabel
@@ -638,7 +638,8 @@ class MainWindow(QtGui.QMainWindow):
                                          self.zoom, QtInstance)
 
         self.img_height, self.img_width, channels = self.Tracker.first_frame.shape
-        self.displayLabel.setGeometry(QtCore.QRect(0, 0, 831, 821))
+
+        self.displayLabel.setGeometry(QtCore.QRect(0, 0, 631, 621))
         #self.displayLabel.resize(self.img_width+25, self.img_height+20)
         #self.displayLabel.setFixedSize(self.sizeHint())
 

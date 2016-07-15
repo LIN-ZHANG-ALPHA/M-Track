@@ -13,8 +13,6 @@ from PyQt4.QtGui import QWidget, QLabel
 
 #   Class Display_Label
 #       Purpose: Redefine QLabel class for main display and cage drawing
-#       Created by Sheldon Reeves on 6/24/15.
-#       Language: Python 3.4
 #
 #       Dictionary of Variables:
 #           - QtInstance: Reference to the main MTrack_Qt instance
@@ -41,8 +39,7 @@ class DisplayLabel(QLabel):
 
     # Inline Private Member Method: __init__
     # Method to initialize variables
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+
     def __init__(self,first_frame,mouseTracker,zoom,QtInstance):
         super(DisplayLabel, self).__init__()
         self.first_frame = first_frame
@@ -57,8 +54,6 @@ class DisplayLabel(QLabel):
 
     # Inline Member Method: drawSetup
     # Method to setup variables for drawing
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def drawSetup(self, mouse_count):
         self.mouse_count = int(mouse_count)
         self.frame = self.first_frame.copy()
@@ -76,8 +71,7 @@ class DisplayLabel(QLabel):
 
     # Overridden Inline Member Method: mousePressEvent
     # Method that defines actions for mouse presses
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+
     def mousePressEvent(self, eventQMouseEvent):
         # Disable Zoom
         self.QtInstance.Zoom_ScrollBar.setEnabled(False)
@@ -98,8 +92,7 @@ class DisplayLabel(QLabel):
 
     # Overridden Inline Member Method: mouseMoveEvent
     # Method that defines actions for mouse movement
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+
     def mouseMoveEvent(self, eventQMouseEvent):
         if self.left_click is True:
             if self.cage_complete is False:
@@ -125,8 +118,7 @@ class DisplayLabel(QLabel):
 
     # Overridden Inline Member Method: mouseReleaseEvent
     # Method that defines actions for mouse releases
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
+
     def mouseReleaseEvent(self, eventQMouseEvent):
         if self.left_click is True:
             #Cage Walls
@@ -234,8 +226,6 @@ class DisplayLabel(QLabel):
 
     # Inline Member Method: display_image
     # Method that displays image on Qlabel
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def display_image(self,img,crop,zoom):
         if self.cage_complete is True and crop is True:
             img = self.crop_image(img)
@@ -256,8 +246,6 @@ class DisplayLabel(QLabel):
 
     # Inline Member Method: crop_image
     # Method that crops and rotates image based on the cage
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def crop_image(self,img):
             bounding_rect = cv2.minAreaRect(np.array(list(self.cage_vertices)))
             cage_midx = bounding_rect[0][0]
