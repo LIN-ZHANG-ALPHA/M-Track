@@ -10,9 +10,6 @@ import numpy as np
 
 #   Class MTrack:
 #       Purpose: mTrack Tracking Functionality
-#       Created by Sheldon Reeves on 6/24/15.
-#       Language: Python 3.4
-#
 #       Dictionary of Variables:
 #           - body_collision_detect: boolean for enabling collision detection on mouse bodies
 #           - body_color_image: Body color selector image
@@ -59,12 +56,7 @@ import numpy as np
 
 class MTrack:
 
-    # Inline Private Member Method: __init__
     # Method that reads the opens video file and reads first frame
-    # Precondition: No video file opened
-    # Postcondition: Video file open and first frame read
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def __init__(self, filename):
         # Initial Frame capture
         self.capture = cv2.VideoCapture(filename)
@@ -84,12 +76,8 @@ class MTrack:
         self.t = 0
         self.old_center = []
 
-    # Inline Member Method: __initialize_variables
+
     # Method to initialize all variables for the class
-    # Precondition: Variables undefined
-    # Postcondition: Variables created and initialized
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def __initialize_variables(self):
         self.crop_list = []
         self.wall1 = []
@@ -132,12 +120,8 @@ class MTrack:
         # Meanshift Termination Criteria
         self.term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 50, 1)
 
-    # Inline Member Method: calculate_wall_pixels
+
     # Method to calculate the pixels for each wall line
-    # Precondition: Wall Pixels Unknown
-    # Postcondition: Wall Pixels Known
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def calculate_wall_pixels(self, vertices, mouse_count):
         # Bresenham Algorithm on Wall Lines
         if mouse_count > 1:
@@ -147,8 +131,6 @@ class MTrack:
 
     # Inline Member Method: generate_selector_images
     # Method to generate color selector images
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def generate_selector_images(self):
 
         # Selector Color Images
@@ -178,12 +160,8 @@ class MTrack:
         self.left_foot_color_image = np.concatenate((left_foot_color_image_lower, left_foot_color_image_upper), axis=1)
         self.right_foot_color_image = np.concatenate((right_foot_color_image_lower, right_foot_color_image_upper),
                                                      axis=1)
-    # Inline Member Method: process_image_color
+
     # Method to perform color based object detection on a single image
-    # Precondition: Object(s) undetected
-    # Postcondition: Object(s) detected
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def process_image_color(self, img, color_lower_hue, color_lower_sat, color_lower_val, color_upper_hue,
                             color_upper_sat,
                             color_upper_val, collision_detect, dilation, minboxsize, box_scale):
@@ -227,12 +205,8 @@ class MTrack:
 
         return box_list, center_points
 
-    # Inline Member Method: process_image_roi
+
     # Method to perform roi based object detection on a single image
-    # Precondition: Object undetected
-    # Postcondition: Object detected
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def process_image_roi(self, img, roi_hist, track_window, color_lower_hue, color_lower_sat, color_lower_val,
                           color_upper_hue,
                           color_upper_sat,
@@ -303,10 +277,8 @@ class MTrack:
         color_binary = cv2.dilate(color_binary, dilation)
         return color_binary
 
-    # Inline Member Method: calcRoiHist
+
     # Method to generate hue channel histogram of ROI
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def calcRoiHist(self, img, roi, color_lower_hue, color_lower_sat, color_lower_val, color_upper_hue,
                     color_upper_sat,
                     color_upper_val, collision_detect, dilation):
@@ -396,12 +368,7 @@ class MTrack:
 
         return mouse_box_list, mouse_center_points
 
-    # Inline Member Method: detect_left_feet
     # Method to perform mouse left foot detection on a single image
-    # Precondition: Left feet not detected
-    # Postcondition: Left feet detected
-    # Created by Sheldon Reeves on 6/24/15.
-    # Language: Python 3.4
     def detect_left_feet(self, img, mouse_count, mouse_box_list):
         left_foot_box_list = [[0 for x in range(100)] for x in range(100)]
         left_foot_center_points = [[0 for x in range(100)] for x in range(100)]
