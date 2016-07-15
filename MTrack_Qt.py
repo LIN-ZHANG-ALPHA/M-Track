@@ -240,7 +240,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Selector_scrollArea.setObjectName("Selector_scrollArea")
 
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 8))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 200))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
         self.gridLayout.addWidget(self.Selector_scrollArea, 15, 0, 1,4)
@@ -323,7 +323,6 @@ class MainWindow(QtGui.QMainWindow):
         self.gridLayout.addLayout(self.verticalLayout_2, 7, 4, 1, 1)
 
 
-
         self.Display_scrollArea = QtGui.QScrollArea(self.centralWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -334,7 +333,6 @@ class MainWindow(QtGui.QMainWindow):
         self.Display_scrollArea.setFrameShadow(QtGui.QFrame.Sunken)
 
         #self.Display_scrollArea.setSizePolicy(QtGui.QSizePolicy.Ignored,QtGui.QSizePolicy.Ignored)
-
         #self.Display_scrollArea.setSizeAdjustPolicy(QtGui.QAbstractScrollArea.AdjustIgnored)
 
         self.Display_scrollArea.setWidgetResizable(True)
@@ -367,7 +365,6 @@ class MainWindow(QtGui.QMainWindow):
         self.gridLayout.addWidget(self.label_9, 16, 0, 1, 1)
 
         # bottom seperate line
-        ###############
         # self.line_3 = QtGui.QFrame(self.centralWidget)
         # self.line_3.setFrameShape(QtGui.QFrame.HLine)
         # self.line_3.setFrameShadow(QtGui.QFrame.Sunken)
@@ -602,8 +599,8 @@ class MainWindow(QtGui.QMainWindow):
         self.label_12.setText(_translate("QtMouseTracker", "Zoom"))
         self.label_9.setText(_translate("QtMouseTracker", "Denoise Val"))
 
-        self.LowerValue_Box1.setText(_translate("QtMouseTracker", "Lower Limit"))
-        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "Upper Limit"))
+        self.LowerValue_Box1.setText(_translate("QtMouseTracker", "Lower HSV limit"))
+        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "Upper HSV limit"))
 
         self.Collision_checkBox.setText(_translate("QtMouseTracker", "Collision Detect"))
         self.Execute_pushButton.setText(_translate("QtMouseTracker", "Execute"))
@@ -1552,6 +1549,11 @@ class MainWindow(QtGui.QMainWindow):
                 degs = math.degrees(rads)
                 angle_list.append(degs)
 
+
+
+
+
+
             # Generate Output strings
             for i in range(0, len(mouse_box_list)):
                 s = (str(self.frame_count) + " " + str(i) + " " +
@@ -1559,7 +1561,7 @@ class MainWindow(QtGui.QMainWindow):
                      str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
                      str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " +
                      str(int(angle_list[i]))+ " " + '\n')
-
+                print s.__format__
                 # print angle_list[i]
                 # print int(angle_list[i])
 
