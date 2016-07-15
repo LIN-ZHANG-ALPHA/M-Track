@@ -43,7 +43,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.centralWidget = QtGui.QWidget(QtMouseTracker)
         self.centralWidget.setObjectName("centralWidget")
-        self.centralWidget.setMinimumSize(900,600)
+        self.centralWidget.setMinimumSize(900,650)
 
         self.scaleFactor = 0.0
 
@@ -66,6 +66,8 @@ class MainWindow(QtGui.QMainWindow):
         self.L_Hue_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
         self.L_Hue_ScrollBar.setObjectName("L_Hue_ScrollBar")
         self.verticalLayout.addWidget(self.L_Hue_ScrollBar)
+
+
         self.L_Sat_ScrollBar = QtGui.QScrollBar(self.centralWidget)
         self.L_Sat_ScrollBar.setMinimum(0)
         self.L_Sat_ScrollBar.setMaximum(255)
@@ -186,7 +188,7 @@ class MainWindow(QtGui.QMainWindow):
         self.Zoom_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
 
         self.Zoom_ScrollBar.setObjectName("Zoom_ScrollBar")
-        self.gridLayout.addWidget(self.Zoom_ScrollBar, 14, 1, 1, 3)
+        self.gridLayout.addWidget(self.Zoom_ScrollBar, 17, 1, 1, 3)
 
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setContentsMargins(11, 11, 11, 11)
@@ -240,13 +242,13 @@ class MainWindow(QtGui.QMainWindow):
         self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 299, 8))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.Selector_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
-        self.gridLayout.addWidget(self.Selector_scrollArea, 11, 0, 1,4)
+        self.gridLayout.addWidget(self.Selector_scrollArea, 15, 0, 1,4)
 
         self.deNoise_Val_spinBox = QtGui.QSpinBox(self.centralWidget)
         self.deNoise_Val_spinBox.setMinimum(1)
         self.deNoise_Val_spinBox.setMaximum(100)
         self.deNoise_Val_spinBox.setObjectName("deNoise_Val_spinBox")
-        self.gridLayout.addWidget(self.deNoise_Val_spinBox, 13, 4, 1, 1)
+        self.gridLayout.addWidget(self.deNoise_Val_spinBox, 16, 4, 1, 1)
         self.Stop_pushButton = QtGui.QPushButton(self.centralWidget)
         self.Stop_pushButton.setObjectName("Stop_pushButton")
         self.gridLayout.addWidget(self.Stop_pushButton, 4, 4, 1, 1)
@@ -353,22 +355,33 @@ class MainWindow(QtGui.QMainWindow):
         self.deNoise_Val_ScrollBar.setMaximum(100)
         self.deNoise_Val_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
         self.deNoise_Val_ScrollBar.setObjectName("deNoise_Val_ScrollBar")
-        self.gridLayout.addWidget(self.deNoise_Val_ScrollBar, 13, 1, 1, 3)
+        self.gridLayout.addWidget(self.deNoise_Val_ScrollBar, 16, 1, 1, 3)
 
         self.label_12 = QtGui.QLabel(self.centralWidget)
         self.label_12.setObjectName("label_12")
-        self.gridLayout.addWidget(self.label_12, 14, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_12, 17, 0, 1, 1)
 
         self.label_9 = QtGui.QLabel(self.centralWidget)
         self.label_9.setObjectName("label_9")
-        self.gridLayout.addWidget(self.label_9, 13, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_9, 16, 0, 1, 1)
 
         # bottom seperate line
-        self.line_3 = QtGui.QFrame(self.centralWidget)
-        self.line_3.setFrameShape(QtGui.QFrame.HLine)
-        self.line_3.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line_3.setObjectName("line_3")
-        self.gridLayout.addWidget(self.line_3, 12, 0, 1, 5)
+        ###############
+        # self.line_3 = QtGui.QFrame(self.centralWidget)
+        # self.line_3.setFrameShape(QtGui.QFrame.HLine)
+        # self.line_3.setFrameShadow(QtGui.QFrame.Sunken)
+        # self.line_3.setObjectName("line_3")
+        # self.gridLayout.addWidget(self.line_3, 12, 0, 1, 5)
+        self.LowerValue_Box1 = QtGui.QLabel(self.centralWidget)
+        self.LowerValue_Box1.setObjectName("Test")
+        self.gridLayout.addWidget(self.LowerValue_Box1, 12, 0, 1, 2)
+
+
+        self.LowerValue_Box2 = QtGui.QLabel(self.centralWidget)
+        self.LowerValue_Box2.setObjectName("Test1")
+        self.gridLayout.addWidget(self.LowerValue_Box2, 12, 2, 1, 2)
+
+
 
         # first seperate line
         self.line = QtGui.QFrame(self.centralWidget)
@@ -388,7 +401,9 @@ class MainWindow(QtGui.QMainWindow):
 
         self.Collision_checkBox = QtGui.QCheckBox(self.centralWidget)
         self.Collision_checkBox.setObjectName("Collision_checkBox")
-        self.gridLayout.addWidget(self.Collision_checkBox, 8, 0, 1, 2)
+        self.gridLayout.addWidget(self.Collision_checkBox, 8, 0, 1, 2) #8, 2, 1, 2)
+
+
 
         self.Execute_pushButton = QtGui.QPushButton(self.centralWidget)
         self.Execute_pushButton.setObjectName("Execute_pushButton")
@@ -585,6 +600,10 @@ class MainWindow(QtGui.QMainWindow):
         self.Stop_pushButton.setText(_translate("QtMouseTracker", "Pause"))
         self.label_12.setText(_translate("QtMouseTracker", "Zoom"))
         self.label_9.setText(_translate("QtMouseTracker", "Denoise Val"))
+
+        self.LowerValue_Box1.setText(_translate("QtMouseTracker", "Low Value"))
+        self.LowerValue_Box2.setText(_translate("QtMouseTracker", "High Value"))
+
         self.Collision_checkBox.setText(_translate("QtMouseTracker", "Collision Detect"))
         self.Execute_pushButton.setText(_translate("QtMouseTracker", "Execute"))
         self.label_10.setText(_translate("QtMouseTracker", "# Mice:"))
