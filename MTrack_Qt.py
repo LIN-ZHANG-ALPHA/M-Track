@@ -1564,6 +1564,7 @@ class MainWindow(QtGui.QMainWindow):
 
                     print "left_foot_center_points: ", left_foot_center_points
                     print "mouse_center_points: ", mouse_center_points
+                    print "angle_list : ",angle_list
 
                     try:
 
@@ -1579,11 +1580,12 @@ class MainWindow(QtGui.QMainWindow):
                 test1 = ("This  is the 1st mouse  \n")
                 self.saveFile.write(test1)
                 for i in range(0, len(mouse_box_list)):
+                    angle_list_temp = int(angle_list[i])
                     s = (str(self.frame_count) + " " + str(i) + " " +
                          str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
                          str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
                          str(mouse_center_points[i][0][0]) + " " + str(mouse_center_points[i][0][1])+ " " +
-                         str(int(angle_list[i][0]))+ " " + '\n')
+                         str(angle_list_temp[0])+ " " + '\n')
                     try:
                         self.saveFile.write(s)
                     except:
@@ -1598,11 +1600,12 @@ class MainWindow(QtGui.QMainWindow):
                 test2 = ("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  \n")
                 self.saveFile.write(test2)
                 for i in range(0, len(mouse_box_list)):
+                    angle_list_temp = int(angle_list[i])
                     s = (str(self.frame_count) + " " + str(i) + " " +
                          str(left_foot_center_points[i][1][0]) + " " + str(left_foot_center_points[i][1][1]) + " " +
                          str(right_foot_center_points[i][1][0]) + " " + str(right_foot_center_points[i][1][1]) + " " +
                          str(mouse_center_points[i][1][0]) + " " + str(mouse_center_points[i][1][1])+ " " +
-                         str(int(angle_list[i][1]))+ " " + '\n')
+                         str(angle_list_temp[1])+ " " + '\n')
                     try:
                         self.saveFile.write(s)
                     except:

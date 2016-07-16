@@ -48,3 +48,7 @@ UsePlatform()
 t = 1
 if t ==1:
     print "HH"
+
+
+a = [1,2]
+print a[1],a[0]
