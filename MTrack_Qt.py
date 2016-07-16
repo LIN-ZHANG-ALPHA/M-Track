@@ -44,7 +44,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.centralWidget = QtGui.QWidget(QtMouseTracker)
         self.centralWidget.setObjectName("centralWidget")
-        self.centralWidget.setMinimumSize(900,600)
+        self.centralWidget.setMinimumSize(850,500)
 
         self.scaleFactor = 0.0
 
@@ -1526,8 +1526,10 @@ class MainWindow(QtGui.QMainWindow):
             # Insert modified images
             self.Tracker.insert_images(mouse_box_list, crop_list, orig_img)
 
-            for i in range(0,len(crop_list)):
+            #print "len(crop_list)): ",len(crop_list)
 
+
+            for i in range(0,len(crop_list)):
                 # Calculate and Draw angle lines
                 avgx = int((left_foot_center_points[i][0][0] + right_foot_center_points[i][0][0])/2)
 
@@ -1546,24 +1548,70 @@ class MainWindow(QtGui.QMainWindow):
                 angle_list.append(degs)
 
 
-            # Generate Output strings
-            for i in range(0, len(mouse_box_list)):
-                s = (str(self.frame_count) + " " + str(i) + " " +
-                     str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
-                     str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
-                     str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " +
-                     str(int(angle_list[i]))+ " " + '\n')
-                print s.__format__
-                # print angle_list[i]
-                # print int(angle_list[i])
 
-                try:
-                    self.saveFile.write(s)
-                except:
-                    self.timer.stop()
-                    self.dialog.infoDialog("Please select a save directory")
-                    return
+
+            # Generate Output strings
+            if len(crop_list) == 1:
+                test = ("Test: one mouse   \n")
+                self.saveFile.write(test)
+
+                for i in range(0, len(mouse_box_list)):
+                    s = (str(self.frame_count) + " " + str(i) + " " +
+                         str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
+                         str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
+                         str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " +
+                         str(int(angle_list[i]))+ " " + '\n')
+
+                    print "left_foot_center_points: ", left_foot_center_points
+                    print "mouse_center_points: ", mouse_center_points
+
+                    try:
+
+                        self.saveFile.write(s)
+                    except:
+                        self.timer.stop()
+                        self.dialog.infoDialog("Please select a save directory")
+                        return
             # End Crop_list If
+
+            elif len(crop_list) == 2:
+                # mouse 1:
+                test1 = ("This  is the 1st mouse  \n")
+                self.saveFile.write(test1)
+                for i in range(0, len(mouse_box_list)):
+                    s = (str(self.frame_count) + " " + str(i) + " " +
+                         str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
+                         str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
+                         str(mouse_center_points[i][0][0]) + " " + str(mouse_center_points[i][0][1])+ " " +
+                         str(int(angle_list[i][0]))+ " " + '\n')
+                    try:
+                        self.saveFile.write(s)
+                    except:
+                        self.timer.stop()
+                        self.dialog.infoDialog("Please select a save directory")
+                        return
+
+
+                # mouse 2:
+                test2 = ("This  is the 2st mouse  \n")
+                self.saveFile.write(test2)
+                test2 = ("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  \n")
+                self.saveFile.write(test2)
+                for i in range(0, len(mouse_box_list)):
+                    s = (str(self.frame_count) + " " + str(i) + " " +
+                         str(left_foot_center_points[i][1][0]) + " " + str(left_foot_center_points[i][1][1]) + " " +
+                         str(right_foot_center_points[i][1][0]) + " " + str(right_foot_center_points[i][1][1]) + " " +
+                         str(mouse_center_points[i][1][0]) + " " + str(mouse_center_points[i][1][1])+ " " +
+                         str(int(angle_list[i][1]))+ " " + '\n')
+                    try:
+                        self.saveFile.write(s)
+                    except:
+                        self.timer.stop()
+                        self.dialog.infoDialog("Please select a save directory")
+                        return
+
+
+
 
         # Draw wall Lines
         for i in range(0, len(self.cage_wall_vertices), 2):

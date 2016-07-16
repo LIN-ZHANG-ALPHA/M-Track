@@ -44,3 +44,7 @@ def UsePlatform():
     print ("Other System tasks")
 
 UsePlatform()
+
+t = 1
+if t ==1:
+    print "HH"
