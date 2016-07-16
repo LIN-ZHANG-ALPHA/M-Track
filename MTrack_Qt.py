@@ -660,7 +660,13 @@ class MainWindow(QtGui.QMainWindow):
         if not filenames:
              return
         self.saveFile = open(filenames,'w')
-        s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY   \n")
+
+        if self.mouse_count =="1":
+            s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY   \n")
+        elif self.mouse_count =="2":
+            s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY   \n")
+        elif self.mouse_count == "4":
+            s = ("FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY FrameNum MouseNum LeftX LeftY RightX RightY MouseAngle MouseX MouseY   \n")
         self.saveFile.write(s)
         #self.saveFile.close()
 
@@ -1540,31 +1546,30 @@ class MainWindow(QtGui.QMainWindow):
                 # Remove comment for body angle arrow
                 cv2.arrowedLine(orig_img,mouse_center_points[i],avgpoint,(255,255,255),1)
 
+
                 dx = avgpoint[0] - mouse_center_points[i][0]
                 dy = avgpoint[1] - mouse_center_points[i][1]
+
                 rads = math.atan2(dy,dx)
                 rads %= 2*math.pi
+
                 degs = math.degrees(rads)
                 angle_list.append(degs)
 
 
 
-
-            # Generate Output strings
+                # Generate Output strings
             if len(crop_list) == 1:
-                test = ("Test: one mouse   \n")
-                self.saveFile.write(test)
-
                 for i in range(0, len(mouse_box_list)):
                     s = (str(self.frame_count) + " " + str(i) + " " +
                          str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
                          str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
-                         str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1])+ " " +
-                         str(int(angle_list[i]))+ " " + '\n')
+                         str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1]) + " " +
+                         str(int(angle_list[i])) +" " + '\n')
 
                     print "left_foot_center_points: ", left_foot_center_points
                     print "mouse_center_points: ", mouse_center_points
-                    print "angle_list : ",angle_list
+                    print "angle_list : ", angle_list
 
                     try:
 
@@ -1573,53 +1578,37 @@ class MainWindow(QtGui.QMainWindow):
                         self.timer.stop()
                         self.dialog.infoDialog("Please select a save directory")
                         return
-            # End Crop_list If
 
+#######################################################################################################
             elif len(crop_list) == 2:
-                # mouse 1:
-                test1 = ("This  is the 1st mouse  \n")
-                self.saveFile.write(test1)
-                for i in range(0, len(mouse_box_list)):
-                    angle_list_temp = int(angle_list[i])
-                    s = (str(self.frame_count) + " " + str(i) + " " +
-                         str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
-                         str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
-                         str(mouse_center_points[i][0][0]) + " " + str(mouse_center_points[i][0][1])+ " " +
-                         str(angle_list_temp[0])+ " " + '\n')
-                    try:
-                        self.saveFile.write(s)
-                    except:
-                        self.timer.stop()
-                        self.dialog.infoDialog("Please select a save directory")
-                        return
 
+                for k  in range(0,len(crop_list)):
+                    for i in range(k, len(mouse_box_list)):
 
-                # mouse 2:
-                test2 = ("This  is the 2st mouse  \n")
-                self.saveFile.write(test2)
-                test2 = ("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  \n")
-                self.saveFile.write(test2)
-                for i in range(0, len(mouse_box_list)):
-                    angle_list_temp = int(angle_list[i])
-                    s = (str(self.frame_count) + " " + str(i) + " " +
-                         str(left_foot_center_points[i][1][0]) + " " + str(left_foot_center_points[i][1][1]) + " " +
-                         str(right_foot_center_points[i][1][0]) + " " + str(right_foot_center_points[i][1][1]) + " " +
-                         str(mouse_center_points[i][1][0]) + " " + str(mouse_center_points[i][1][1])+ " " +
-                         str(angle_list_temp[1])+ " " + '\n')
-                    try:
-                        self.saveFile.write(s)
-                    except:
-                        self.timer.stop()
-                        self.dialog.infoDialog("Please select a save directory")
-                        return
+                        s = (str(self.frame_count) + " " + str(i) + " " +
+                             str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
+                             str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
+                             str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1]) + " " +
+                             str(int(angle_list[i])) + "        " )
+                        # print "left_foot_center_points1: ", left_foot_center_points
+                        # print "mouse_center_points1: ", mouse_center_points
+                        # print "angle_list1 : ", angle_list
 
+                        if k == 0:
+                            try:
 
-
+                              self.saveFile.write(s)
+                            except:
+                                self.timer.stop()
+                                self.dialog.infoDialog("Please select a save directory")
+                                return
+                        if k==1:
+                            k = ('\n')
+                            self.saveFile.write(k)
 
         # Draw wall Lines
         for i in range(0, len(self.cage_wall_vertices), 2):
-            cv2.line(orig_img, tuple(self.cage_wall_vertices[i]), tuple(self.cage_wall_vertices[i + 1]), (211, 0, 148),
-                     1, 8)
+            cv2.line(orig_img, tuple(self.cage_wall_vertices[i]), tuple(self.cage_wall_vertices[i + 1]), (211, 0, 148),1, 8)
 
         self.displayImage(orig_img, False)
         self.timer.start()

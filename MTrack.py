@@ -132,7 +132,6 @@ class MTrack:
     # Inline Member Method: generate_selector_images
     # Method to generate color selector images
     def generate_selector_images(self):
-
         # Selector Color Images
         body_color_image_lower = np.zeros((50, 150, 3), np.uint8)
         body_color_image_upper = np.zeros((50, 150, 3), np.uint8)
