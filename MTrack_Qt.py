@@ -187,10 +187,9 @@ class MainWindow(QtGui.QMainWindow):
         self.Zoom_ScrollBar.setSingleStep(1)
         self.Zoom_ScrollBar.setProperty("value", 10)
         self.Zoom_ScrollBar.setOrientation(QtCore.Qt.Horizontal)
-
         self.Zoom_ScrollBar.setObjectName("Zoom_ScrollBar")
         self.gridLayout.addWidget(self.Zoom_ScrollBar, 17, 1, 1, 3)
-
+        ############################################################################################################
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setContentsMargins(11, 11, 11, 11)
         self.horizontalLayout_4.setSpacing(6)
@@ -1075,7 +1074,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.zoom = 0.5*self.zoom
 
-        #print "zoom", self.zoom
+        print "zoom", self.zoom
         try:
             if self.Display_scrollArea.widget() == self.displayLabel:
                 self.displayLabel.zoom = self.zoom  # Update Zoom
@@ -1087,7 +1086,7 @@ class MainWindow(QtGui.QMainWindow):
                                             self.zoom)  # Redisplay Image
         except:
             pass
-
+        return self.zoom
     #  update the LHue when changed
     def sliderUpdate_LHue(self):
         if self.viewMode == 'Body Color Mask':
@@ -1561,7 +1560,7 @@ class MainWindow(QtGui.QMainWindow):
                 # Generate Output strings
             if len(crop_list) == 1:
                 for i in range(0, len(mouse_box_list)):
-                    s = (str(self.frame_count) + " " + str(i) + " " +
+                    s = (str(self.frame_count) + " " + str(i+1) + " " +
                          str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
                          str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
                          str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1]) + " " +
@@ -1585,7 +1584,7 @@ class MainWindow(QtGui.QMainWindow):
                 for k  in range(0,len(crop_list)):
                     for i in range(k, len(mouse_box_list)):
 
-                        s = (str(self.frame_count) + " " + str(i) + " " +
+                        s = (str(self.frame_count) + " " + str(i+1) + " " +
                              str(left_foot_center_points[i][0][0]) + " " + str(left_foot_center_points[i][0][1]) + " " +
                              str(right_foot_center_points[i][0][0]) + " " + str(right_foot_center_points[i][0][1]) + " " +
                              str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1]) + " " +
@@ -1620,8 +1619,8 @@ class MainWindow(QtGui.QMainWindow):
         self.adjustScrollBar(self.scrollArea.horizontalScrollBar(), factor)
         self.adjustScrollBar(self.scrollArea.verticalScrollBar(), factor)
 
-        self.zoomInAct.setEnabled(self.scaleFactor < 3.0)
-        self.zoomOutAct.setEnabled(self.scaleFactor > 0.333)
+        # self.zoomInAct.setEnabled(self.scaleFactor < 10.0)
+        # self.zoomOutAct.setEnabled(self.scaleFactor > 0.00333)
 
 if __name__ == "__main__":
 

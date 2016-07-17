@@ -5,7 +5,7 @@ import cv2
 import  platform
 import numpy as np
 import math
-
+import PIL
 #
 # print cv2.__version__
 #
@@ -59,8 +59,11 @@ import math
 #
 # print aa1
 
-# a = [1,2]
+a = [1,2]
+a
 # print a[1]
-for i in range(0,2):
-    s = ("th "+str(i)+"tt")
-    print s
+
+start = (142,64)
+New = (167,88)
+[x1,y1] = start
+[x2,y2] = New

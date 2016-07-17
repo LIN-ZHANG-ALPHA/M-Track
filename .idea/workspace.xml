@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MTrack_Qt.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MTrack_Qt.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="24.577427" vertical-offset="15041" max-vertical-offset="24690">
-              <caret line="1627" column="30" selection-start-line="1627" selection-start-column="30" selection-end-line="1627" selection-end-column="30" />
+            <state vertical-scroll-proportion="-945.5769" vertical-offset="0" max-vertical-offset="24675">
+              <caret line="1639" column="0" selection-start-line="1639" selection-start-column="0" selection-end-line="1639" selection-end-column="0" />
               <folding>
                 <element signature="e#273#283#0" expanded="true" />
               </folding>
@@ -35,14 +35,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MTrack.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MTrack.py">
+      <file leaf-file-name="DisplayLabel.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DisplayLabel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-71.53846" vertical-offset="1365" max-vertical-offset="10155">
-              <caret line="216" column="21" selection-start-line="216" selection-start-column="16" selection-end-line="216" selection-end-column="21" />
-              <folding>
-                <element signature="e#14071#15418#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="6.8786125" vertical-offset="0" max-vertical-offset="4155">
+              <caret line="241" column="54" selection-start-line="241" selection-start-column="54" selection-end-line="241" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -74,18 +72,18 @@
         <option value="$PROJECT_DIR$/MTracker.py" />
         <option value="$PROJECT_DIR$/DisplayLabel.py" />
         <option value="$PROJECT_DIR$/Untitled.txt" />
-        <option value="$PROJECT_DIR$/RoiLabel.py" />
         <option value="$PROJECT_DIR$/MTrack.py" />
+        <option value="$PROJECT_DIR$/RoiLabel.py" />
         <option value="$PROJECT_DIR$/linToolkit.py" />
         <option value="$PROJECT_DIR$/MTrack_Qt.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="108" />
-    <option name="y" value="55" />
-    <option name="width" value="1165" />
-    <option name="height" value="698" />
+    <option name="x" value="84" />
+    <option name="y" value="26" />
+    <option name="width" value="1200" />
+    <option name="height" value="767" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -402,18 +400,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="108" y="55" width="1165" height="698" extended-state="0" />
+    <frame x="84" y="26" width="1200" height="767" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2085837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2824632" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28775835" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21633238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -461,7 +459,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="990">
           <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
           <folding>
-            <element signature="e#26#36#0" expanded="true" />
+            <element signature="e#26#36#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -706,44 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DisplayLabel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.771499" vertical-offset="0" max-vertical-offset="4155">
-          <caret line="241" column="54" selection-start-line="241" selection-start-column="54" selection-end-line="241" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ColorLabel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08571429" vertical-offset="9" max-vertical-offset="465">
           <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RoiLabel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45208845" vertical-offset="1361" max-vertical-offset="3900">
-          <caret line="107" column="63" selection-start-line="107" selection-start-column="63" selection-end-line="107" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linToolkit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1065">
-          <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
-          <folding>
-            <element signature="e#26#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MTrack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-71.53846" vertical-offset="1365" max-vertical-offset="10155">
-          <caret line="216" column="21" selection-start-line="216" selection-start-column="16" selection-end-line="216" selection-end-column="21" />
-          <folding>
-            <element signature="e#14071#15418#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -755,13 +719,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MTrack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5216572" vertical-offset="9053" max-vertical-offset="10155">
+          <caret line="661" column="18" selection-start-line="661" selection-start-column="8" selection-end-line="661" selection-end-column="18" />
+          <folding>
+            <element signature="e#14071#15418#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RoiLabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.230769" vertical-offset="1185" max-vertical-offset="4005">
+          <caret line="99" column="32" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linToolkit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+          <folding>
+            <element signature="e#26#36#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MTrack_Qt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="24.577427" vertical-offset="15041" max-vertical-offset="24690">
-          <caret line="1627" column="30" selection-start-line="1627" selection-start-column="30" selection-end-line="1627" selection-end-column="30" />
+        <state vertical-scroll-proportion="-945.5769" vertical-offset="0" max-vertical-offset="24675">
+          <caret line="1639" column="0" selection-start-line="1639" selection-start-column="0" selection-end-line="1639" selection-end-column="0" />
           <folding>
             <element signature="e#273#283#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DisplayLabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.8786125" vertical-offset="0" max-vertical-offset="4155">
+          <caret line="241" column="54" selection-start-line="241" selection-start-column="54" selection-end-line="241" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>

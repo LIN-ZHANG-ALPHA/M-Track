@@ -95,9 +95,16 @@ class RoiLabel(QLabel):
 
                 [x1,y1] = start
                 [x2,y2] = New
-                roiImage = copy[x1:x2+2,y1:y2+2]
+
+                print "start",start
+                print "new", New
+                roiImage = copy[x1:(x2+5),y1:(y2+5)]
+                print "shape", roiImage.shape
+
+
+
                 hsvImage = cv2.cvtColor(roiImage, cv2.COLOR_BGR2HSV)
-                #print "HSV", hsvImage
+
                 hue, sat, val = hsvImage[:,:,0], hsvImage[:,:,1], hsvImage[:,:,2]
                 H = int(np.mean(hue))
                 S = int(np.mean(sat))
