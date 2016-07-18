@@ -7,15 +7,11 @@ M-Track is a new software that allows automated detection of labelled forepaws i
 **OVERVIEW**  
  M-Track is an open-source software designed to detect the location of mice and of their labelled forepaws in video files. M-Track is compatible with debian and non-debian Linux installations, Mac OS X and Microsoft Windows operating systems. M-Track uses the Python language and the OpenCV, PyQt and Numpy libraries.  
 
-Two executable standalone versions of M-Track for Linux, Mac OS X and Microsoft Windows platforms are currently available: one of them allows the user to visualize the orientation of the mouse body (v1r1), the other does not have this feature (v1r2).  
+Two executable standalone versions of M-Track for Linux and Microsoft Windows platforms are currently available: one of them allows the user to visualize the orientation of the mouse body (v1r1), the other does not have this feature (v1r2).  
 
 ***Linux:***    
 M-Track_LIN_v1r1 - The user can visualize the orientation of the mouse body       
 M-Track_LIN_v1r2 - The user cannot visualize the orientation of the mouse body 
-
-***Mac OS X***  
-M-Track_OSX_v1r1 - The user can visualize the orientation of the mouse body       
-M-Track_OSX_v1r2 - The user cannot visualize the orientation of the mouse body 
 
 ***Microsoft Windows***  
 M-Track_WIN_v1r1 - The user can visualize the orientation of the mouse body       
