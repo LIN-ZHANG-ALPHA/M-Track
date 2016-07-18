@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #  MTrack.py
 #  This file is part of the M-Track program
 #  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)

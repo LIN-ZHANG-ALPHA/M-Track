@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #  MTrack_Qt.py
 #  This software is designed to capture the location of mice and their feet from video for data analysis.
 #  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
@@ -17,8 +18,6 @@ from PyQt4 import QtCore, QtGui
 from PyQt4.QtCore import QTimer
 from PyQt4.QtGui import QFileDialog, QLabel
 import platform
-
-
 
 
 from PyQt4.QtCore import *
@@ -1073,10 +1072,9 @@ class MainWindow(QtGui.QMainWindow):
 
     def sliderUpdate_Zoom(self):
         self.zoom = self.Zoom_ScrollBar.value() /10
-
         self.zoom = 0.5*self.zoom
+        #print "zoom", self.zoom
 
-        print "zoom", self.zoom
         try:
             if self.Display_scrollArea.widget() == self.displayLabel:
                 self.displayLabel.zoom = self.zoom  # Update Zoom
@@ -1568,9 +1566,9 @@ class MainWindow(QtGui.QMainWindow):
                          str(mouse_center_points[i][0]) + " " + str(mouse_center_points[i][1]) + " " +
                          str(int(angle_list[i])) +" " + '\n')
 
-                    print "left_foot_center_points: ", left_foot_center_points
-                    print "mouse_center_points: ", mouse_center_points
-                    print "angle_list : ", angle_list
+                    # print "left_foot_center_points: ", left_foot_center_points
+                    # print "mouse_center_points: ", mouse_center_points
+                    # print "angle_list : ", angle_list
 
                     try:
 
