@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #  MTrack.py
 #  This file is part of the M-Track program
 #  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
@@ -11,8 +12,6 @@ from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QWidget, QLabel
 from DisplayLabel import DisplayLabel
 import numpy as np
-import math
-from PIL import Image
 #   Class RoiLabel:
 #       Purpose: Redefine QLabel class for main display and roi drawing
 #       Dictionary of Variables:
@@ -76,7 +75,6 @@ class RoiLabel(QLabel):
             if self.left_click is True:
 
                 copy = self.crop_list[self.roi_count].copy()
-                MyImage = self.crop_list[self.roi_count]
 
                 if self.foot == 'left':
                     cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
@@ -87,15 +85,25 @@ class RoiLabel(QLabel):
                               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
                               (125,  63, 255), 2)
 
+                # cv2.rectangle(copy, self.roi_buffer[self.roi_count][0],
+                #               (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
+                #               (255, 255, 255), 2)
+
                 # shoe average HSV for roi dynamically
                 start = self.roi_buffer[self.roi_count][0]
                 New = int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)
 
+
                 [x1,y1] = start
                 [x2,y2] = New
 
-                roiImage = MyImage[x1:x2+2,y1:y2+2]
-                #print "shape", roiImage.shape
+                print "start",start
+                print "new", New
+                roiImage = copy[x1:(x2+5),y1:(y2+5)]
+                print "shape", roiImage.shape
+
+
+
                 hsvImage = cv2.cvtColor(roiImage, cv2.COLOR_BGR2HSV)
 
                 hue, sat, val = hsvImage[:,:,0], hsvImage[:,:,1], hsvImage[:,:,2]
@@ -105,11 +113,11 @@ class RoiLabel(QLabel):
                 ave_hsv = [H,S,V]
 
                 cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (10,20),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,255), 1)
+                cv2.FONT_HERSHEY_SIMPLEX, 0.4, (100,255,255), 1)
 
 
                 # cv2.putText(copy, "AveHSV:{}".format(ave_hsv), (int(eventQMouseEvent.x() / self.zoom), int(eventQMouseEvent.y() / self.zoom)),
-                # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (127,0,255), 1)
+                # cv2.FONT_HERSHEY_SIMPLEX, 0.7, (127,0,255), 1)
 
                 self.display_image(copy, self.zoom)
 

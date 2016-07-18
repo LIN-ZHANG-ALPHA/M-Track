@@ -1,9 +1,10 @@
+#!/usr/bin/python
 #  MTrack.py
 #  This file is part of the M-Track program
 #  For support and questions, please email Annalisa Scimemi (scimemia@gmail.com)
 #  Language: Python 2.7
 #  OpenCV Version: 3.0
-#  PyQt Version: 4.8
+
 
 import cv2
 from PyQt4 import QtGui

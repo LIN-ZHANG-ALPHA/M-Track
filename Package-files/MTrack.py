@@ -132,7 +132,6 @@ class MTrack:
     # Inline Member Method: generate_selector_images
     # Method to generate color selector images
     def generate_selector_images(self):
-
         # Selector Color Images
         body_color_image_lower = np.zeros((50, 150, 3), np.uint8)
         body_color_image_upper = np.zeros((50, 150, 3), np.uint8)
@@ -223,7 +222,13 @@ class MTrack:
                                              color_upper_hue,
                                              color_upper_sat, color_upper_val, dilation)
 
+        ## pre-processing image
+        # blur image
+        self.t = self.t+1
 
+
+
+        # ########
         masked_img = cv2.bitwise_and(img, img, mask=color_binary)
         # #cv2.imshow('masked_img',masked_img)
         #
@@ -239,6 +244,23 @@ class MTrack:
         x = int(object[0][0])
         y = int(object[0][1])
         center_points.append((x, y))
+
+
+        # add judge condition to avoid sudden change
+
+        # if self.t>1:
+        #     # movement in certain area
+        #     if abs(x-self.old_center[0][0])<20 or abs(y-self.old_center[0][1])<20:
+        #         center_points.append((x, y))
+        #         self.old_center  = center_points
+        #     else:
+        #         center_points = self.old_center
+        #     #print "center_points: ", center_points
+        #     #print "center_points xy:", x,y
+        # else:
+        #     #print "center_points11 xy:", x,y
+        #     center_points.append((x, y))
+        #     self.old_center  = center_points
 
         return center_points, track_window
 
@@ -279,6 +301,10 @@ class MTrack:
 
     # Inline Member Method: box_collision_detect
     # Method to perform collision detection and merging on list of boxes
+    # Precondition: Collisions Not Detected
+    # Postcondition: Collided Boxes Merged
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
     def box_collision_detect(self, box_list):
         # Boxes must be in the format:
         # ((topleftx),(toplefty)), ((bottomrightx),(bottomrighty)))
@@ -321,6 +347,10 @@ class MTrack:
 
     # Inline Member Method: detect_mice
     # Method to perform mouse body detection on a single image
+    # Precondition: Mice not detected
+    # Postcondition: Mice detected
+    # Created by Sheldon Reeves on 6/24/15.
+    # Language: Python 3.4
     def detect_mice(self, img, mouse_count):
         self.mouse_count = mouse_count
         mouse_box_list, mouse_center_points = self.process_image_color(img,
@@ -505,9 +535,9 @@ class MTrack:
         for i in range(0, len(center_points)):
             if self.mouse_count > 1:
                 # Initialize Booleans
-                left   = False
-                right  = False
-                top    = False
+                left = False
+                right = False
+                top = False
                 bottom = False
 
                 if self.wall1[0] == 0:  # If the wall is Horizontal
@@ -536,7 +566,6 @@ class MTrack:
                             left = True
                         else:
                             right = True
-
                 if top is True:
                     if left is True:
                         top_left = center_points[i]
