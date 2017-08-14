@@ -22,7 +22,8 @@ The ***Sample videos and output files*** folder contains two sample video files,
 **INSTALLATION**      
 M-Track requires the following languages and libraries:    
 - Python 2.7  
-- OpenCV 3.0  
+- OpenCV 3.0  (For v1r1 and v1r2)
+- OpenCV 3.2  (For version v2r1 and v2r2)
 - PyQt 4.8  
 - Numpy 1.10.4  
 
@@ -41,14 +42,16 @@ To test M-Track, run ***MTrack_Qt.py***, press ***Load*** to visualize one of th
 **CONTRIBUTORS**        
 M-Track was created by:         
 Sheldon L. Reeves (sheldonreeves316@gmail.com; sheldonreeves@icloud.com)         
-Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)         
+Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)   
+Matthew Brandon   (592mattbran@gmail.com; mbrandon@albany.edu)
 Annalisa Scimemi  (scimemia@gmail.com; ascimemi@albany.edu)    
 For support and questions, please contact Annalisa Scimemi (scimemia@gmail.com)   
 All work was funded by SUNY Albany, SUNY Albany Research Foundation and SUNY STEM Research Passport Program.   
 
 **HISTORY**   
 08-2015 - The first version of M-Track was created by Sheldon L. Reeves and Annalisa Scimemi. This version was compatible with Linux platforms and used Python 3.0, OpenCV 3.0 and PyQt 5.4.    
-07-2016 - An updated version of M-Track, available from this repository, was developed by Lin Zhang and Annalisa Scimemi using Python 2.7, OpenCV 3.0 and PyQt 4.8. This version of M-Track has added functionalities and fixes and is compatible with Linux, Mac OS X and Microsoft Windows platforms.    
+07-2016 - An updated version of M-Track, available from this repository, was developed by Lin Zhang and Annalisa Scimemi using Python 2.7, OpenCV 3.0 and PyQt 4.8. This version of M-Track has added functionalities and fixes and is compatible with Linux, Mac OS X and Microsoft Windows platforms. 
+08-2017 - An updated version of M-Track, available from this repository, was developed by Matthew Brandon and Annalisa Scimemi using Python 2.7, OpenCV 3.2 and PyQt 4.8. This version of M-Track allows it to work with OpenCV 3.2.
 
 **LICENSE**     
 Please review the terms and conditions of the license in the LICENSE_NPOSL-3.0 section of this repository before downloading the M-Track software. By downloading the M-Track software from this site you agree to be legally bound by the terms and conditions of the Open Source Initiative Non-Profit Open Software License 3.0         
