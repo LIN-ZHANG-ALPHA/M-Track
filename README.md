@@ -22,7 +22,7 @@ The ***Sample videos and output files*** folder contains two sample video files,
 **INSTALLATION**      
 M-Track requires the following languages and libraries:    
 - Python 2.7  
-- OpenCV 3.0  (For v1r1 and v1r2)
+- OpenCV 3.0  (For version v1r1 and v1r2)
 - OpenCV 3.2  (For version v2r1 and v2r2)
 - PyQt 4.8  
 - Numpy 1.10.4  
