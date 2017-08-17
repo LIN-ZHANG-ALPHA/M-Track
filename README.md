@@ -19,13 +19,19 @@ M-Track_WIN_v1r2 - The user cannot visualize the orientation of the mouse body
 
 The ***Sample videos and output files*** folder contains two sample video files, acquired on a C57BL/6 (black fur) and on a Swiss Webster mouse (white fur). Running M-Track on these sample Video files generates output files like the ones included in this folder, named ***Sample_Video_Black_Mice_Output.txt*** and ***Sample_Video_White_Mice_Output.txt***. 
 
-**INSTALLATION**      
+**INSTALLATION FOR VERSIONS v1r1 and v1r2**      
 M-Track requires the following languages and libraries:    
 - Python 2.7  
-- OpenCV 3.0  (For version v1r1 and v1r2)
-- OpenCV 3.2  (For version v2r1 and v2r2)
+- OpenCV 3.0  
 - PyQt 4.8  
 - Numpy 1.10.4  
+
+**INSTALLATION FOR VERSIONS v2r1 and v2r2**      
+M-Track requires the following languages and libraries:    
+- Python 2.7  
+- OpenCV 3.2  
+- PyQt 4.11  
+- Numpy 1.13.1  
 
 In addition, M-Track requires the following package files:   
  - MTrack_Qt.py      		
