@@ -53,7 +53,7 @@ All work was funded by SUNY Albany, SUNY Albany Research Foundation and SUNY STE
 
 07-2016 - An updated version of M-Track, available from this repository, was developed by Lin Zhang and Annalisa Scimemi using Python 2.7, OpenCV 3.0 and PyQt 4.8. This version of M-Track has added functionalities and fixes and is compatible with Linux, Mac OS X and Microsoft Windows platforms. 
 
-08-2017 - Anaconda 1 is no longer available for new users and Anaconda 2 requires using OpenCV 3.2. An updated version of M-Track, available from this repository, was developed by Matthew Brandon and Annalisa Scimemi using Python 2.7, OpenCV 3.2 and PyQt 4.8. This version of M-Track allows it to work with OpenCV 3.2.
+08-2017 - Anaconda1 is no longer available for new users and Anaconda2 requires using OpenCV 3.2. An updated version of M-Track, available from this repository, was developed by Matthew Brandon and Annalisa Scimemi using Python 2.7, OpenCV 3.2 and PyQt 4.11. This version of M-Track allows it to work with OpenCV 3.2.
 
 **LICENSE**     
 Please review the terms and conditions of the license in the LICENSE_NPOSL-3.0 section of this repository before downloading the M-Track software. By downloading the M-Track software from this site you agree to be legally bound by the terms and conditions of the Open Source Initiative Non-Profit Open Software License 3.0         
