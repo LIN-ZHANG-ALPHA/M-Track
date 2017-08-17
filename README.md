@@ -49,7 +49,7 @@ To test M-Track, run ***MTrack_Qt.py***, press ***Load*** to visualize one of th
 M-Track was created by:         
 Sheldon L. Reeves (sheldonreeves316@gmail.com; sheldonreeves@icloud.com)         
 Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)   
-Matthew P. Brandon   (592mattbran@gmail.com; mbrandon@albany.edu)
+Matthew S. Brandon   (592mattbran@gmail.com; mbrandon@albany.edu)
 Annalisa Scimemi  (scimemia@gmail.com; ascimemi@albany.edu)    
 For support and questions, please contact Annalisa Scimemi (scimemia@gmail.com)   
 All work was funded by SUNY Albany, SUNY Albany Research Foundation and SUNY STEM Research Passport Program.   
