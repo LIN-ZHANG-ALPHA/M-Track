@@ -19,12 +19,19 @@ M-Track_WIN_v1r2 - The user cannot visualize the orientation of the mouse body
 
 The ***Sample videos and output files*** folder contains two sample video files, acquired on a C57BL/6 (black fur) and on a Swiss Webster mouse (white fur). Running M-Track on these sample Video files generates output files like the ones included in this folder, named ***Sample_Video_Black_Mice_Output.txt*** and ***Sample_Video_White_Mice_Output.txt***. 
 
-**INSTALLATION**      
+**INSTALLATION FOR VERSIONS v1r1 and v1r2**      
 M-Track requires the following languages and libraries:    
 - Python 2.7  
 - OpenCV 3.0  
 - PyQt 4.8  
 - Numpy 1.10.4  
+
+**INSTALLATION FOR VERSIONS v2r1 and v2r2**      
+M-Track requires the following languages and libraries:    
+- Python 2.7  
+- OpenCV 3.2  
+- PyQt 4.11  
+- Numpy 1.13.1  
 
 In addition, M-Track requires the following package files:   
  - MTrack_Qt.py      		
@@ -41,14 +48,18 @@ To test M-Track, run ***MTrack_Qt.py***, press ***Load*** to visualize one of th
 **CONTRIBUTORS**        
 M-Track was created by:         
 Sheldon L. Reeves (sheldonreeves316@gmail.com; sheldonreeves@icloud.com)         
-Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)         
+Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)   
+Matthew S. Brandon   (592mattbran@gmail.com; mbrandon@albany.edu)
 Annalisa Scimemi  (scimemia@gmail.com; ascimemi@albany.edu)    
 For support and questions, please contact Annalisa Scimemi (scimemia@gmail.com)   
 All work was funded by SUNY Albany, SUNY Albany Research Foundation and SUNY STEM Research Passport Program.   
 
 **HISTORY**   
-08-2015 - The first version of M-Track was created by Sheldon L. Reeves and Annalisa Scimemi. This version was compatible with Linux platforms and used Python 3.0, OpenCV 3.0 and PyQt 5.4.    
-07-2016 - An updated version of M-Track, available from this repository, was developed by Lin Zhang and Annalisa Scimemi using Python 2.7, OpenCV 3.0 and PyQt 4.8. This version of M-Track has added functionalities and fixes and is compatible with Linux, Mac OS X and Microsoft Windows platforms.    
+08-2015 - The first version of M-Track was created by Sheldon L. Reeves and Annalisa Scimemi. This version was compatible with Linux platforms and used Python 3.0, OpenCV 3.0 and PyQt 5.4.  
+
+07-2016 - An updated version of M-Track, available from this repository, was developed by Lin Zhang and Annalisa Scimemi using Python 2.7, OpenCV 3.0 and PyQt 4.8. This version of M-Track has added functionalities and fixes and is compatible with Linux, Mac OS X and Microsoft Windows platforms. 
+
+08-2017 - Anaconda1 is no longer available for new users and Anaconda2 requires using OpenCV 3.2. An updated version of M-Track, available from this repository, was developed by Matthew Brandon and Annalisa Scimemi using Python 2.7, OpenCV 3.2 and PyQt 4.11. This version of M-Track allows it to work with OpenCV 3.2.
 
 **LICENSE**     
 Please review the terms and conditions of the license in the LICENSE_NPOSL-3.0 section of this repository before downloading the M-Track software. By downloading the M-Track software from this site you agree to be legally bound by the terms and conditions of the Open Source Initiative Non-Profit Open Software License 3.0         
