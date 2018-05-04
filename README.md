@@ -47,8 +47,8 @@ To test M-Track, run ***MTrack_Qt.py***, press ***Load*** to visualize one of th
 
 **CONTRIBUTORS**        
 M-Track was created by:         
-Sheldon L. Reeves (sheldonreeves316@gmail.com; sheldonreeves@icloud.com)         
-Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)   
+Lin Zhang         (linzhang0529@gmail.com; lzhang22@albany.edu)  
+Sheldon L. Reeves (sheldonreeves316@gmail.com; sheldonreeves@icloud.com)  
 Matthew S. Brandon   (592mattbran@gmail.com; mbrandon@albany.edu)
 Annalisa Scimemi  (scimemia@gmail.com; ascimemi@albany.edu)    
 For support and questions, please contact Annalisa Scimemi (scimemia@gmail.com)   
